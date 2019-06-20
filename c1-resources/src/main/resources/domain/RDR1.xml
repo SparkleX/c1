@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<table xmlns="urn:next:table">
+	<name>RDR1</name>
+	<key>Id</key>
+ 	<column>
+		<name>Id</name>
+		<type>int</type>
+		<length>0</length>
+	</column>
+	<column>
+		<name>ParentId</name>
+		<type>int</type>
+		<length>0</length>
+	</column>
+	<column>
+		<name>LineId</name>
+		<type>int</type>
+		<length>0</length>
+	</column>	
+</table>

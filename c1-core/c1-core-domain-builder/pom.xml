@@ -4,24 +4,35 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.next.c1</groupId>
-		<artifactId>c1</artifactId>
+		<artifactId>c1-core</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>c1-web</artifactId>
+	<artifactId>c1-core-domain-builder</artifactId>
 	<dependencies>
 		<dependency>
-			<groupId>com.next.c1</groupId>
-			<artifactId>c1-controller</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.next.c1</groupId>
+			<artifactId>c1-core-xsd</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -30,7 +41,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.next.c1.AppWeb</mainClass>
+					<mainClass>compiler.TableCompiler</mainClass>
 					<layout>JAR</layout>
 				</configuration>
 				<executions>
@@ -42,5 +53,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>	
+	</build>
 </project>

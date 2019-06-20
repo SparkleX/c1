@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<table xmlns="urn:next:table">
+	<name>OCRD</name>
+	<key>Id</key>
+	<column>
+		<name>Id</name>
+		<type>int</type>
+		<length>0</length>
+	</column>
+	<column>
+		<name>CardCode</name>
+		<type>string</type>
+		<length>40</length>
+	</column>
+	<column>
+		<name>CardName</name>
+		<type>string</type>
+		<length>127</length>
+	</column>
+	<column>
+		<name>Remarks</name>
+		<type>string</type>
+		<length>255</length>
+	</column>
+</table>

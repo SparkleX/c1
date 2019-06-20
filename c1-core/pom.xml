@@ -5,16 +5,10 @@
     <artifactId>c1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>c1-controller</artifactId>
-  <dependencies>
-  	<dependency>
-  		<groupId>com.next.c1</groupId>
-  		<artifactId>c1-service</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-web</artifactId>
-	</dependency>
-  </dependencies>
+  <artifactId>c1-core</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>c1-core-domain-builder</module>
+  	<module>c1-core-xsd</module>
+  </modules>
 </project>

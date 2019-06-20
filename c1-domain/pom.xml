@@ -14,4 +14,57 @@
 			<artifactId>javax.persistence-api</artifactId>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<?m2e ignore?>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+				        <configuration>
+				          <executable>java</executable>
+				          <arguments>
+				            <argument>-jar</argument>
+				            <argument>${settings.localRepository}/com/next/c1/c1-core-domain-builder/0.0.1-SNAPSHOT/c1-core-domain-builder-0.0.1-SNAPSHOT.jar</argument>
+							<argument>--output=${project.build.directory}/generated-sources/java</argument>
+							<argument>--input=${project.basedir}/../c1-resources/src/main/resources/domain/</argument>
+				          </arguments>
+				        </configuration>						
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.next.c1</groupId>
+						<artifactId>c1-core-domain-builder</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.build.directory}/generated-sources/java/</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>	
 </project>

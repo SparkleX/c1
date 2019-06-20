@@ -10,8 +10,23 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.verion>5.1.7.RELEASE</springframework.verion>
 	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>2.0.4.RELEASE</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.14.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -95,11 +110,25 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-			    <groupId>org.springframework</groupId>
-			    <artifactId>spring-web</artifactId>
-			    <version>${springframework.verion}</version>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-impl</artifactId>
+				<version>2.3.2</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-core</artifactId>
+				<version>2.3.0.1</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.freemarker</groupId>
+			    <artifactId>freemarker</artifactId>
+			    <version>2.3.28</version>
+			</dependency>
+			<dependency>
+			    <groupId>commons-io</groupId>
+			    <artifactId>commons-io</artifactId>
+			    <version>2.6</version>
+			</dependency>			
 		</dependencies>
 	</dependencyManagement>
 	<modules>
@@ -111,5 +140,6 @@
 		<module>c1-web</module>
 		<module>c1-resources</module>
 		<module>c1-utils</module>
+		<module>c1-core</module>
 	</modules>
 </project>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:next:table" xmlns="urn:next:table" xmlns:core="urn:next:core" elementFormDefault="qualified">
+	<xs:element name="table">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:ID" />
+				<xs:element name="key" type="columnName" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="column" type="column" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="column">
+		<xs:sequence>
+			<xs:element name="name" type="columnName" />
+			<xs:element name="type" type="columnType" default="int"/>
+			<xs:element name="length" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="columnType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="string" />
+			<xs:enumeration value="int" />
+			<xs:enumeration value="decimal" />
+			<xs:enumeration value="datetime" />
+
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="columnName">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2" />
+			<xs:maxLength value="10" />
+			<xs:pattern value="[A-Z][a-zA-Z0-9]+" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+</xs:schema>
