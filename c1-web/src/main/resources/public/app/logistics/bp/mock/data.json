@@ -1,0 +1,17 @@
+{
+	"BpCurrency": "B",
+	"TransId": 1,
+	"Total": 100,
+	"Active": true,
+	"ConBP" : "C200",
+	"JDT1" : [
+		{
+			"AcctCode":"100001",
+			"Credit": 19.98
+		},
+		{
+			"AcctCode":"100002",
+			"Debit" : 19.98
+		}
+	]
+}

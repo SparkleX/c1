@@ -1,0 +1,126 @@
+<mvc:View 
+id="idBpDetail"
+controllerName="app.logistics.bp.controller.Detail" 
+xmlns:uxap="sap.uxap"
+xmlns="sap.m" 
+xmlns:m="sap.m" 
+xmlns:layout="sap.ui.layout"
+xmlns:pages="app.logistics.bp.pages"
+xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:b1="app.core.control" xmlns:semantic="sap.m.semantic" displayBlock="true"
+>
+	<semantic:FullscreenPage title="{i18n>detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
+		<semantic:content>
+			<uxap:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false"
+			showFooter="{= ${form>/formMode} ==='editMode'}"
+			>
+				<uxap:headerTitle>
+					<uxap:ObjectPageDynamicHeaderTitle areaShrinkRatio="1:1.6:1.6">
+						<uxap:expandedHeading>
+							<m:Title text="Business Partner" wrapping="true" />
+						</uxap:expandedHeading>
+
+						<uxap:snappedHeading>
+							<m:Title text="Business Partner" wrapping="true" />
+						</uxap:snappedHeading>
+
+						<uxap:expandedContent>
+							<m:Text text="Senior Developer" />
+						</uxap:expandedContent>
+
+						<uxap:snappedContent>
+							<m:Text text="Senior Developer" />
+						</uxap:snappedContent>
+
+						<uxap:actions>
+							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onPressEdit" visible="{= ${form>/formMode} ==='viewMode'}"/>
+							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true"  visible="{= ${form>/formMode} ==='viewMode'}"/>
+							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true"  visible="{= ${form>/formMode} ==='viewMode'}"/>
+						</uxap:actions>
+						<uxap:navigationActions>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="slim-arrow-down" />
+						</uxap:navigationActions>
+						<uxap:content>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="slim-arrow-down" />
+						</uxap:content>
+					</uxap:ObjectPageDynamicHeaderTitle>
+				</uxap:headerTitle>
+
+				<uxap:sections>
+					<uxap:ObjectPageSection id="section1" title="Section 1">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="idGeneralPage" title="General">
+								<uxap:blocks>
+									<pages:General/>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+					<uxap:ObjectPageSection title="Additional Data">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>
+									<Label text="Credit" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>					
+					<uxap:ObjectPageSection title="Contect Person">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>
+									<Label text="Credit" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>						
+					<uxap:ObjectPageSection title="Address">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>
+									<pages:Address/>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>						
+					<uxap:ObjectPageSection title="Payment Terms">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>
+									<Label text="Credit" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>						
+					<uxap:ObjectPageSection title="Accounting">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>
+									<Label text="Credit" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>						
+					<uxap:ObjectPageSection title="Properties">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>
+									<Label text="Credit" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>						
+					
+				</uxap:sections>
+				<uxap:footer>
+					<m:OverflowToolbar>
+						<m:ToolbarSpacer />
+						<m:Button type="Emphasized" text="Save" press="onPressSave"/>
+						<m:Button type="Default" text="Cancel" press="onPressCancel"/>
+					</m:OverflowToolbar>				
+				</uxap:footer>
+			</uxap:ObjectPageLayout>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

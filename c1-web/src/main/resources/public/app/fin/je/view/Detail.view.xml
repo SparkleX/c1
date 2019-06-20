@@ -1,0 +1,48 @@
+<mvc:View
+	controllerName="app.core.controller.Detail"
+	xmlns="sap.m"
+	xmlns:table="sap.ui.table"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:b1="app.core.control"
+	xmlns:semantic="sap.m.semantic"
+	displayBlock="true">
+	<semantic:FullscreenPage title="{i18n>detail/title}"
+									 showNavButton="true"
+									 navButtonPress="onNavBack">
+			<semantic:content>
+				<l:VerticalLayout width="100%">
+					<l:Grid>
+						<Label text="Transaction Id" labelFor="idTransId"/>	
+						<Input id="idTransId" value="{/TransId}" required="true"/>
+						<Label text="Total" labelFor="idTotal"/>
+						<Input id="idTotal" value="{/Total}" required="true"/>
+					</l:Grid>
+				</l:VerticalLayout>
+				<table:Table id="idTable" rows="{/JDT1}">		
+					<table:columns>
+						<table:Column width="12em">
+							<Label text="Account" />
+							<table:template>
+								<Text text="{AcctCode}"/>
+							</table:template>							
+						</table:Column>
+						<table:Column width="12em">
+							<Label text="Credit" />
+							<table:template>
+								<Text text="{Credit}"/>
+							</table:template>							
+						</table:Column>
+						<table:Column width="12em">
+							<Label text="Debit" />
+							<table:template>
+								<Text text="{Debit}"/>
+							</table:template>							
+						</table:Column>
+						
+					</table:columns>
+				</table:Table>				
+			</semantic:content>
+		</semantic:FullscreenPage>
+</mvc:View>

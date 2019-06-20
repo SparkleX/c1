@@ -1,0 +1,31 @@
+<mvc:View
+	controllerName="app.core.controller.List"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:b1="sap.b1.core.control"
+	displayBlock="true">
+	<Page title="{i18n>list/title}">
+	<content>
+	<List
+		items="{list>/}" >
+		<items>
+			<ObjectListItem 
+				title="{list>TransId}"
+				type="Active"
+				press="onListItemPress"
+				number="{list>Total}"
+			>
+				<firstStatus>
+					<ObjectStatus text="{list>PostDate}"/>
+				</firstStatus>				
+				<attributes>
+					<ObjectAttribute text="{list>Total}" />
+				</attributes>
+			</ObjectListItem>
+		</items>
+	</List>	
+	</content>
+	</Page>
+</mvc:View>

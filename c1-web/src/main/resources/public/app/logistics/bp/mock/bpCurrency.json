@@ -1,0 +1,11 @@
+
+[
+    {
+        "value":"L",
+        "desc":"Local Currency"
+    },
+    {
+        "value":"B",
+        "desc":"BP Currency"
+    }
+]
