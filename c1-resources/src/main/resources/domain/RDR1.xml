@@ -1,20 +1,53 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table">
-	<name>RDR1</name>
-	<key>Id</key>
+	<id>RDR1</id>
  	<column>
-		<name>Id</name>
-		<type>int</type>
-		<length>0</length>
+		<id>id</id>
+		<dbType>Identity</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
 	</column>
 	<column>
-		<name>ParentId</name>
-		<type>int</type>
-		<length>0</length>
+		<id>parentId</id>
+		<dbType>Identity</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
 	</column>
 	<column>
-		<name>LineId</name>
-		<type>int</type>
-		<length>0</length>
-	</column>	
+		<id>visOrder</id>
+		<dbType>Integer</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>itemId</id>
+		<dbType>Integer</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>price</id>
+		<dbType>Decimal</dbType>
+		<dbSize>0</dbSize>
+		<editType>Price</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>quantity</id>
+		<dbType>Decimal</dbType>
+		<dbSize>0</dbSize>
+		<editType>Quantity</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>lineTotal</id>
+		<dbType>Decimal</dbType>
+		<dbSize>0</dbSize>
+		<editType>Sum</editType>
+		<editSize>0</editSize>
+	</column>
 </table>

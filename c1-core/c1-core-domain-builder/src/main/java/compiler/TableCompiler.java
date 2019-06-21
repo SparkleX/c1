@@ -9,12 +9,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
@@ -32,8 +33,10 @@ import com.next.c1.schema.table.Table;
 
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
+import freemarker.template.TemplateModel;
 import freemarker.template.Version;
 
 @SpringBootApplication
@@ -59,7 +62,7 @@ public class TableCompiler implements InitializingBean {
 	TableCompiler() throws JAXBException {
 		jaxbContext = JAXBContext.newInstance(Table.class);
 		jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-		jaxbUnmarshaller.setProperty("com.sun.xml.bind.ObjectFactory",new ObjectFactoryImpl());
+		//jaxbUnmarshaller.setProperty("com.sun.xml.bind.ObjectFactory",new ObjectFactoryImpl());
 		
 
 	}
@@ -70,17 +73,22 @@ public class TableCompiler implements InitializingBean {
 			File xmlFile = path.toFile();
 			System.out.println(FilenameUtils.getName(xmlFile.getName()));
 			Table oTable = (Table) jaxbUnmarshaller.unmarshal(xmlFile);
-			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", new DefaultNamespacePrefixMapper());
+			//Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+			//jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			//jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", new DefaultNamespacePrefixMapper());
 			//jaxbMarshaller.marshal(oTable, new File("C:/dev/1.xml"));
 			
 			
 			//Table oTable = mapper.readValue(xmlFile, Table.class);
 			StringWriter sw = new StringWriter();
-			template.process(oTable, sw);
+			DefaultObjectWrapper wrapper = new DefaultObjectWrapper(new Version(2,3,20));
+			TemplateModel statics = wrapper.getStaticModels();
+			Map<String,Object> data = new HashMap<>();
+			data.put("statics", statics);
+			data.put("data", oTable);
+			template.process(data, sw);
 			String outputFileName = FilenameUtils.getBaseName(xmlFile.getName()) + ".java";
-			outputFileName = outputPath.getAbsolutePath() + "/gen/table/Bmo" + outputFileName;
+			outputFileName = outputPath.getAbsolutePath() + "/com/next/c1/domain/Do" + outputFileName;
 			FileUtils.writeStringToFile(new File(outputFileName), sw.toString(), "utf8");
 		} catch (Exception e) {
 			e.printStackTrace();

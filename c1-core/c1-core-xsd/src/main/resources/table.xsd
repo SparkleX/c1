@@ -3,35 +3,65 @@
 	<xs:element name="table">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="name" type="xs:ID" />
-				<xs:element name="key" type="columnName" minOccurs="1" maxOccurs="unbounded" />
-				<xs:element name="column" type="column" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="id" type="xs:ID" />
+				<xs:element name="array" type="array" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="column" type="column" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	<xs:complexType name="column">
 		<xs:sequence>
-			<xs:element name="name" type="columnName" />
-			<xs:element name="type" type="columnType" default="int"/>
-			<xs:element name="length" type="xs:int" />
+			<xs:element name="id" type="columnName" />
+			<xs:element name="dbType" type="DbType"/>
+			<xs:element name="dbSize" type="xs:int" />
+			<xs:element name="editType" type="EditType" />
+			<xs:element name="editSize" type="xs:int" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="columnType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="string" />
-			<xs:enumeration value="int" />
-			<xs:enumeration value="decimal" />
-			<xs:enumeration value="datetime" />
-
-		</xs:restriction>
-	</xs:simpleType>
+	<xs:complexType name="array">
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="type" type="xs:string"/>
+	</xs:complexType>
 	<xs:simpleType name="columnName">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="2" />
 			<xs:maxLength value="10" />
-			<xs:pattern value="[A-Z][a-zA-Z0-9]+" />
+			<xs:pattern value="[a-z][a-zA-Z0-9]+" />
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="EditType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Dial" />
+			<xs:enumeration value="Image" />
+			<xs:enumeration value="Link" />
+			<xs:enumeration value="Map" />
+			<xs:enumeration value="Mask" />
+			<xs:enumeration value="Measure" />
+			<xs:enumeration value="None" />
+			<xs:enumeration value="Percent" />
+			<xs:enumeration value="Phone" />
+			<xs:enumeration value="Price" />
+			<xs:enumeration value="Positive" />
+			<xs:enumeration value="Quantity" />
+			<xs:enumeration value="Rate" />
+			<xs:enumeration value="SSNum" />
+			<xs:enumeration value="Sum" />
+			<xs:enumeration value="Tax" />
+			<xs:enumeration value="Time" />
+			<xs:enumeration value="Unit" />
+			<xs:enumeration value="ZipCode" />
+		</xs:restriction>
+	</xs:simpleType>
 
+	<xs:simpleType name="DbType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Identity" />
+			<xs:enumeration value="AlphaNumeric" />			
+			<xs:enumeration value="Integer" />
+			<xs:enumeration value="Decimal" />
+			<xs:enumeration value="Date" />
+			<xs:enumeration value="Text" />
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

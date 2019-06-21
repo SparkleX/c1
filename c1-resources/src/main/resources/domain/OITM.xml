@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table">
-	<id>OCRD</id>
+	<id>OITM</id>
 	<column>
 		<id>id</id>
 		<dbType>Identity</dbType>
@@ -9,17 +9,17 @@
 		<editSize>0</editSize>
 	</column>
 	<column>
-		<id>bpCode</id>
+		<id>itemCode</id>
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>40</dbSize>
 		<editType>None</editType>
-		<editSize>40</editSize>
+		<editSize>0</editSize>
 	</column>
 	<column>
-		<id>bpName</id>
+		<id>itemName</id>
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>127</dbSize>
 		<editType>None</editType>
-		<editSize>127</editSize>
+		<editSize>0</editSize>
 	</column>
 </table>
