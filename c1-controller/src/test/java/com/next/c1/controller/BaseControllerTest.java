@@ -37,7 +37,6 @@ public class BaseControllerTest<T, SERVICE extends BaseService<T,?>>{
 		Class<T> domainClass = getDomainClass();
 		T o = domainClass.newInstance();
 		String table = getTableName();
-		//Optional<DoOCRD> rt = Optional.of(DoOCRD); 
 		BDDMockito.given(this.mockService.get(1)).willReturn((T) o);
 		String str = this.json.writeValueAsString(o);
 		this.mvc.perform(MockMvcRequestBuilders.get("/api/"+table+"/1")

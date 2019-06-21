@@ -11,4 +11,5 @@ import com.next.c1.service.OADMService;
 @RunWith(SpringRunner.class)
 @WebMvcTest(OADMController.class)
 public class OADMControllerTest extends BaseControllerTest<DoOADM, OADMService>{
+
 }
