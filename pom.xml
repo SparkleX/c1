@@ -499,7 +499,6 @@
 		<module>c1-domain</module>
 		<module>c1-web</module>
 		<module>c1-resources</module>
-		<module>c1-utils</module>
 		<module>c1-core</module>
 	</modules>
 </project>

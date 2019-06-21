@@ -10,5 +10,7 @@
   <modules>
   	<module>c1-core-domain-builder</module>
   	<module>c1-core-xsd</module>
+  	<module>c1-core-i18n-builder</module>
+  	<module>c1-core-common</module>
   </modules>
 </project>
