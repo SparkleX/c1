@@ -7,6 +7,10 @@ import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import com.next.jpatis.jpa.PersistenceProviderImpl;
 
 public class JpatisVendorAdapter extends AbstractJpaVendorAdapter {
+
+	public JpatisVendorAdapter() {
+	}
+
 	@Override
 	public PersistenceProvider getPersistenceProvider() {
 		return new PersistenceProviderImpl();

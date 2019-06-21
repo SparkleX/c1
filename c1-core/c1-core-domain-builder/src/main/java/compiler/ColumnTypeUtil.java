@@ -13,11 +13,11 @@ public class ColumnTypeUtil
 			return "Integer";
 		case TEXT:
 		case ALPHA_NUMERIC: 
-			return "Integer";
+			return "String";
 		case DECIMAL: 
 			return "BigDecimal";
 		case DATE: 
-			return "Date";
+			return "LocalDateTime";
 		}
 		throw new RuntimeException(type.value());
 	}

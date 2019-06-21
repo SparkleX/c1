@@ -11,29 +11,25 @@ public class BaseService<T,REPO extends JpatisRepository<T,Integer>> {
 	@Autowired
 	protected REPO repository;
 
-	public T create(T o) {
-		// TODO Auto-generated method stub
-		return null;
+	public void create(T o) {
+		repository.insert(o);;
 	}
 
 	public T get(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).get();
 	}
 
-	public T update(Integer id, T entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Integer id, T entity) {
+		repository.updateById(id, entity);
 	}
 
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		repository.deleteById(id);
 		
 	}
 
 	public List<T> search() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 }

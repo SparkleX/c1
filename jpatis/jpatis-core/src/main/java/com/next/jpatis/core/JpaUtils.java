@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
@@ -23,7 +22,7 @@ public class JpaUtils {
 		}
 		return clazz.getSimpleName();
 	}
-	static String getFieldName(Field field)
+	static public String getFieldName(Field field)
 	{
 		Column c = field.getAnnotation(Column.class);
 		if(c!=null)
@@ -44,13 +43,8 @@ public class JpaUtils {
 			}
 			Column aColumn = field.getAnnotation(Column.class);
 			if (aColumn == null) {
-				Transient aTrans = field.getAnnotation(Transient.class);
-				if (aTrans == null) {
-					throw new RuntimeException(String.format("%s require @Column or @Transient", field.toString()));
-				}
 				continue;
 			}
-			field.setAccessible(true);
 			rt.add(field);
 		}
 		return rt;

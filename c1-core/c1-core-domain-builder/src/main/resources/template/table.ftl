@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 <#assign ColumnTypeUtil=statics['compiler.ColumnTypeUtil']>
 
@@ -25,14 +27,15 @@ public class Do${data.id}
 	<#assign javaType=ColumnTypeUtil.getJavaType(column.dbType)>
 	<#assign methodName=column.id?cap_first>
     @Column
+	protected ${javaType} ${column.id};
 	public ${javaType} get${methodName}(){return ${column.id};}
 	public void set${methodName}(${javaType} val){${column.id}=val;}
-	protected ${javaType} ${column.id};
     </#list>
     
 	<#list data.array as array>
+	@JsonProperty("${array.id}")
 	protected List<Do${array.type}> ${array.id};
-	//@ArrayTable
+	//@ArrayTable	
 	public List<Do${array.type}> get${array.id}() {
 		if(${array.id}==null) ${array.id} = new ArrayList<>();
 		return ${array.id};

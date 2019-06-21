@@ -1,8 +1,14 @@
 package com.next.jpatis.spring;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.ObjectProvider;
@@ -15,6 +21,8 @@ import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
 import com.next.jpatis.core.SqlConnection;
+import com.next.jpatis.ddl.DdlUtil;
+import com.next.spring.utils.SpringScanner;
 
 @Configuration
 public class JpatisConfig extends JpaBaseConfiguration {
@@ -22,6 +30,7 @@ public class JpatisConfig extends JpaBaseConfiguration {
 			ObjectProvider<JtaTransactionManager> jtaTransactionManager,
 			ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
 		super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
+
 	}
 
 	@Bean
@@ -31,9 +40,30 @@ public class JpatisConfig extends JpaBaseConfiguration {
 
 	@Override
 	protected AbstractJpaVendorAdapter createJpaVendorAdapter() {
-		return new JpatisVendorAdapter();
+		try	{
+			createTables();
+			return new JpatisVendorAdapter();
+		}catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
 	}
 
+	private void createTables() throws ClassNotFoundException, SQLException {
+		try(Connection conn = getDataSource().getConnection()) {
+			Statement stat = conn.createStatement();
+			String[] rt = this.getPackagesToScan();
+			if(this.getProperties().isGenerateDdl()) {
+				for(String p:rt) {
+					List<String> packs = SpringScanner.scan(p, Table.class, Entity.class);
+					for(String clazz:packs) {
+						Class<?> entityClass = Class.forName(clazz);
+						String sql = DdlUtil.createTable(entityClass);
+						stat.execute(sql);						
+					}
+				}				
+			}	
+		}
+	}
 	@Override
 	protected Map<String, Object> getVendorProperties() {
 		return new HashMap<>();

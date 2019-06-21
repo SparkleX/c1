@@ -20,8 +20,8 @@ public class BaseController<T, SERVICE extends BaseService<T,?>> {
 	protected SERVICE service;
 	
 	@PostMapping
-	public T create(T o) {
-		return service.create(o);
+	public void create(T o) {
+		service.create(o);
 	}
 	@GetMapping(path="/{id}")
 	public T get(@PathVariable Integer id) {
@@ -29,9 +29,9 @@ public class BaseController<T, SERVICE extends BaseService<T,?>> {
 	}
 	
 	@PutMapping(path="/{id}")
-	public T update(@PathVariable Integer id, @RequestBody T entity)
+	public void update(@PathVariable Integer id, @RequestBody T entity)
 	{
-		return service.update(id, entity);
+		service.update(id, entity);
 	}
 	@DeleteMapping(path="/{id}")
 	public void delete(@PathVariable Integer id)

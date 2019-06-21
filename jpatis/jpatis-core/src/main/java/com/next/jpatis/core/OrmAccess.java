@@ -17,6 +17,8 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -44,7 +46,7 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 					appendFieldName(fieldList, fieldName).append(",");
 					paramList.append("?,");
 				}
-				Object value = field.get(o);
+				Object value = FieldUtils.readField(field, o, true);
 				values.add(value);
 			}
 			if (this.isSupportUserDefinedField(o.getClass())) {
@@ -168,7 +170,7 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 				}
 				String column = JpaUtils.getFieldName(field);
 				this.appendFieldName(sql, column).append("=? and ");
-				Object value = field.get(entity);
+				Object value = FieldUtils.readField(field, entity, true);
 				rt.param.add(value);
 				/*if (aIdClass != null) {
 					Class<?> idClass = aIdClass.value();
