@@ -2,7 +2,10 @@ package com.next.c1.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +21,9 @@ public class BaseController<T, SERVICE extends BaseService<T,?>> {
 	
 	@Autowired
 	protected SERVICE service;
-	
+	@Autowired
+	protected HttpServletResponse response;
+
 	@PostMapping
 	public void create(T o) {
 		service.create(o);
@@ -37,10 +42,11 @@ public class BaseController<T, SERVICE extends BaseService<T,?>> {
 	public void delete(@PathVariable Integer id)
 	{
 		service.delete(id);
+		response.setStatus(HttpStatus.NO_CONTENT.value());		
 	}
 	@GetMapping
 	public List<T> search()
 	{
 		return service.search();
-	}	
+	}
 }

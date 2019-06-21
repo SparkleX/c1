@@ -9,5 +9,5 @@ import com.next.c1.service.OCRDService;
 @RestController
 @RequestMapping(path="/api/OCRD")
 public class OCRDController extends BaseController<DoOCRD, OCRDService>{
-	
+
 }
