@@ -11,9 +11,21 @@ sap.ui.define([
 		init : function () {
 			UIComponent.prototype.init.apply(this, arguments);
 			this.getRouter().initialize();
-			var oModelList = new JSONModel();
+			/*var oModelList = new JSONModel();
 			oModelList.loadData("mock/list.json",null,false);	
-			this.setModel(oModelList, "list");				
+			this.setModel(oModelList, "list");*/
+			
+			
+			var oModelList = new JSONModel();
+			oModelList.loadData("/api/ORDR/");
+			oModelList.attachRequestCompleted(function() {
+		        //console.log(oModelList.getData());
+		    });
+			this.setModel(oModelList, "list");	
+			
+			//var oModel = new JSONModel();
+			//oModel.loadData("http://127.0.0.1/data/config.json");
+			//console.log(JSON.stringify(oModel.getData()));
 		}
 	});
 

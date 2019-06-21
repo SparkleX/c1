@@ -23,7 +23,7 @@ sap.ui.define([
 	};
 	BaseDetailController.prototype.onLoad = function(id) {
 		var oModel = new JSONModel();
-		oModel.loadData("mock/data.json",null,false);	
+		oModel.loadData("/api/ORDR/"+id);	
 		this.getOwnerComponent().setModel(oModel);
 		this.getView().setModel(oModel);
 	};

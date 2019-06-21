@@ -27,9 +27,6 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 		super(conn);
 	}
 
-	public StringBuilder appendFieldName(StringBuilder sb, String field) {
-		return sb.append(field);
-	}
 
 	public void fieldListSql(Object o, StringBuilder fieldList, StringBuilder paramList, ArrayList<Object> values,
 			boolean forUpdate) throws JpatisException {
@@ -41,9 +38,9 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 				String fieldName = JpaUtils.getFieldName(field);
 				moveLast = true;
 				if (forUpdate) {
-					appendFieldName(fieldList, fieldName).append("=?,");
+					quote(fieldList, fieldName).append("=?,");
 				} else {
-					appendFieldName(fieldList, fieldName).append(",");
+					quote(fieldList, fieldName).append(",");
 					paramList.append("?,");
 				}
 				Object value = FieldUtils.readField(field, o, true);
@@ -56,9 +53,9 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 
 					moveLast = true;
 					if (forUpdate) {
-						appendFieldName(fieldList, fieldName).append("=?,");
+						quote(fieldList, fieldName).append("=?,");
 					} else {
-						appendFieldName(fieldList, fieldName).append(",");
+						quote(fieldList, fieldName).append(",");
 						paramList.append("?,");
 					}
 					values.add(entry.getValue());
@@ -77,8 +74,9 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 		OrmAccessParam rt = new OrmAccessParam();
 		StringBuilder sql = new StringBuilder();
 		String tableName = JpaUtils.getTableName(o.getClass());
-		String quotedTableName = this.quote(tableName);
-		sql.append("insert into ").append(quotedTableName).append("(");
+		sql.append("insert into ");
+		quote(sql, tableName);
+		sql.append("(");
 
 		StringBuilder s1 = new StringBuilder();
 		StringBuilder s2 = new StringBuilder();
@@ -96,15 +94,17 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 		return rt;
 	}
 
-	private String quote(String tableName) {
-		return new StringBuilder().append(tableName).toString();
+	private StringBuilder quote(StringBuilder sb, String tableName) {
+		return sb.append("\"").append(tableName).append("\"");
 	}
 
 	public OrmAccessParam updateSql(Object entity, OrmAccessParam rtWhere) {
 
 		OrmAccessParam rt = new OrmAccessParam();
 		StringBuilder sql = new StringBuilder();
-		sql.append("update ").append(JpaUtils.getTableName(entity.getClass()));
+		sql.append("update ");
+		String tableName = JpaUtils.getTableName(entity.getClass());
+		quote(sql, tableName);
 
 		sql.append(" set ");
 		StringBuilder s1 = new StringBuilder();
@@ -134,7 +134,7 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 					continue;
 				}
 				String column = JpaUtils.getFieldName(field);
-				this.appendFieldName(sql, column).append("=? and ");
+				this.quote(sql, column).append("=? and ");
 				if (aIdClass != null) {
 					Class<?> idClass = aIdClass.value();
 					Field f = idClass.getDeclaredField(field.getName());
@@ -169,7 +169,7 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 					continue;
 				}
 				String column = JpaUtils.getFieldName(field);
-				this.appendFieldName(sql, column).append("=? and ");
+				this.quote(sql, column).append("=? and ");
 				Object value = FieldUtils.readField(field, entity, true);
 				rt.param.add(value);
 				/*if (aIdClass != null) {
@@ -231,15 +231,21 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 	@Override
 	public void delete(Object o) {
 		OrmAccessParam p = sqlWhereByEntity(o.getClass(), o);
-		p.sql = "delete from " + JpaUtils.getTableName(o.getClass()) + " " + p.sql;
-		super.exec(p.sql, p.param.toArray());
+		StringBuilder sql = new StringBuilder();
+		sql.append("delete from ");
+		String table = JpaUtils.getTableName(o.getClass());
+		quote(sql, table).append(" ").append(p.sql);
+		super.exec(sql.toString(), p.param.toArray());
 	}
 	
 	@Override
 	public void deleteById(Object id, Class<?> entityClass) {
 		OrmAccessParam p = sqlWhereById(entityClass, id);
-		p.sql = "delete from " + JpaUtils.getTableName(entityClass) + " " + p.sql;
-		super.exec(p.sql, p.param.toArray());
+		StringBuilder sql = new StringBuilder();
+		sql.append("delete from ");
+		String table = JpaUtils.getTableName(entityClass);
+		quote(sql, table).append(" ").append(p.sql);
+		super.exec(sql.toString(), p.param.toArray());
 		
 	}	
 	@Override
@@ -247,15 +253,21 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 		OrmAccessParam orm;
 		orm = sqlWhereById(clazz, id);
 		String tableName = JpaUtils.getTableName(clazz);
-		String sql = "select * from " + this.quote(tableName) + " " + orm.sql;
-		Optional<T> rt = loadOneEx(clazz, false, sql, orm.param.toArray());
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from ");
+		this.quote(sql, tableName);
+		sql.append(" ").append(orm.sql);
+		Optional<T> rt = loadOneEx(clazz, false, sql.toString(), orm.param.toArray());
 		return rt;
 	}
 
 	@Override
 	public <T> ArrayList<T> selectAll(Class<T> cls) throws JpatisException {
 		String tableName = JpaUtils.getTableName(cls);
-		return load(cls, "select * from " + this.quote(tableName));
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from ");
+		quote(sql, tableName);
+		return load(cls, sql.toString());
 	}
 
 	public <T> Optional<T> loadOneEx(Class<T> cls, boolean lock, String sql, Object... values)
@@ -471,7 +483,8 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 		StringBuilder sql = new StringBuilder();
 		String tableName = JpaUtils.getTableName(clazz);
 		sql.append("select *");
-		sql.append(" from ").append(quote(tableName));
+		sql.append(" from ");
+		quote(sql, tableName);
 		sql.append(" where ");
 
 		String colName = this.getIdColumns(clazz).get(0);

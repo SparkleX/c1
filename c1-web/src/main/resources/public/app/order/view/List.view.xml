@@ -13,16 +13,16 @@
 		items="{list>/}" >
 		<items>
 			<ObjectListItem 
-				title="{list>TransId}"
+				title="{list>id}"
 				type="Active"
 				press="onListItemPress"
-				number="{list>Total}"
+				number="{list>remarks}"
 			>
 				<firstStatus>
-					<ObjectStatus text="{list>PostDate}"/>
+					<ObjectStatus text="{list>id}"/>
 				</firstStatus>				
 				<attributes>
-					<ObjectAttribute text="{list>Total}" />
+					<ObjectAttribute text="{list>remarks}" />
 				</attributes>
 			</ObjectListItem>
 		</items>

@@ -16,19 +16,19 @@ xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" 
 				<uxap:headerTitle>
 					<uxap:ObjectPageDynamicHeaderTitle areaShrinkRatio="1:1.6:1.6">
 						<uxap:expandedHeading>
-							<m:Title text="Business Partner" wrapping="true" />
+							<m:Title text="Sales Order" wrapping="true" />
 						</uxap:expandedHeading>
 
 						<uxap:snappedHeading>
-							<m:Title text="Business Partner" wrapping="true" />
+							<m:Title text="Sales Order" wrapping="true" />
 						</uxap:snappedHeading>
 
 						<uxap:expandedContent>
-							<m:Text text="Senior Developer" />
+							<m:Text text="Document Number" />
 						</uxap:expandedContent>
 
 						<uxap:snappedContent>
-							<m:Text text="Senior Developer" />
+							<m:Text text="Document Number" />
 						</uxap:snappedContent>
 
 						<uxap:actions>
@@ -57,38 +57,11 @@ xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" 
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
-					<uxap:ObjectPageSection title="Additional Data">
-						<uxap:subSections>
-							<uxap:ObjectPageSubSection>
-								<uxap:blocks>
-									<Label text="Credit" />
-								</uxap:blocks>
-							</uxap:ObjectPageSubSection>
-						</uxap:subSections>
-					</uxap:ObjectPageSection>					
-					<uxap:ObjectPageSection title="Contect Person">
-						<uxap:subSections>
-							<uxap:ObjectPageSubSection>
-								<uxap:blocks>
-									<Label text="Credit" />
-								</uxap:blocks>
-							</uxap:ObjectPageSubSection>
-						</uxap:subSections>
-					</uxap:ObjectPageSection>						
-					<uxap:ObjectPageSection title="Address">
+					<uxap:ObjectPageSection title="Details">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
 									<pages:Address/>
-								</uxap:blocks>
-							</uxap:ObjectPageSubSection>
-						</uxap:subSections>
-					</uxap:ObjectPageSection>						
-					<uxap:ObjectPageSection title="Payment Terms">
-						<uxap:subSections>
-							<uxap:ObjectPageSubSection>
-								<uxap:blocks>
-									<Label text="Credit" />
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
@@ -102,7 +75,7 @@ xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" 
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>						
-					<uxap:ObjectPageSection title="Properties">
+					<uxap:ObjectPageSection title="Tax">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
@@ -110,8 +83,7 @@ xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" 
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
-					</uxap:ObjectPageSection>						
-					
+					</uxap:ObjectPageSection>
 				</uxap:sections>
 				<uxap:footer>
 					<m:OverflowToolbar>

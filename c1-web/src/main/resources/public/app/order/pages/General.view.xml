@@ -8,37 +8,26 @@
 	xmlns:core="sap.ui.core"
 	xmlns:widget="next.core.widget"	
 	width="100%">
-<Select id="idTest"/>	
 	<layout:Grid width="100%" defaultSpan="L6 M6 S12">
 		<layout:content>
 			<form:SimpleForm layout="ColumnLayout">
-				<core:Title text="Currency"/>
+				<core:Title text="Basic Information"/>
 				<form:content>
-					<Label text="Display Currency" labelFor="bpCurrency" />
-					<Select id="bpCurrency" showSecondaryValues="true" selectedKey="{/BpCurrency}" items="{bpCurrency>/}">
-						<core:ListItem key="{bpCurrency>value}" text="{bpCurrency>desc}" additionalText="{bpCurrency>value}"/>
-					</Select>					
-					<Label text="Active" labelFor="idActive"/>
-					<Switch id="idActive" state="{/Active}"/>
+					<Label text="Document Number" />
+					<Input value="{/id}"/>
+					<Label text="Business Partner Code" />
+					<widget:LinkInput value="{/bpId}"/>
+					<Label text="Document Total"/>		
+					<widget:FmtInput value="{/docTotal}"/>					
+						
 				</form:content>
 			</form:SimpleForm>	
 			<form:SimpleForm layout="ColumnLayout" >			
-				<core:Title text="Basic Information"/>
+				<core:Title text="Block 2"/>
 				<form:layoutData>
 					<layout:GridData linebreakL="true" linebreakM="true" linebreakS="true"/>
 				</form:layoutData>
 				<form:content>
-					<Label text="Series" labelFor="idTransId" />		
-					<widget:FmtInput id="id1" value="{/TransId}" editable="{=mycall()}"/>					
-					<Label text="Series"/>				
-					<Input id="id2" value="{/TransId}" required="true" editable="{= ${form>/formMode} ==='editMode'}" />
-					<Label text="Code" labelFor="idTotal" />
-					<Input value="{/Total}" required="true"  editable="{form>/editable}"/>
-					<Label text="Name"/>
-					<Input value="{/Total}" required="true" />
-					<Label text="Foreign Name"/>
-					<Input value="{/Total}" required="true" valueLiveUpdate="true" liveChange="onChangeFName"/>
-					<Label text="Consolidate BP"/>
 					<Input value="{/ConBP}" />
 					<Select id="idConBp" selectedKey="{/ConBP}" showSecondaryValues="true" forceSelection="false">
 						<core:ListItem key="C200" text="2"/>
@@ -47,11 +36,7 @@
 				</form:content>
 			</form:SimpleForm>				
 			<form:SimpleForm layout="ColumnLayout" >
-				<core:Title text="Preferences"/>
-				<Label text="Transaction Id"/>
-				<Input value="{/TransId}" required="true" />
-				<Label text="Total" />
-				<Input value="{/Total}" required="true" />
+				<core:Title text="Block 3"/>
 			</form:SimpleForm>				
 		</layout:content>
 	</layout:Grid>

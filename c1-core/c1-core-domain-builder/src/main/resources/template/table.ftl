@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name="${data.id}")
 public class Do${data.id}
 {
+	public static final String TABLE = "${data.id}";
+
     <#list data.column as column>
 	<#if column.id == 'id'>
 	@Id
@@ -30,6 +32,7 @@ public class Do${data.id}
 	protected ${javaType} ${column.id};
 	public ${javaType} get${methodName}(){return ${column.id};}
 	public void set${methodName}(${javaType} val){${column.id}=val;}
+	public static final String ${column.id}_ALIAS = "${column.id}";
     </#list>
     
 	<#list data.array as array>

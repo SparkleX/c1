@@ -21,9 +21,12 @@ function(Input, TextAlign,NumberFormat) {
 	};
 	theClass.prototype.setValue = function (value) {
 		var oFormat = NumberFormat.getFloatInstance({decimals: 5});
-		var val = oFormat.format(value);
+		var formattedVal = null;
+		if(value!=null) {
+			formattedVal = oFormat.format(value);
+		}
 		this.setProperty("data", value);
-		Input.prototype.setValue.call(this, val);
+		Input.prototype.setValue.call(this, formattedVal);
 	};	
 	theClass.prototype.setData = function (value) {
 

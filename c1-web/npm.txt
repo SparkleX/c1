@@ -1,0 +1,6 @@
+npm outdated
+npm install lodash@latest --save
+
+npm install -g npm-check-updates
+ncu -u
+npm update
