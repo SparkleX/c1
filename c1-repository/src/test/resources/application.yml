@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+  jpa:
+    generate-ddl: true
+         
+logging:
+  level:
+    root: INFO
+    com.next.jpatis.core.JdbcAccess: DEBUG    
