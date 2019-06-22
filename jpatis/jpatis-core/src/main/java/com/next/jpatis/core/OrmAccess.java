@@ -95,7 +95,8 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 	}
 
 	private StringBuilder quote(StringBuilder sb, String tableName) {
-		return sb.append("\"").append(tableName).append("\"");
+		//return sb.append("\"").append(tableName).append("\"");
+		return sb.append(tableName);
 	}
 
 	public OrmAccessParam updateSql(Object entity, OrmAccessParam rtWhere) {

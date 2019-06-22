@@ -14,10 +14,10 @@ public class DdlUtil {
 		List<Field> fields = JpaUtils.getFields(clazz);
 		StringBuilder fieldList = new StringBuilder();
 		for(Field f:fields)	{
-			fieldList.append("\"").append(JpaUtils.getFieldName(f)).append("\" ").append(getDbType(f.getType())).append(",");
+			fieldList.append(JpaUtils.getFieldName(f)).append(" ").append(getDbType(f.getType())).append(",");
 		}
 		
-		String sql = String.format("create table %s(%s primary key(\"id\"))", tableName, fieldList.toString());
+		String sql = String.format("create table %s(%s primary key(id))", tableName, fieldList.toString());
 		return sql;
 		
 	}
