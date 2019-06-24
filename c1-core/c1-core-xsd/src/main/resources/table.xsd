@@ -16,8 +16,19 @@
 			<xs:element name="dbSize" type="xs:int" />
 			<xs:element name="editType" type="EditType" />
 			<xs:element name="editSize" type="xs:int" />
+			<xs:element name="defaultValue" type="xs:string" minOccurs="0"/>
+			<xs:element name="validValue" type="validValue" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
+	
+	<xs:complexType name="validValue">
+	  <xs:simpleContent>
+	    <xs:extension base="xs:string">
+	      <xs:attribute name="id" type="xs:string"/>
+	    </xs:extension>
+	  </xs:simpleContent>
+	</xs:complexType>	
+	
 	<xs:complexType name="array">
 		<xs:attribute name="id" type="xs:string"/>
 		<xs:attribute name="type" type="xs:string"/>

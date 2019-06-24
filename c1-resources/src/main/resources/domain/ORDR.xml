@@ -27,7 +27,7 @@
 		<id>docTotal</id>
 		<dbType>Decimal</dbType>
 		<dbSize>0</dbSize>
-		<editType>None</editType>
+		<editType>Sum</editType>
 		<editSize>0</editSize>
 	</column>
 	<column>
@@ -43,5 +43,8 @@
 		<dbSize>1</dbSize>
 		<editType>None</editType>
 		<editSize>0</editSize>
+		<defaultValue>O</defaultValue>
+		<validValue id="O">Open</validValue>
+		<validValue id="C">Close</validValue>
 	</column>
 </table>
