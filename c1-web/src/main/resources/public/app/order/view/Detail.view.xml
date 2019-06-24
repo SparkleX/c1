@@ -61,7 +61,7 @@ xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" 
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<pages:Address/>
+									<pages:Lines/>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
@@ -70,16 +70,15 @@ xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" 
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<Label text="Credit" />
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>						
-					<uxap:ObjectPageSection title="Tax">
+					<uxap:ObjectPageSection title="Summary">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<Label text="Credit" />
+									<pages:Summary/>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>

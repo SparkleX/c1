@@ -29,17 +29,6 @@
 					</widget:Select>
 				</form:content>
 			</form:SimpleForm>
-			<form:SimpleForm layout="ColumnLayout" >
-				<core:Title text=""/>
-				<form:layoutData>
-					<layout:GridData linebreakL="true" linebreakM="true" linebreakS="true"/>
-				</form:layoutData>
-			</form:SimpleForm>
-			<form:SimpleForm layout="ColumnLayout" >
-				<core:Title text="Summary"/>
-				<Label text="Document Total" />
-				<widget:FmtInput dataFormat="ORDR.docTotal" data="{/docTotal}"/>
-			</form:SimpleForm>
 		</layout:content>
 	</layout:Grid>
 </mvc:View>
