@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
-	"sap/ui/model/json/JSONModel"
-], function (UIComponent, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"next/core/widget/CoreUtil"
+], function (UIComponent, JSONModel, CoreUtil) {
 	"use strict";
 	return UIComponent.extend("next.app.Component", {
 		metadata : {
@@ -10,6 +11,7 @@ sap.ui.define([
 
 		init : function () {
 			UIComponent.prototype.init.apply(this, arguments);
+			CoreUtil.init();
 			this.getRouter().initialize();
 			/*var oModelList = new JSONModel();
 			oModelList.loadData("mock/list.json",null,false);	

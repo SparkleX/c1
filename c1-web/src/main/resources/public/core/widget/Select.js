@@ -7,7 +7,7 @@ sap.ui.define([
 	var theClass =  Select.extend("next.core.widget.Select", {
 		metadata : {
 			properties : {
-				bind:  {type: "string", group: "Behavior",  defaultValue:null}
+				dataFormat:  {type: "string", group: "Behavior"}
 			}
 		}
 	});
@@ -15,18 +15,22 @@ sap.ui.define([
 	theClass.prototype.init = function () {
 		Select.prototype.init.call(this);
 
-		var column = this.getBind();
-		var metaCol = CoreUtil.getMetadata(column);
-		for(var v in metaCol.validValues)	{
-			var oValidValue = metaCol.validValues[v];
-			var item =  new sap.ui.core.ListItem({key:oValidValue.value,text:oValidValue.desc});
-			this.addItem(item);
-		}
+
 	};
 
-	theClass.prototype.getBind = function () {
-		return this.getProperty("bind");
-	};
+    theClass.prototype.onBeforeRendering = function() {
+        Select.prototype.onBeforeRendering.call(this);
+		var bind = this.getDataFormat();
+		var oColumn = CoreUtil.getMdColumnByBind(bind);
+		for(var v in oColumn.validValue)	{
+			var oValidValue = oColumn.validValue[v];
+			var item =  new sap.ui.core.ListItem({key:oValidValue.id,text:oValidValue.value});
+			this.addItem(item);
+		}
+    }
+	/*theClass.prototype.getDataFormat = function () {
+		return this.getProperty("dataFormat");
+	};*/
 
 	return theClass;
 });

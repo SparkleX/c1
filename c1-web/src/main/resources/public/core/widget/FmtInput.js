@@ -1,14 +1,15 @@
 sap.ui.define([
 	"sap/m/Input",
 	"sap/ui/core/TextAlign",
-	"sap/ui/core/format/NumberFormat"
+	"sap/ui/core/format/NumberFormat",
+	"next/core/widget/CoreUtil"
 ],
-function(Input, TextAlign,NumberFormat) {
+function(Input, TextAlign,NumberFormat, CoreUtil) {
 	"use strict";
 	var theClass = Input.extend("next.core.widget.FmtInput", { 
 	metadata: {
 		properties: {
-			bind: { type: "string", group: "Misc", defaultValue: null },
+			dataFormat: { type: "string", group: "Misc", defaultValue: null },
 			data: { type: "string", group: "Misc", defaultValue: null }
 		}
 	}});
@@ -20,7 +21,12 @@ function(Input, TextAlign,NumberFormat) {
 
 	};
 	theClass.prototype.setValue = function (value) {
-		var oFormat = NumberFormat.getFloatInstance({decimals: 5});
+
+		var bind = this.getDataFormat();
+		var oColumn = CoreUtil.getMdColumnByBind(bind);
+		var decimalPlaces = CoreUtil.getDecimalPlaces(oColumn);
+
+		var oFormat = NumberFormat.getFloatInstance({decimals: decimalPlaces});
 		var formattedVal = null;
 		if(value!=null) {
 			formattedVal = oFormat.format(value);
