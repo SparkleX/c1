@@ -71,5 +71,9 @@ function(JSONModel, jQuery) {
 	    var rt = this.metadata[table].columnMap[column];
         return rt;
 	}
+	theClass.getMdTable=function(table) {
+	    var rt = this.metadata[table];
+        return rt;
+	}
 	return theClass;
 });
