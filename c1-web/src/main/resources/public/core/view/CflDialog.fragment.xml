@@ -7,11 +7,11 @@
            class="sapUiPopupWithPadding"
            items="{cfl>/}"
            search="_handleSearch"
-           confirm="_handleValueHelpClose"
-           cancel="_handleValueHelpClose">
+           confirm="_onConfirm"
+           cancel="_onClose">
       <StandardListItem
               title="{cfl>id}"
-              description="{cfl>id}"
+              description="{cfl>bpCode}"
               type="Active" />
    </SelectDialog>
 </core:FragmentDefinition>
