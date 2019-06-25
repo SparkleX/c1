@@ -1,9 +1,10 @@
 sap.ui.define([
 	"sap/m/Input",
 	"next/core/view/CflDialog",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "next/core/widget/CoreUtil"
 ],
-function(Input, CflDialog, JSONModel) {
+function(Input, CflDialog, JSONModel, CoreUtil) {
 	"use strict";
 	var theClass = Input.extend("next.core.widget.LinkInput", { 
 	metadata: {
@@ -32,27 +33,15 @@ function(Input, CflDialog, JSONModel) {
 	theClass.prototype.getData = function () {
 		return this.getValue();
 	};	
-	// Choose from list dialog
 	theClass.prototype._onChooseFromList = function (oEvent) {
 		var sInputValue = this.getData();
-		this._cflDialog = new CflDialog(this);
+		var dataFormat = this.getDataFormat();
+		var table = CoreUtil.getDataBindTable(dataFormat);
+		var field = CoreUtil.getDataBindField(dataFormat);
+		var metaCol = CoreUtil.getMdColumn(table, field);
+		table = metaCol.linkTo;
+		this._cflDialog = new CflDialog(this, table);
         this._cflDialog.open(sInputValue);
 	};
-	theClass.prototype._handleValueHelpClose = function (evt) {
-        var oSelectedItem = evt.getParameter("selectedItem");
-        if (oSelectedItem) {
-            var productInput = this.byId(this.inputId),
-                oText = this.byId('selectedKey'),
-                sDescription = oSelectedItem.getDescription();
-
-            productInput.setSelectedKey(sDescription);
-            oText.setText(sDescription);
-        }
-        //evt.getSource().getBinding("items").filter([]);
-        this.setValue("1");
-    }	
-	theClass.prototype.suggestionItemSelected = function (event) {
-	    alert('suggestionItemSelected');
-	};		
 	return theClass;
 });

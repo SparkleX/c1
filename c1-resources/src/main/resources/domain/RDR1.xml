@@ -28,6 +28,7 @@
 		<dbSize>0</dbSize>
 		<editType>None</editType>
 		<editSize>0</editSize>
+		<linkTo>OITM</linkTo>
 	</column>
 	<column>
 		<id>price</id>

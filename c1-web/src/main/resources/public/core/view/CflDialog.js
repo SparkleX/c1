@@ -7,8 +7,9 @@ sap.ui.define([
 ], function (ManagedObject, Controller, Fragment, JSONModel, Filter) {
 	"use strict";
 	var theClass = Controller.extend("next.core.view.CflDialog", {
-		constructor : function (oView) {
+		constructor : function (oView, table) {
 			this._oView = oView;
+			this._table = table;
 		}		
 	});
 
@@ -22,7 +23,8 @@ sap.ui.define([
 		this._oDialog = sap.ui.xmlfragment("next.core.view.CflDialog", this);
         oView.addDependent(this._oDialog);
         var oModelList = new JSONModel();
-        oModelList.loadData("/api/OCRD/");
+
+        oModelList.loadData("/api/"+this._table+"/");
         this._oDialog.setModel(oModelList, "cfl");
         this._oDialog.open();
 	};

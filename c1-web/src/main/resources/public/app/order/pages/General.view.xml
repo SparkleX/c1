@@ -14,7 +14,7 @@
 				<core:Title text="Basic Information"/>
 				<form:content>
 					<Label text="Business Partner Code" />
-					<widget:LinkInput value="{/bpId}"/>
+					<widget:LinkInput value="{/bpId}" dataFormat = "ORDR.bpId"/>
 				</form:content>
 			</form:SimpleForm>
 			<form:SimpleForm layout="ColumnLayout" >

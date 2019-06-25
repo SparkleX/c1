@@ -44,7 +44,16 @@ function(JSONModel, jQuery) {
             }
         });
 	}
-
+    theClass.getDataBindTable=function(bind){
+        var str = bind.split(".")
+        var table = str[0];
+        return table;
+    }
+    theClass.getDataBindField=function(bind){
+        var str = bind.split(".")
+        var val = str[1];
+        return val;
+    }
 	theClass.getDecimalPlaces = function(column) {
 		if(column.editType==='NONE') {
 			return null;

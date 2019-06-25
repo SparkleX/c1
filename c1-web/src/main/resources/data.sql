@@ -2,6 +2,7 @@ insert into OCRD(id,bpCode,bpName) values(1,N'C001',N'C001');
 insert into OCRD(id,bpCode,bpName) values(2,N'C002',N'C0022');
 insert into OITM(id,itemCode,itemName) values(1,N'I001',N'I001');
 insert into OITM(id,itemCode,itemName) values(2,N'I002',N'I002');
+insert into OITM(id,itemCode,itemName) values(3,N'I003',N'I003');
 insert into ORDR(id,bpId,remarks,docTotal, docStatus) values(1,1,N'desc1', 100.99, 'O');
 insert into ORDR(id,bpId,remarks,docTotal, docStatus) values(2,1,N'desc2', 69, 'C');
 insert into RDR1(id,parentId,itemId,price,quantity,lineTotal) values(1,1,1,1.1,1.2,1.3);

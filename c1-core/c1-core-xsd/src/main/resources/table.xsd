@@ -16,6 +16,7 @@
 			<xs:element name="dbSize" type="xs:int" />
 			<xs:element name="editType" type="EditType" />
 			<xs:element name="editSize" type="xs:int" />
+			<xs:element name="linkTo" type="xs:string" minOccurs="0"/>
 			<xs:element name="defaultValue" type="xs:string" minOccurs="0"/>
 			<xs:element name="validValue" type="validValue" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>

@@ -15,6 +15,7 @@
 		<dbSize>0</dbSize>
 		<editType>None</editType>
 		<editSize>0</editSize>
+		<linkTo>OCRD</linkTo>
 	</column>
 	<column>
 		<id>remarks</id>
