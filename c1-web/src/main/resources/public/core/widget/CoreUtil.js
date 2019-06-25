@@ -44,6 +44,20 @@ function(JSONModel, jQuery) {
             }
         });
 	}
+    theClass.getDescription=function(table, key) {
+    	if (key===undefined || key===null) {
+    		return "";
+    	}
+        var rt = "";
+        jQuery.ajax({
+            url: "/api/"+table+"/"+key+"/.desc",
+            async: false,
+            success : function(data) {
+                rt = data;
+            }
+        });
+        return rt;
+    }
     theClass.getDataBindTable=function(bind){
         var str = bind.split(".")
         var table = str[0];

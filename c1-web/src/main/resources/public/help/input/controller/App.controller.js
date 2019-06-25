@@ -6,11 +6,12 @@ sap.ui.define([
    return Controller.extend("next.app.controller.App", {
 	data : {value : "T"},
 	onInit : function () {
-		var oModel = new JSONModel(this.data);
-		this.getView().setModel(oModel);
+		this.oModel = new JSONModel(this.data);
+		this.getView().setModel(this.oModel);
 	},	   
 	onTest : function () {
-		alert(this.data.value);
+		var data = this.oModel.getData();
+		alert(data.value);
       }
    });
 });

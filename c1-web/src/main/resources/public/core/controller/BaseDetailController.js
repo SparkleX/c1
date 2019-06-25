@@ -23,9 +23,10 @@ sap.ui.define([
 	};
 	BaseDetailController.prototype.onLoad = function(id) {
 		var oModel = new JSONModel();
+		this.oModel = oModel;
 		oModel.loadData("/api/ORDR/"+id);	
 		this.getOwnerComponent().setModel(oModel);
-		this.getView().setModel(oModel);
+		//this.getView().setModel(oModel);
 	};
 	BaseDetailController.prototype.onNavBack = function()
 	{
@@ -63,6 +64,14 @@ sap.ui.define([
 		var data = omFormMode.getData();
 		console.log(data);
 		
+	}
+	BaseDetailController.prototype.onTest = function()	{
+		var component =  this.getOwnerComponent();
+		var omFormMode = component.getModel();
+		var data = omFormMode.getData();
+		//var data = this.oModel.getData();
+		console.log(data);
+
 	}
 	return BaseDetailController;
 

@@ -19,6 +19,7 @@
 				<core:Title text="Summary"/>
 				<Label text="Document Total" />
 				<widget:FmtInput dataFormat="ORDR.docTotal" dataValue="{/docTotal}"/>
+				<!--<Input valueLiveUpdate="true" value="{path: '/docTotal', type: 'sap.ui.model.type.Integer'}" enabled="true"/>-->
 			</form:SimpleForm>
 		</layout:content>
 	</layout:Grid>

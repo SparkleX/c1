@@ -10,9 +10,11 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },
-			dataValue: { type: "string", group: "Misc", defaultValue: null }
+			dataValue: { type: "string", group: "Misc", defaultValue: null },
+			dataDesc: { type: "string", group: "Misc", defaultValue: null }
 		}
 	}});
+
 	theClass.prototype.init = function () {
 		Input.prototype.init.call(this);
 		
@@ -24,14 +26,24 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 	    this.attachSuggestionItemSelected(this.suggestionItemSelected);
 	};
 	theClass.prototype.setValue = function (value) {
-		this.setProperty("dataValue", value);
-		Input.prototype.setValue.call(this, value);
-	};	
+	    Input.prototype.setValue.call(this, value);
+		//this.setProperty("dataValue", value);
+	};
 	theClass.prototype.setDataValue = function (value) {
-		this.setValue(value);
-	};	
+
+		this.setProperty("dataValue", value);
+		var dataFormat = this.getDataFormat();
+		var table = CoreUtil.getDataBindTable(dataFormat);
+		var field = CoreUtil.getDataBindField(dataFormat);
+		var metaCol = CoreUtil.getMdColumn(table, field);
+		var linkToTable = metaCol.linkTo;
+		var desc = CoreUtil.getDescription(linkToTable, value);
+		this.setDataDesc(desc);
+		this.setValue(desc);
+
+	};
 	theClass.prototype.getDataValue = function () {
-		return this.getValue();
+		return this.setProperty("dataValue");
 	};	
 	theClass.prototype._onChooseFromList = function (oEvent) {
 		var sInputValue = this.getDataValue();

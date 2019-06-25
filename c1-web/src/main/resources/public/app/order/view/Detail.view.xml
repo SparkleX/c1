@@ -37,6 +37,8 @@
 							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onPressEdit" visible="{= ${form>/formMode} ==='viewMode'}"/>
 							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true"  visible="{= ${form>/formMode} ==='viewMode'}"/>
 							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true"  visible="{= ${form>/formMode} ==='viewMode'}"/>
+							<uxap:ObjectPageHeaderActionButton id="testButton" type="Transparent" text="Test" hideText="false" hideIcon="true"  press="onTest"/>
+
 						</uxap:actions>
 						<uxap:navigationActions>
 							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />

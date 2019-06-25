@@ -51,8 +51,11 @@ sap.ui.define([
     }	
 	theClass.prototype._onConfirm = function (evt) {
         var oSelectedItem = evt.getParameter("selectedItem");
-        var item = oSelectedItem.getTitle();
-        this._oView.setDataValue(item);
+        var value = oSelectedItem.getTitle();
+        var desc= oSelectedItem.getDescription();
+        this._oView.setDataValue(value);
+        //this._oView.setDataDesc(desc);
+
     }
 	return theClass;
 });

@@ -5,5 +5,9 @@ sap.ui.define([
 ], function (Control, InputRenderer, Renderer) {
 	"use strict";
 	var theClass = Renderer.extend(InputRenderer);
+
+	theClass.writeInnerValue = function(oRm, oControl) {
+		oRm.writeAttributeEscaped("value", oControl.getDataDesc());
+	};
 	return theClass;
 });

@@ -20,8 +20,7 @@ function(Input, TextAlign,NumberFormat, CoreUtil) {
 		this.setMaxLength(8);
 
 	};
-	theClass.prototype.setValue = function (value) {
-
+	theClass.prototype.formatValue = function (value) {
 		var bind = this.getDataFormat();
 		var oColumn = CoreUtil.getMdColumnByBind(bind);
 		var decimalPlaces = CoreUtil.getDecimalPlaces(oColumn);
@@ -31,12 +30,22 @@ function(Input, TextAlign,NumberFormat, CoreUtil) {
 		if(value!=null) {
 			formattedVal = oFormat.format(value);
 		}
+		
+		return formattedVal;
+	}
+	theClass.prototype.setValue = function (value) {
+
+		var formattedVal = this.formatValue(value);
 		this.setProperty("dataValue", value);
 		Input.prototype.setValue.call(this, formattedVal);
+	}
+	theClass.prototype.getValue = function () {
+		return Input.prototype.getValue.call(this);
 	};	
 	theClass.prototype.setDataValue = function (value) {
 
 		this.setValue(value);
+		this.setProperty("dataValue", value);
 	};	
 	theClass.prototype.getDataValue = function () {
 		return this.getValue();
