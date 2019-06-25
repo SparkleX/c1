@@ -1,13 +1,17 @@
 <core:FragmentDefinition
    xmlns="sap.m"
+   xmlns:table="sap.ui.table"
    xmlns:core="sap.ui.core" >
-   <Dialog
-      id="helloDialog"
-      title ="Hello {/recipient/name}">
-      <beginButton>
-         <Button
-            text="{i18n>dialogCloseButtonText}"
-            press=".onCloseDialog"/>
-      </beginButton>
-   </Dialog>
+   <SelectDialog
+           title="Choose From List"
+           class="sapUiPopupWithPadding"
+           items="{cfl>/}"
+           search="_handleSearch"
+           confirm="_handleValueHelpClose"
+           cancel="_handleValueHelpClose">
+      <StandardListItem
+              title="{cfl>id}"
+              description="{cfl>id}"
+              type="Active" />
+   </SelectDialog>
 </core:FragmentDefinition>

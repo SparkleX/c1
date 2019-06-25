@@ -1,43 +1,63 @@
 sap.ui.define([
 	"sap/ui/base/ManagedObject",
-	"sap/ui/core/Fragment"
-], function (ManagedObject, Fragment) {
+	"sap/ui/core/mvc/Controller",
+	"sap/ui/core/Fragment",
+	"sap/ui/model/json/JSONModel",
+    'sap/ui/model/Filter'
+], function (ManagedObject, Controller, Fragment, JSONModel, Filter) {
 	"use strict";
-	return ManagedObject.extend("next.core.view.CflDialog", {
-
+	var theClass = Controller.extend("next.core.view.CflDialog", {
 		constructor : function (oView) {
 			this._oView = oView;
-		},
-
-		exit : function () {
-			delete this._oView;
-		},
-
-		open : function () {
-			var oView = this._oView;
-
-			// create dialog lazily
-			if (!oView.byId("helloDialog")) {
-				var oFragmentController = {
-					onCloseDialog : function () {
-						oView.byId("helloDialog").close();
-					}
-				};
-				// load asynchronous XML fragment
-				Fragment.load({
-					id: oView.getId(),
-					name: "next.core.view.CflDialog",
-					controller: oFragmentController
-				}).then(function (oDialog) {
-					// connect dialog to the root view of this component (models, lifecycle)
-					oView.addDependent(oDialog);
-					oDialog.open();
-				});
-			} else {
-				oView.byId("helloDialog").open();
-			}
-		}
-
+		}		
 	});
+
+	theClass.prototype.exit = function () {
+		delete this._oView;
+	}
+
+	theClass.prototype.open = function (inputId) {
+		var oView = this._oView;
+
+		this._oDialog = sap.ui.xmlfragment("next.core.view.CflDialog", this);
+	/*	Fragment.load({
+			id: "cfl",
+			name: "next.core.view.CflDialog",
+			controller: this
+		}).then(function (oDialog) {*/
+        oView.addDependent(this._oDialog);
+        var oModelList = new JSONModel();
+        oModelList.loadData("/api/OCRD/");
+        /*oModelList.attachRequestCompleted(function() {
+            //console.log(oModelList.getData());
+        });*/
+        this._oDialog.setModel(oModelList, "cfl");
+        this._oDialog.open();
+		//});
+	};
+	theClass.prototype._handleSearch = function(oEvent) {
+		var sValue = oEvent.getParameter("value");
+		var oFilter = new Filter({
+		  path: "bpCode",
+		  operator: sap.ui.model.FilterOperator.Contains,
+		  value1: sValue});
+		var oBinding = oEvent.getSource().getBinding("items");
+		oBinding.filter([oFilter]);
+	}		
+	theClass.prototype._handleValueHelpClose = function (evt) {
+        var oSelectedItem = evt.getParameter("selectedItem");
+        if (oSelectedItem) {
+            var productInput = this.byId(this.inputId),
+                oText = this.byId('selectedKey'),
+                sDescription = oSelectedItem.getDescription();
+
+            productInput.setSelectedKey(sDescription);
+            oText.setText(sDescription);
+        }
+        //evt.getSource().getBinding("items").filter([]);
+       // this.setValue("1");
+    }	
+
+	return theClass;
 
 });

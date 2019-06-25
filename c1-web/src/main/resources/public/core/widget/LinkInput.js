@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/m/Input",
-	"next/core/view/CflDialog"
+	"next/core/view/CflDialog",
+    "sap/ui/model/json/JSONModel"
 ],
-function(Input, CflDialog) {
+function(Input, CflDialog, JSONModel) {
 	"use strict";
 	var theClass = Input.extend("next.core.widget.LinkInput", { 
 	metadata: {
@@ -13,7 +14,7 @@ function(Input, CflDialog) {
 	}});
 	theClass.prototype.init = function () {
 		Input.prototype.init.call(this);
-		this._cflDialog = new CflDialog(this);
+		
 		this.setPlaceholder("Enter Product ...");
 		this.setShowSuggestion(true);
 		this.setShowValueHelp(true);
@@ -33,23 +34,9 @@ function(Input, CflDialog) {
 	};	
 	// Choose from list dialog
 	theClass.prototype._onChooseFromList = function (oEvent) {
-		
-        var sInputValue = oEvent.getSource().getValue();
-        this.inputId = oEvent.getSource().getId();
-       /* if (!this._cflDialog) {
-            this._cflDialog = sap.ui.xmlfragment("next.core.view.CflDialog",this);
-            //this.getView().addDependent(this._cflDialog);
-        }*/
-
-        // create a filter for the binding
-       /* this._valueHelpDialog.getBinding("items").filter([new Filter(
-            "Name",
-            sap.ui.model.FilterOperator.Contains, sInputValue
-        )]);*/
-
-        // open value help dialog filtered by the input value
+		var sInputValue = this.getData();
+		this._cflDialog = new CflDialog(this);
         this._cflDialog.open(sInputValue);
-    
 	};
 	theClass.prototype._handleValueHelpClose = function (evt) {
         var oSelectedItem = evt.getParameter("selectedItem");

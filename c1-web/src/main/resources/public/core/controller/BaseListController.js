@@ -5,19 +5,26 @@ sap.ui.define([
 ], function (Controller, MessageToast, Fragment) {
 	"use strict";
 
-	return Controller.extend("next.core.controller.BaseListController", {
-		onTestClick: function () {
+	var theClass =Controller.extend("next.core.controller.BaseListController", {});
+
+    theClass.prototype.onTestClick = function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("detail");
-		},
-		onListItemPress : function (evt) {
-			var id = evt.getSource().getTitle()
-			//MessageToast.show("Pressed : " + evt.getSource().getTitle());
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("detail",{
-                id: id
-            });
-		}
-	});
+	}
+	theClass.prototype.onListItemPress = function (evt) {
+        var oRow = evt.getParameter("row");
+		var oItem = evt.getParameter("item");
+		var id = this.getView().getModel("list").getProperty("id", oRow.oBindingContexts.list);
+
+	   // var src = evt.getSource();
+       // var id = evt.getSource().getTitle()
+        //MessageToast.show("Pressed : " + evt.getSource().getTitle());
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("detail",{
+            id: id
+        });
+	}
+
+	return theClass;
 
 });

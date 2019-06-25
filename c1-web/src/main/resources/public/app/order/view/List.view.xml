@@ -2,31 +2,43 @@
 	controllerName="next.app.controller.List"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
+	xmlns:table="sap.ui.table"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
-	xmlns:b1="sap.b1.core.control"
+	xmlns:widget="next.core.widget"
 	displayBlock="true">
 	<Page title="{i18n>list/title}">
 	<content>
-
-	<List
-		items="{list>/}" >
-		<items>
-			<ObjectListItem 
-				title="{list>id}"
-				type="Active"
-				press="onListItemPress"
-				number="{list>remarks}"
-			>
-				<firstStatus>
-					<ObjectStatus text="{list>id}"/>
-				</firstStatus>				
-				<attributes>
-					<ObjectAttribute text="{list>remarks}" />
-				</attributes>
-			</ObjectListItem>
-		</items>
-	</List>	
+		<table:Table rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle">
+			<table:extension>
+				<OverflowToolbar id="otb1">
+					<Button icon="sap-icon://add" type="Transparent"/>
+					<Button icon="sap-icon://delete" type="Transparent"/>
+					<Button icon="sap-icon://action-settings" type="Transparent"/>
+				</OverflowToolbar>
+			</table:extension>
+			<table:columns>
+				<table:Column>
+					<Label text="#" />
+					<table:template>
+						<Text text="{list>id}" />
+					</table:template>
+				</table:Column>
+				<table:Column>
+					<Label text="Item" />
+					<table:template>
+						<Text text="{list>remarks}"/>
+					</table:template>
+				</table:Column>
+			</table:columns>
+			<table:rowActionTemplate>
+				<table:RowAction>
+					<table:items>
+						<table:RowActionItem type="Navigation" press="onListItemPress"></table:RowActionItem>
+					</table:items>
+				</table:RowAction>
+			</table:rowActionTemplate>
+		</table:Table>
 	</content>
 	</Page>
 </mvc:View>
