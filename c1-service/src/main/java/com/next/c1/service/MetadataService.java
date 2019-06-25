@@ -28,7 +28,10 @@ public class MetadataService {
 		jaxbContext = JAXBContext.newInstance(Table.class);
 		jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 	}
-
+	public Table getMetadata(String table) {
+		return null;
+		
+	}
 	public Map<String, Table> getAllMetadata() {
 		try {
 			Map<String, Table> rt = new HashMap<>();

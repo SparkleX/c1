@@ -5,7 +5,8 @@
 			<xs:sequence>
 				<xs:element name="id" type="xs:ID" />
 				<xs:element name="array" type="array" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="column" type="column" maxOccurs="unbounded" />
+				<xs:element name="descColumn" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="column" type="column" maxOccurs="unbounded" />				
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
