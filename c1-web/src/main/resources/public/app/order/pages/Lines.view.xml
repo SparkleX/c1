@@ -24,25 +24,25 @@
 				<table:Column>
 					<Label text="Item" />
 					<table:template>
-						<widget:LinkInput data="{itemId}" dataFormat="RDR1.itemId"/>
+						<widget:LinkInput dataValue="{itemId}" dataFormat="RDR1.itemId"/>
 					</table:template>
 				</table:Column>
 				<table:Column >
 					<Label text="Price" />
 					<table:template>
-						<widget:FmtInput data="{price}" dataFormat="RDR1.price"/>
+						<widget:FmtInput dataValue="{price}" dataFormat="RDR1.price"/>
 					</table:template>
 				</table:Column>
 				<table:Column>
 					<Label text="Quantity" />
 					<table:template>
-						<widget:FmtInput data="{quantity}" dataFormat="RDR1.quantity" />
+						<widget:FmtInput dataValue="{quantity}" dataFormat="RDR1.quantity" />
 					</table:template>
 				</table:Column>
 				<table:Column>
 					<Label text="Total" />
 					<table:template>
-						<widget:FmtInput data="{lineTotal}" dataFormat="RDR1.lineTotal"/>
+						<widget:FmtInput dataValue="{lineTotal}" dataFormat="RDR1.lineTotal"/>
 					</table:template>
 				</table:Column>
 			</table:columns>

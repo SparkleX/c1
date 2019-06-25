@@ -18,7 +18,7 @@
 			<form:SimpleForm layout="ColumnLayout" >
 				<core:Title text="Summary"/>
 				<Label text="Document Total" />
-				<widget:FmtInput dataFormat="ORDR.docTotal" data="{/docTotal}"/>
+				<widget:FmtInput dataFormat="ORDR.docTotal" dataValue="{/docTotal}"/>
 			</form:SimpleForm>
 		</layout:content>
 	</layout:Grid>

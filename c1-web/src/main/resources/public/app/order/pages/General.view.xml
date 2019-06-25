@@ -14,14 +14,15 @@
 				<core:Title text="Basic Information"/>
 				<form:content>
 					<Label text="Business Partner Code" />
-					<widget:LinkInput value="{/bpId}" dataFormat = "ORDR.bpId"/>
+					<widget:LinkInput type="Text" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
+					</widget:LinkInput>
 				</form:content>
 			</form:SimpleForm>
 			<form:SimpleForm layout="ColumnLayout" >
 				<core:Title text="Document Status"/>
 				<form:content>
 					<Label text="Document Number" />
-					<Input value="{/id}"/>
+					<Input dataValue="{/id}"/>
 					<Label text="Document Status" />
 					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false">
 					<!-- 	<core:ListItem key="C200" text="2"/>

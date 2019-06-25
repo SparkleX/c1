@@ -10,7 +10,7 @@ function(Input, TextAlign,NumberFormat, CoreUtil) {
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },
-			data: { type: "string", group: "Misc", defaultValue: null }
+			dataValue: { type: "string", group: "Misc", defaultValue: null }
 		}
 	}});
 	theClass.prototype.init = function () {
@@ -31,14 +31,14 @@ function(Input, TextAlign,NumberFormat, CoreUtil) {
 		if(value!=null) {
 			formattedVal = oFormat.format(value);
 		}
-		this.setProperty("data", value);
+		this.setProperty("dataValue", value);
 		Input.prototype.setValue.call(this, formattedVal);
 	};	
-	theClass.prototype.setData = function (value) {
+	theClass.prototype.setDataValue = function (value) {
 
 		this.setValue(value);
 	};	
-	theClass.prototype.getData = function () {
+	theClass.prototype.getDataValue = function () {
 		return this.getValue();
 	};	
 	return theClass;

@@ -10,7 +10,7 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },
-			data: { type: "string", group: "Misc", defaultValue: null }
+			dataValue: { type: "string", group: "Misc", defaultValue: null }
 		}
 	}});
 	theClass.prototype.init = function () {
@@ -24,17 +24,17 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 	    this.attachSuggestionItemSelected(this.suggestionItemSelected);
 	};
 	theClass.prototype.setValue = function (value) {
-		this.setProperty("data", value);
+		this.setProperty("dataValue", value);
 		Input.prototype.setValue.call(this, value);
 	};	
-	theClass.prototype.setData = function (value) {
+	theClass.prototype.setDataValue = function (value) {
 		this.setValue(value);
 	};	
-	theClass.prototype.getData = function () {
+	theClass.prototype.getDataValue = function () {
 		return this.getValue();
 	};	
 	theClass.prototype._onChooseFromList = function (oEvent) {
-		var sInputValue = this.getData();
+		var sInputValue = this.getDataValue();
 		var dataFormat = this.getDataFormat();
 		var table = CoreUtil.getDataBindTable(dataFormat);
 		var field = CoreUtil.getDataBindField(dataFormat);

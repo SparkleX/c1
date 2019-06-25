@@ -52,7 +52,7 @@ sap.ui.define([
 	theClass.prototype._onConfirm = function (evt) {
         var oSelectedItem = evt.getParameter("selectedItem");
         var item = oSelectedItem.getTitle();
-        this._oView.setData(item);
+        this._oView.setDataValue(item);
     }
 	return theClass;
 });
