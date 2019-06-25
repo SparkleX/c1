@@ -28,6 +28,12 @@ public class BaseController<T, SERVICE extends BaseService<T,?>> {
 	public void create(T o) {
 		service.create(o);
 	}
+	
+	@GetMapping(path="/{id}/.desc")
+	public String getDescription(@PathVariable Integer id) {
+		return service.getDescription(id);
+	}
+	
 	@GetMapping(path="/{id}")
 	public T get(@PathVariable Integer id) {
 		return service.get(id);

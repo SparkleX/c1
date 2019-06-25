@@ -25,7 +25,7 @@ public class BaseService<T,REPO extends JpatisRepository<T,Integer>> {
 	}
 
 	private String getMdTable() {
-		return this.getClass().getSimpleName().substring(2);
+		return this.getClass().getSimpleName().substring(0,4);
 	}
 
 	public T get(Integer id) {
