@@ -29,6 +29,9 @@ sap.ui.define([
 				}
 			}, this);
 	};
+	BaseDetailController.prototype.isAddMode = function() {
+	    return this.dataId ==="#";
+	}
 	BaseDetailController.prototype.onLoadData = function(id) {
 		var oModel = new JSONModel();
 		this.oModel = oModel;
@@ -58,35 +61,31 @@ sap.ui.define([
 		MessageToast.show("Successful");
 		window.history.back();
 	}
-	BaseDetailController.prototype.onPressEdit = function()	{
-		var component =  this.getOwnerComponent();
-		var omFormMode = component.getModel("form");
-		var data = omFormMode.getData();
-		data.formMode = FormMode.editMode;
-		omFormMode.refresh(true);
-		var newButton = this.byId("newButton");
-		newButton.setVisible(true);
-		var id1 = this.byId("id1");
-		var id2 = this.byId("id2");
+	BaseDetailController.prototype.onEdit = function()	{
+        this.objectPageLayout.setShowFooter(true);
+        this.editButton.setVisible(false);
+        this.newButton.setVisible(true);
+        this.deleteButton.setVisible(true);
 	};
-	BaseDetailController.prototype.onPressCancel = function()	{
+	BaseDetailController.prototype.onCancel = function()	{
         this.objectPageLayout.setShowFooter(false);
 	};
-	BaseDetailController.prototype.onPressSave = function()	{
-		this.saveObject();
-		//var component =  this.getOwnerComponent();
-		//var omFormMode = component.getModel("form");
-		//var data = omFormMode.getData();
-		//data.formMode = FormMode.viewMode;
-		//omFormMode.refresh(true);
+	BaseDetailController.prototype.onSave = function()	{
+	    this.saveObject();
 		this.objectPageLayout.setShowFooter(false);
+		MessageToast.show("Successful");
+		window.history.back();
 	};
 	BaseDetailController.prototype.saveObject = function()	{
 		var component =  this.getOwnerComponent();
 		var model = component.getModel();
 		var data = model.getData();
 		console.log(data);
-		ServiceUtil.create(this.dataTable, data);
+	    if(this.isAddMode()) {
+    		ServiceUtil.create(this.dataTable, data);
+    	} else {
+    	    ServiceUtil.update(this.dataTable, this.dataId, data);
+    	}
 
 	}
 	BaseDetailController.prototype.onNew = function()	{

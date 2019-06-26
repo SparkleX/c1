@@ -16,11 +16,13 @@ sap.ui.define([
         });
 	}
 	theClass.update = function (table, id, data) {
+	    var json = JSON.stringify(data)
         jQuery.ajax({
             url: `/api/${table}/${id}`,
             async: false,
             method : 'put',
-            data : data,
+            contentType :'application/json',
+            data : json,
             success : function(data) {
 
             }
