@@ -39,6 +39,7 @@ sap.ui.define([
 			count++;
         }
         model.refresh(true);
+        table.clearSelection();
 	}
 	return theClass;
 });
