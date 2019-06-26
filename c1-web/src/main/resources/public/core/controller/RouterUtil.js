@@ -11,6 +11,9 @@ sap.ui.define([
 	theClass.navToNew = function (view) {
 	    this.navTo(view, "#")
 	}
-
+	theClass.navToList = function (controller) {
+        var oRouter = UIComponent.getRouterFor(controller);
+        oRouter.navTo("list");
+	}
 	return theClass;
 });

@@ -11,8 +11,15 @@ sap.ui.define([
 	var theClass =Controller.extend("next.core.controller.BaseListController", {});
 	theClass.prototype.onInit=function() {
 	    this.dataTable = "ORDR";
-        this.refresh();
-	};
+	    var that = this;
+	    var oView = this.getView();
+		oView.addEventDelegate({
+		  onAfterShow: function(evt){
+			that.refresh();
+		  }
+		}, oView);
+	}
+
     theClass.prototype.onTestClick = function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("detail");

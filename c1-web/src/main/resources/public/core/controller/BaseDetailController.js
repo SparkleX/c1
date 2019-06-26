@@ -4,8 +4,9 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"./FormMode",
-	"./ServiceUtil"
-], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ServiceUtil) {
+	"./ServiceUtil",
+    "next/core/controller/RouterUtil",
+], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ServiceUtil, RouterUtil) {
 	"use strict";
 
 	var BaseDetailController=Controller.extend("app.core.controller.BaseDetailController", {});
@@ -75,6 +76,7 @@ sap.ui.define([
 		this.objectPageLayout.setShowFooter(false);
 		MessageToast.show("Successful");
 		window.history.back();
+		//RouterUtil.navToList(this);
 	};
 	BaseDetailController.prototype.saveObject = function()	{
 		var component =  this.getOwnerComponent();
