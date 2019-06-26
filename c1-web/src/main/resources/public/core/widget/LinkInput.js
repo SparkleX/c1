@@ -23,7 +23,7 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 		this.setShowValueHelp(true);
 		this.attachValueHelpRequest(this._onChooseFromList);
 		//this.setSuggestionItems("")
-	    this.attachSuggestionItemSelected(this.suggestionItemSelected);
+	   // this.attachSuggestionItemSelected(this.suggestionItemSelected);
 	};
 	theClass.prototype.setValue = function (value) {
 	    Input.prototype.setValue.call(this, value);

@@ -93,6 +93,8 @@ sap.ui.define([
 	BaseDetailController.prototype.onNew = function()	{
 	    this.objectPageLayout.setShowFooter(true);
 	}
+
+
 	BaseDetailController.prototype.onTest = function()	{
 		var component =  this.getOwnerComponent();
 		var omFormMode = component.getModel();

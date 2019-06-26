@@ -1,4 +1,5 @@
 <mvc:View
+		controllerName="next.core.controller.BaseGridController"
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns:table="sap.ui.table"
 		xmlns="sap.m"
@@ -8,10 +9,9 @@
 		<table:Table rows="{/rdr1}">
 			<table:extension>
 				<OverflowToolbar id="otb1">
-					<Button icon="sap-icon://add" type="Transparent"/>
-					<Button icon="sap-icon://delete" type="Transparent"/>
+					<Button icon="sap-icon://add" type="Transparent" press="onGridAdd"/>
+					<Button icon="sap-icon://delete" type="Transparent"  press="onGridDelete"/>
 					<Button icon="sap-icon://action-settings" type="Transparent"/>
-
 				</OverflowToolbar>
 			</table:extension>
 			<table:columns>

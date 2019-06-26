@@ -67,35 +67,35 @@
 								<uxap:blocks>
 									<pages:Lines/>
 								</uxap:blocks>
-							</uxap:ObjectPageSubSection>
-						</uxap:subSections>
-					</uxap:ObjectPageSection>						
-					<uxap:ObjectPageSection title="Accounting">
-						<uxap:subSections>
-							<uxap:ObjectPageSubSection>
-								<uxap:blocks>
-								</uxap:blocks>
-							</uxap:ObjectPageSubSection>
-						</uxap:subSections>
-					</uxap:ObjectPageSection>						
-					<uxap:ObjectPageSection title="Summary">
-						<uxap:subSections>
-							<uxap:ObjectPageSubSection>
-								<uxap:blocks>
-									<pages:Summary/>
-								</uxap:blocks>
-							</uxap:ObjectPageSubSection>
-						</uxap:subSections>
-					</uxap:ObjectPageSection>
-				</uxap:sections>
-				<uxap:footer>
-					<m:OverflowToolbar>
-						<m:ToolbarSpacer />
-						<m:Button type="Emphasized" text="Save" press="onSave"/>
-						<m:Button type="Default" text="Cancel" press="onCancel"/>
-					</m:OverflowToolbar>				
-				</uxap:footer>
-			</uxap:ObjectPageLayout>
-		</semantic:content>
-	</semantic:FullscreenPage>
-</mvc:View>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                        <uxap:ObjectPageSection title="Accounting">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection>
+                                    <uxap:blocks>
+                                    </uxap:blocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                        <uxap:ObjectPageSection title="Summary">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection>
+                                    <uxap:blocks>
+										 <pages:Summary/>
+                                     </uxap:blocks>
+                                 </uxap:ObjectPageSubSection>
+                             </uxap:subSections>
+                         </uxap:ObjectPageSection>
+                     </uxap:sections>
+                     <uxap:footer>
+                         <m:OverflowToolbar>
+                             <m:ToolbarSpacer />
+                             <m:Button type="Emphasized" text="Save" press="onSave"/>
+                             <m:Button type="Default" text="Cancel" press="onCancel"/>
+                         </m:OverflowToolbar>
+                     </uxap:footer>
+                 </uxap:ObjectPageLayout>
+             </semantic:content>
+         </semantic:FullscreenPage>
+     </mvc:View>

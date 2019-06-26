@@ -24,8 +24,6 @@
 					<Input value="{/id}"/>
 					<Label text="Document Status" />
 					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false">
-					<!-- 	<core:ListItem key="C200" text="2"/>
-						<core:ListItem key="C100" text="1"/> -->
 					</widget:Select>
 				</form:content>
 			</form:SimpleForm>
