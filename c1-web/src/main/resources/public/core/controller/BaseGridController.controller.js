@@ -12,15 +12,31 @@ sap.ui.define([
 	theClass.prototype.onInit=function() {
 	}
 	theClass.prototype.onGridAdd = function(evt){
-	    alert('a');
+		var table = evt.getSource().getParent().getParent();
+		var rowid = table.getSelectedIndices();
+		var model = this.getView().getModel();
+		var root = model.getData();
+		if(root.rdr1===undefined) root.rdr1 = [];
+		var data = root.rdr1;
+		if (rowid.length==0) {
+			data.push({});
+		} else if(rowid.length==1) {
+			var row =rowid[0];			
+			data.splice(row,0,{});
+		} else {
+			MessageToast.show("more than one line selected");
+		}
+        model.refresh(true);
 	}
 	theClass.prototype.onGridDelete = function(evt){
 		var table = evt.getSource().getParent().getParent();
 		var rowid = table.getSelectedIndices();
-		var model = this.getView().getModel()
+		var model = this.getView().getModel();
+		var count = 0;
         for(let row of rowid) {
 			var data = model.getData().rdr1;
-			var removed = data.splice(row, 1);
+			var removed = data.splice(row-count, 1);
+			count++;
         }
         model.refresh(true);
 	}
