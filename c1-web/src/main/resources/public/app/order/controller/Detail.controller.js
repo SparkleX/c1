@@ -11,9 +11,6 @@ sap.ui.define([
 	Detail.prototype.onInit=function() {
 		BaseDetailController.prototype.onInit.call(this);
 
-		var oModel = new JSONModel();
-		oModel.loadData("mock/bpCurrency.json",null,false);	
-		this.getOwnerComponent().setModel(oModel, "bpCurrency");
 	}
 
 	Detail.prototype.onChangeFName=function(oEvent) {

@@ -12,7 +12,7 @@
 		<table:Table rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle">
 			<table:extension>
 				<OverflowToolbar id="otb1">
-					<Button icon="sap-icon://add" type="Transparent"/>
+					<Button icon="sap-icon://add" type="Transparent" press="onAdd"/>
 					<Button icon="sap-icon://delete" type="Transparent"/>
 					<Button icon="sap-icon://action-settings" type="Transparent"/>
 				</OverflowToolbar>

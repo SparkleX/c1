@@ -12,8 +12,8 @@
 	displayBlock="true">
 	<semantic:FullscreenPage title="{i18n>detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
 		<semantic:content>
-			<uxap:ObjectPageLayout id="idObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false"
-			showFooter="{= ${form>/formMode} ==='editMode'}"
+			<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false"
+
 			>
 				<uxap:headerTitle>
 					<uxap:ObjectPageDynamicHeaderTitle areaShrinkRatio="1:1.6:1.6">
@@ -34,9 +34,9 @@
 						</uxap:snappedContent>
 
 						<uxap:actions>
-							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onPressEdit" visible="{= ${form>/formMode} ==='viewMode'}"/>
-							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true"  visible="{= ${form>/formMode} ==='viewMode'}"/>
-							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true"  visible="{= ${form>/formMode} ==='viewMode'}"/>
+							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onEdit"/>
+							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true"  press="onNew"/>
+							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true"  press="onDelete"/>
 							<uxap:ObjectPageHeaderActionButton id="testButton" type="Transparent" text="Test" hideText="false" hideIcon="true"  press="onTest"/>
 
 						</uxap:actions>

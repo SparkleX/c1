@@ -1,6 +1,5 @@
 <mvc:View
 	id="idGeneralView"
-	controllerName="next.app.controller.Detail"
 	xmlns:layout="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:form="sap.ui.layout.form"
@@ -22,7 +21,7 @@
 				<core:Title text="Document Status"/>
 				<form:content>
 					<Label text="Document Number" />
-					<Input dataValue="{/id}"/>
+					<Input value="{/id}"/>
 					<Label text="Document Status" />
 					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false">
 					<!-- 	<core:ListItem key="C200" text="2"/>
