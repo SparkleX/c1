@@ -11,7 +11,6 @@ sap.ui.define([
             method : 'post',
             data : data,
             success : function(data) {
-
             }
         });
 	}
@@ -38,6 +37,29 @@ sap.ui.define([
             }
         });
 	}
-
+	theClass.getNext = function (table, id) {
+		var rt;
+        jQuery.ajax({
+            url: `/api/${table}/${id}/.next`,
+            async: false,
+            method : 'get',
+            success : function(data) {
+            	rt = data;
+            }
+        });
+        return rt;
+	}
+	theClass.getPrev = function (table, id) {
+		var rt;
+        jQuery.ajax({
+            url: `/api/${table}/${id}/.prev`,
+            async: false,
+            method : 'get',
+            success : function(data) {
+            	rt = data;
+            }
+        });
+        return rt;
+	}	
 	return theClass;
 });

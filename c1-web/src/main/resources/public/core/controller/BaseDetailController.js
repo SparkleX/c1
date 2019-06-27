@@ -34,6 +34,7 @@ sap.ui.define([
 	    return this.dataId ==="#";
 	}
 	BaseDetailController.prototype.onLoadData = function(id) {
+		this.dataId = id;
 		var oModel = new JSONModel();
 		this.oModel = oModel;
 		oModel.loadData(`/api/${this.dataTable}/${id}`);
@@ -102,6 +103,18 @@ sap.ui.define([
 		//var data = this.oModel.getData();
 		console.log(data);
 	}
+	BaseDetailController.prototype.onNext = function()	{
+		var id = ServiceUtil.getNext(this.dataTable, this.dataId);
+		this.onLoadData(id);
+	}
+	BaseDetailController.prototype.onPrev = function()	{
+		var id = ServiceUtil.getPrev(this.dataTable, this.dataId);
+		this.onLoadData(id);
+	}	
+	BaseDetailController.prototype.onRefresh = function()	{
+		this.onLoadData(this.dataId);
+	}	
+	
 	return BaseDetailController;
 
 });

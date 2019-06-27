@@ -41,13 +41,15 @@
 
 						</uxap:actions>
 						<uxap:navigationActions>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="slim-arrow-down" />
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://synchronize" type="Transparent" tooltip="First" press="onRefresh"/>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="Previous" press="onPrev"/>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="Next"  press="onNext"/>
+						
 						</uxap:navigationActions>
-						<uxap:content>
+					<!-- 	<uxap:content>
 							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />
 							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="slim-arrow-down" />
-						</uxap:content>
+						</uxap:content> -->
 					</uxap:ObjectPageDynamicHeaderTitle>
 				</uxap:headerTitle>
 
