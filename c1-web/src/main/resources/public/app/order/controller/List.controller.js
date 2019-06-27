@@ -5,8 +5,8 @@ sap.ui.define([
 ], function (Controller, MessageToast, Fragment) {
 	"use strict";
 
-	return Controller.extend("next.app.controller.List", {
-
-	});
+	var theClass = Controller.extend("next.app.controller.List", {});
+	
+	return theClass;
 
 });
