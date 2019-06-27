@@ -21,12 +21,6 @@ public class SqlConnectionProxy implements SqlConnection{
 	}
 
 	@Override
-	public <T> List<T> select(Class<T> sql, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void insert(Object entity) throws JpatisException {
 		getSqlConnection().insert(entity);		
 	}
@@ -64,6 +58,17 @@ public class SqlConnectionProxy implements SqlConnection{
 	public void deleteById(Object id, Class<?> entityClass) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public <T> List<T> select(Class<T> clazz, String sql, Object... params) {
+		return null;
+	}
+
+	@Override
+	public List<Object[]> select(String sql, Object... params) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

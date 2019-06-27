@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.next.c1.domain.DoORDR;
+import com.next.c1.repository.BaseRepositoryImpl;
 import com.next.jpatis.spring.JpatisConfig;
-import com.next.jpatis.spring.JpatisRepositoryImpl;
 
 @SpringBootApplication
 @Import(JpatisConfig.class)
 @EntityScan(basePackageClasses=DoORDR.class)
-@EnableJpaRepositories(repositoryBaseClass = JpatisRepositoryImpl.class)
+@EnableJpaRepositories(repositoryBaseClass = BaseRepositoryImpl.class)
 public class WebApp {
 
 	public static void main(String[] args) {

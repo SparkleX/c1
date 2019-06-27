@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.next.c1.reflect.FieldUtilsEx;
+import com.next.c1.repository.BaseRepository;
 import com.next.c1.schema.table.Table;
-import com.next.jpatis.spring.JpatisRepository;
 
-public class BaseService<T,REPO extends JpatisRepository<T,Integer>> {
+public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	
 	@Autowired
 	protected REPO repository;
@@ -40,11 +40,20 @@ public class BaseService<T,REPO extends JpatisRepository<T,Integer>> {
 
 	public void delete(Integer id) {
 		repository.deleteById(id);
-		
 	}
-
 	public List<T> search() {
-		return repository.findAll();
+		return null;
+	}	
+	public Integer getNext(Integer id) {
+		return repository.getNext(id);
 	}
-
+	public Integer getPrev(Integer id) {
+		return repository.getPrev(id);
+	}
+	public Integer getFirst() {
+		return repository.getFirst();
+	}
+	public Integer getLast() {
+		return repository.getLast();
+	}	
 }

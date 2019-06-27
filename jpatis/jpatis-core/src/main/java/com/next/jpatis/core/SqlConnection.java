@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SqlConnection {
-	<T> List<T> select(Class<T> sql, Object ...params);
+	<T> List<T> select(Class<T> clazz, String sql, Object ...params);
+	List<Object[]> select(String sql, Object ...params);
 	void insert(Object entity);
 	void update(Object entity);
 	void delete(Object entity);

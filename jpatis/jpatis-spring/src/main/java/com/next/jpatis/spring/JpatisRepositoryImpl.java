@@ -13,15 +13,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.CrudMethodMetadata;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.next.jpatis.core.SqlConnection;
 
-@Repository
-@Transactional
+@org.springframework.transaction.annotation.Transactional
 public class JpatisRepositoryImpl<T, ID> implements JpatisRepository<T, ID>, JpaRepositoryImplementation<T, ID> {
-	Class<T> type;
+	protected Class<T> type;
 	Class<ID> idType;
 	private EntityManager em;
 	public JpatisRepositoryImpl(JpaEntityInformation<T, ID> entityInformation, EntityManager entityManager) {
@@ -34,7 +31,7 @@ public class JpatisRepositoryImpl<T, ID> implements JpatisRepository<T, ID>, Jpa
 	public void setRepositoryMethodMetadata(CrudMethodMetadata crudMethodMetadata) {
 	}
 
-	private SqlConnection getSqlConnection() {
+	protected SqlConnection getSqlConnection() {
 		return em.unwrap(SqlConnection.class);
 	}
 

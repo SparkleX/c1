@@ -526,26 +526,14 @@ final public class OrmAccess extends JdbcAccess implements SqlConnection {
 		return list.get(0);
 	}
 
-	// @Override
-	public List<Object[]> load(String qb, Object... param) throws Exception {
-		return this.load(Object[].class, qb.toString(), param);
+	@Override
+	public <T> List<T> select(Class<T> clazz, String sql, Object... params) {
+		return this.load(clazz, sql, params);
 	}
+
 
 	@Override
-	public <T> List<T> select(Class<T> sql, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Object[]> select(String sql, Object... params) {
+		return this.load(Object[].class, sql, params);
 	}
-
-
-
-
-
-
-	/*
-	 * @Override public <T> List<T> load(Class<T> cls, OrmQueryBuilder qb, Object...
-	 * values) throws Exception { String sql = qb.toString(); return this.load(cls,
-	 * sql, values); }
-	 */
-
 }

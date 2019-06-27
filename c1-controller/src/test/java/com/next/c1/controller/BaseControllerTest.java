@@ -46,6 +46,46 @@ public class BaseControllerTest<T, SERVICE extends BaseService<T,?>>{
 		Mockito.verify(this.mockService, Mockito.times(1)).get(1);
 	}
 	@Test
+	public void nextTest() throws Exception 	{
+		String table = getTableName();
+		BDDMockito.given(this.mockService.getNext(1)).willReturn(999);
+		this.mvc.perform(MockMvcRequestBuilders.get("/api/"+table+"/1/.next")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().string("999"));
+		Mockito.verify(this.mockService, Mockito.times(1)).getNext(1);
+	}
+	@Test
+	public void prevTest() throws Exception 	{
+		String table = getTableName();
+		BDDMockito.given(this.mockService.getPrev(1)).willReturn(999);
+		this.mvc.perform(MockMvcRequestBuilders.get("/api/"+table+"/1/.prev")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().string("999"));
+		Mockito.verify(this.mockService, Mockito.times(1)).getPrev(1);
+	}
+	@Test
+	public void nextFirst() throws Exception 	{
+		String table = getTableName();
+		BDDMockito.given(this.mockService.getFirst()).willReturn(999);
+		this.mvc.perform(MockMvcRequestBuilders.get("/api/"+table+"/.first")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().string("999"));
+		Mockito.verify(this.mockService, Mockito.times(1)).getFirst();
+	}
+	@Test
+	public void lastTest() throws Exception 	{
+		String table = getTableName();
+		BDDMockito.given(this.mockService.getLast()).willReturn(999);
+		this.mvc.perform(MockMvcRequestBuilders.get("/api/"+table+"/.last")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().string("999"));
+		Mockito.verify(this.mockService, Mockito.times(1)).getLast();
+	}	
+	@Test
 	public void testSearch() throws Exception{
 		List<T> ret = new ArrayList<>();
 		String table = getTableName();
