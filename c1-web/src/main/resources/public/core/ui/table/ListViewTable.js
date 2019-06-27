@@ -18,9 +18,21 @@ sap.ui.define([
     theClass.prototype.init = function() {
     	Table.prototype.init.call(this);
      }
+    theClass.prototype.applySettings = function(mSettings, oScope) {
+    	var rt = Table.prototype.applySettings.call(this, mSettings, oScope);
+    	for(let col of this.getDefaultColumns()){
+    		var dataBind = col.getDataBind();
+    		var text = col.getText();
+       	 	this.addColumn(new sap.ui.table.Column({
+       		    label: new sap.m.Label({text: text}),
+       		    template: new sap.m.Text({text:"{list>"+dataBind+"}"})
+       		  }));    		
+    	}    	
+    	return rt;
+     }     
     theClass.prototype.onBeforeRendering = function() {
 
-    	
+
     	Table.prototype.onBeforeRendering.call(this);
 
     }

@@ -6,7 +6,7 @@ sap.ui.define([
 	var theClass =  Element.extend("next.core.ui.table.DefaultColumn", {
 		metadata : {
 			properties: {
-				//text: {type: "string", group: "Behavior", defaultValue: null},
+				text: {type: "string", group: "Behavior", defaultValue: null},
 				dataBind: {type: "string", group: "Behavior", defaultValue: null}
 			}
 		}

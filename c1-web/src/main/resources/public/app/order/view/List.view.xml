@@ -12,8 +12,8 @@
 	<content>
 		<table:ListViewTable dataTable="ORDR" id="listTable" rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle" allowAdd="true">
 			<table:defaultColumns>
-				<table:defaultColumn dataBind="id"/>
-				<table:defaultColumn dataBind="remarks"/>
+				<table:defaultColumn text="#" dataBind="id"/>
+				<table:defaultColumn text="remarks" dataBind="remarks"/>
 			</table:defaultColumns>
 			<table:extension>
 				<OverflowToolbar id="otb1">
@@ -22,7 +22,7 @@
 					<Button icon="sap-icon://action-settings" type="Transparent" press="onTestClick"/>
 				</OverflowToolbar>
 			</table:extension>
-			<table:columns>
+		<!--	<table:columns>
 				<table2:Column>
 					<Label text="#" />
 					<table2:template>
@@ -30,7 +30,7 @@
 					</table2:template>
 				</table2:Column>
 			</table:columns>		
-			<!--	<table2:Column>
+				<table2:Column>
 					<Label text="Item" />
 					<table2:template>
 						<Text text="{list>id}" />

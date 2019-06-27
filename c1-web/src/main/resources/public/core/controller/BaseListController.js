@@ -24,11 +24,7 @@ sap.ui.define([
 			//var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			//oRouter.navTo("detail");
 
-    	var oTable = this.byId("listTable");
-    	 oTable.addColumn(new sap.ui.table.Column({
-    		    label: new sap.m.Label({text: "Last Name"}),
-    		    template: new sap.m.Text({text:"{list>id}"})
-    		  }));
+
 	}
 	theClass.prototype.onListItemPress = function (evt) {
         var oRow = evt.getParameter("row");
