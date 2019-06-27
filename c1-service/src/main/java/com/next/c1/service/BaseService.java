@@ -42,7 +42,7 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		repository.deleteById(id);
 	}
 	public List<T> search() {
-		return null;
+		return repository.findAll();
 	}	
 	public Integer getNext(Integer id) {
 		return repository.getNext(id);

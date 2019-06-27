@@ -1,7 +1,7 @@
 sap.ui.define([
-	"sap/ui/table/Table"
-], function (Table
-	) {
+	"sap/ui/table/Table",
+	"next/core/widget/WidgetUtil"
+], function (Table, WidgetUtil) {
 	"use strict";
 	var theClass =  Table.extend("next.core.ui.table.ListViewTable", {
 		metadata : {
@@ -28,13 +28,18 @@ sap.ui.define([
        		    template: new sap.m.Text({text:"{list>"+dataBind+"}"})
        		  }));    		
     	}    	
+    	var oActionItem = new sap.ui.table.RowActionItem({type:"Navigation", press:this.onPress});
+    	var oAction = new sap.ui.table.RowAction({items:[oActionItem]})
+    	this.setRowActionTemplate(oAction);
+  	
     	return rt;
      }     
     theClass.prototype.onBeforeRendering = function() {
-
-
     	Table.prototype.onBeforeRendering.call(this);
-
+    }
+    theClass.prototype.onPress = function(evt) {
+    	var view = WidgetUtil.getRootView(this);
+    	view.getController().onListItemPress(evt);
     }
 
 	return theClass;
