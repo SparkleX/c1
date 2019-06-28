@@ -28,7 +28,9 @@ function(JSONModel, jQuery) {
 					}
 				}
             }
-        });
+        }).fail(function (result,result1,result2) {
+			alert('fail');
+        })
 	}
 	theClass.initOADM=function() {
 		jQuery.ajax({
@@ -42,7 +44,9 @@ function(JSONModel, jQuery) {
                 theClass.decimals.RATE = theClass.oadm.rateDec;
                 theClass.decimals.SUM = theClass.oadm.sumDec;
             }
-        });
+        }).fail(function (result,result1,result2) {
+			alert('fail');
+        })
 	}
     theClass.getDescription=function(table, key) {
     	if (key===undefined || key===null) {
@@ -83,6 +87,9 @@ function(JSONModel, jQuery) {
     }
 	theClass.getMdColumn=function(table, column) {
 	    var rt = this.metadata[table].columnMap[column];
+	    if(rt===undefined) {
+	    	alert(`${table}.${column} not exists`);
+	    }
         return rt;
 	}
 	theClass.getMdTable=function(table) {

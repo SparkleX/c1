@@ -9,9 +9,7 @@ function(CoreUtil,NumberFormat) {
 	theClass.format=function(dataFormat) {
 		var rt = {right:false};
 		var metaCol = CoreUtil.getMdColumnByBind(dataFormat);
-		if(metaCol.linkTo) {
-			
-		}else{
+		if(!metaCol.linkTo) {			
 			switch(metaCol.dbType) {
 			case "IDENTITY":
 			case "INTEGER":

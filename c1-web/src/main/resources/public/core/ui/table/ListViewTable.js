@@ -28,7 +28,7 @@ sap.ui.define([
        		    label: new sap.m.Label({text: text}),
        		    template: new FormatText({
        		    			dataValue:"{list>"+dataBind+"}",
-       		    			dataFormat:"ORDR."+dataBind
+       		    			dataFormat:this.getDataTable()+"."+dataBind
        		    			})
        		  }));    		
     	}    	

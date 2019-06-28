@@ -1,0 +1,32 @@
+<mvc:View
+	id="idGeneralView"
+	xmlns:layout="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:widget="next.core.widget"
+	width="100%">
+	<layout:Grid width="100%" defaultSpan="L6 M6 S12">
+		<layout:content>
+			<form:SimpleForm id = "zzz" layout="ColumnLayout">
+				<core:Title text="Basic Information"/>
+				<form:content>
+					<Label text="Business Partner Code" />
+					<widget:LinkInput id="bpId" type="Text" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
+					</widget:LinkInput>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm layout="ColumnLayout" >
+				<core:Title text="Document Status"/>
+				<form:content>
+					<Label text="Document Number" />
+					<Input value="{/id}"/>
+					<Label text="Document Status" />
+					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false">
+					</widget:Select>
+				</form:content>
+			</form:SimpleForm>
+		</layout:content>
+	</layout:Grid>
+</mvc:View>

@@ -10,7 +10,6 @@ sap.ui.define([
 
 	var theClass =Controller.extend("next.core.controller.BaseListController", {});
 	theClass.prototype.onInit=function() {
-	    this.dataTable = "ORDR";
 	    var that = this;
 	    var oView = this.getView();
 		oView.addEventDelegate({
