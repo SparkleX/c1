@@ -18,8 +18,8 @@ sap.ui.define([
 
 	};
 
-    theClass.prototype.onBeforeRendering = function() {
-        Select.prototype.onBeforeRendering.call(this);
+	theClass.prototype.applySettings = function(mSettings, oScope) {
+        Select.prototype.applySettings.call(this, mSettings, oScope);
         this.removeAllItems();
 		var bind = this.getDataFormat();
 		var oColumn = CoreUtil.getMdColumnByBind(bind);
