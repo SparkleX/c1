@@ -6,7 +6,9 @@ sap.ui.define([
 ], function (BaseDetailController, MessageToast, Fragment, JSONModel) {
 	"use strict";
 
-	var Detail =BaseDetailController.extend("next.app.order.controller.Detail", {});
+	var Detail =BaseDetailController.extend("next.app.order.controller.Detail", {
+		dataTable:'ORDR'
+	});
 
 	Detail.prototype.onInit=function() {
 		BaseDetailController.prototype.onInit.call(this);

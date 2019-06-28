@@ -1,54 +1,40 @@
-<mvc:View 
-	id="idBpDetail"
-	controllerName="next.app.controller.Detail"
-	xmlns:uxap="sap.uxap"
-	xmlns:m="sap.m"
-	xmlns:layout="sap.ui.layout"
-	xmlns:pages="next.app.pages"
-	xmlns:table="sap.ui.table"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core"
-	xmlns:semantic="sap.m.semantic"
-	xmlns:widget="next.core.widget"
-	displayBlock="true">
-	<semantic:FullscreenPage title="{i18n>detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
+<mvc:View id="idBpDetail" controllerName="next.app.controller.Detail" xmlns:uxap="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:pages="next.app.pages" xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic" xmlns:widget="next.core.widget" xmlns:form="sap.ui.layout.form" displayBlock="true">
+	<semantic:FullscreenPage title="{i18n>
+		detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
 		<semantic:content>
 			<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false">
 				<uxap:headerTitle>
 					<uxap:ObjectPageDynamicHeaderTitle areaShrinkRatio="1:1.6:1.6">
 						<uxap:expandedHeading>
-							<m:Title text="Sales Order" wrapping="true" />
+							<m:Title text="Business Partner" wrapping="true" />
 						</uxap:expandedHeading>
 
 						<uxap:snappedHeading>
-							<m:Title text="Sales Order" wrapping="true" />
+							<m:Title text="Business Partner" wrapping="true" />
 						</uxap:snappedHeading>
 
 						<uxap:expandedContent>
-							<m:Text text="Document Number" />
+							<m:Text text="{/id}" />
 						</uxap:expandedContent>
 
 						<uxap:snappedContent>
-							<m:Text text="Document Number" />
+							<m:Text text="{/id}" />
 						</uxap:snappedContent>
 
 						<uxap:actions>
-							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onEdit"/>
-							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true"  press="onNew"/>
-							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true"  press="onDelete"/>
-							<uxap:ObjectPageHeaderActionButton id="testButton" type="Transparent" text="Test" hideText="false" hideIcon="true"  press="onTest"/>
+							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onEdit" />
+							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true" press="onNew" />
+							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true" press="onDelete" />
+							<uxap:ObjectPageHeaderActionButton id="testButton" type="Transparent" text="Test" hideText="false" hideIcon="true" press="onTest" />
 
 						</uxap:actions>
 						<uxap:navigationActions>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://synchronize" type="Transparent" tooltip="First" press="onRefresh"/>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="Previous" press="onPrev"/>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="Next"  press="onNext"/>
-						
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://synchronize" type="Transparent" tooltip="First" press="onRefresh" />
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="Previous" press="onPrev" />
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="Next" press="onNext" />
+
 						</uxap:navigationActions>
-					<!-- 	<uxap:content>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="slim-arrow-down" />
-						</uxap:content> -->
+						<!-- <uxap:content> <uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" /> <uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="slim-arrow-down" /> </uxap:content> -->
 					</uxap:ObjectPageDynamicHeaderTitle>
 				</uxap:headerTitle>
 
@@ -57,46 +43,64 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="idGeneralPage" title="General">
 								<uxap:blocks>
-									<pages:General/>
+									<layout:Grid width="100%" defaultSpan="L6 M6 S12">
+										<layout:content>
+											<form:SimpleForm layout="ColumnLayout">
+												<core:Title text="Basic Information" />
+												<form:content>
+													<m:Label text="Business Partner Id" />
+													<m:Input id="bpId" type="Text" value="{/id}" dataFormat="ORDR.id"/>
+													<m:Label text="Business Partner Code" />
+													<m:Input id="bpCode" type="Text" value="{/bpCode}" dataFormat="ORDR.bpCode"/>
+													<m:Label text="Business Partner Name" />
+													<m:Input id="bpName" type="Text" value="{/bpName}" dataFormat="ORDR.bpName"/>
+													
+												</form:content>
+											</form:SimpleForm>
+											<form:SimpleForm layout="ColumnLayout">
+												<core:Title text="Contact" />
+												<form:content>
+												</form:content>
+											</form:SimpleForm>
+										</layout:content>
+									</layout:Grid>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
-					<uxap:ObjectPageSection id="idSectionB"  title="Details">
+					<uxap:ObjectPageSection title="Details">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>									
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+					<uxap:ObjectPageSection title="Accounting">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<pages:Lines/>
 								</uxap:blocks>
-                                </uxap:ObjectPageSubSection>
-                            </uxap:subSections>
-                        </uxap:ObjectPageSection>
-                        <uxap:ObjectPageSection title="Accounting">
-                            <uxap:subSections>
-                                <uxap:ObjectPageSubSection>
-                                    <uxap:blocks>
-                                    </uxap:blocks>
-                                </uxap:ObjectPageSubSection>
-                            </uxap:subSections>
-                        </uxap:ObjectPageSection>
-                        <uxap:ObjectPageSection title="Summary">
-                            <uxap:subSections>
-                                <uxap:ObjectPageSubSection>
-                                    <uxap:blocks>
-										 <pages:Summary/>
-                                     </uxap:blocks>
-                                 </uxap:ObjectPageSubSection>
-                             </uxap:subSections>
-                         </uxap:ObjectPageSection>
-                     </uxap:sections>
-                     <uxap:footer>
-                         <m:OverflowToolbar>
-                             <m:ToolbarSpacer />
-                             <m:Button type="Emphasized" text="Save" press="onSave"/>
-                             <m:Button type="Default" text="Cancel" press="onCancel"/>
-                         </m:OverflowToolbar>
-                     </uxap:footer>
-                 </uxap:ObjectPageLayout>
-             </semantic:content>
-         </semantic:FullscreenPage>
-     </mvc:View>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+					<uxap:ObjectPageSection title="Summary">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection>
+								<uxap:blocks>									
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+				</uxap:sections>
+				<uxap:footer>
+					<m:OverflowToolbar>
+						<m:ToolbarSpacer />
+						<m:Button type="Emphasized" text="Save" press="onSave" />
+						<m:Button type="Default" text="Cancel" press="onCancel" />
+					</m:OverflowToolbar>
+				</uxap:footer>
+			</uxap:ObjectPageLayout>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

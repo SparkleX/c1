@@ -17,7 +17,6 @@ sap.ui.define([
             this.editButton = this.byId("editButton");
             this.newButton = this.byId("newButton");
             this.deleteButton = this.byId("deleteButton");
-            this.dataTable = "ORDR";
 
 			var component =  this.getOwnerComponent();
 			var oRouter = component.getRouter();
