@@ -67,7 +67,7 @@
 		  "targets": {
 			"list": {
 			  "viewId": "list",
-			  "viewName": "list"
+			  "viewName": "List"
 			},
 			"detail": {
 			  "viewId": "detail",
