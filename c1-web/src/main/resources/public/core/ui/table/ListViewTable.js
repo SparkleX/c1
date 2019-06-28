@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/table/Table",
-	"next/core/widget/WidgetUtil"
-], function (Table, WidgetUtil) {
+	"next/core/widget/WidgetUtil",
+	"next/core/widget/FormatText"	
+], function (Table, WidgetUtil, FormatText) {
 	"use strict";
 	var theClass =  Table.extend("next.core.ui.table.ListViewTable", {
 		metadata : {
@@ -25,7 +26,10 @@ sap.ui.define([
     		var text = col.getText();
        	 	this.addColumn(new sap.ui.table.Column({
        		    label: new sap.m.Label({text: text}),
-       		    template: new sap.m.Text({text:"{list>"+dataBind+"}"})
+       		    template: new FormatText({
+       		    			dataValue:"{list>"+dataBind+"}",
+       		    			dataFormat:"ORDR."+dataBind
+       		    			})
        		  }));    		
     	}    	
     	var oActionItem = new sap.ui.table.RowActionItem({type:"Navigation", press:this.onPress});

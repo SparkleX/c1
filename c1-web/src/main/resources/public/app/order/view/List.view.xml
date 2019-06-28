@@ -13,7 +13,9 @@
 		<table:ListViewTable dataTable="ORDR" id="listTable" rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle">
 			<table:defaultColumns>
 				<table:defaultColumn text="#" dataBind="id"/>
-				<table:defaultColumn text="remarks" dataBind="remarks"/>
+				<table:defaultColumn text="Business Partner" dataBind="bpId"/>
+				<table:defaultColumn text="Document Total" dataBind="docTotal"/>
+				<table:defaultColumn text="Remarks" dataBind="remarks"/>
 			</table:defaultColumns>
 			<table:extension>
 				<OverflowToolbar id="otb1">
@@ -26,11 +28,11 @@
 				<table2:Column>
 					<Label text="#" />
 					<table2:template>
-						<Text text="{list>id}" />
+						<Text text="{list>id}"   textAlign="Right" width="30px"/>
 					</table2:template>
 				</table2:Column>
-			</table:columns>		
-				<table2:Column>
+	  		</table:columns>		
+					<table2:Column>
 					<Label text="Item" />
 					<table2:template>
 						<Text text="{list>id}" />
