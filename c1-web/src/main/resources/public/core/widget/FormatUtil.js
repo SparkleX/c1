@@ -29,6 +29,12 @@ function(CoreUtil,NumberFormat) {
 			var oFormat = NumberFormat.getFloatInstance({decimals: decimalPlaces});
 			return oFormat.format(dataValue);
 		}
+		
+		if(metaCol.linkTo) {
+			var desc = CoreUtil.getDescription(metaCol.linkTo, dataValue);
+			return desc;
+		}
+		
 		return dataValue;
 	}
 	return theClass;
