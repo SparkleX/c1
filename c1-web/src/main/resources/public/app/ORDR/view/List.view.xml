@@ -24,15 +24,22 @@
 					<Button icon="sap-icon://action-settings" type="Transparent" press="onTestClick"/>
 				</OverflowToolbar>
 			</table:extension>
-		<!--	<table:columns>
+				<!--<table:columns>
 				<table2:Column>
-					<Label text="#" />
+					<Label text="test" />
 					<table2:template>
-						<Text text="{list>id}"   textAlign="Right" width="30px"/>
+						<Button text="Test" press="onQuickView"/>
 					</table2:template>
 				</table2:Column>
+				<table2:Column>
+					<Label text="test3" />
+					<table2:template>
+						<widget:FormatLink press="onQuickView" dataFormat="ORDR.bpId" dataValue="{list>bpId}"/>
+					</table2:template>
+				</table2:Column>				
+
 	  		</table:columns>		
-					<table2:Column>
+				<table2:Column>
 					<Label text="Item" />
 					<table2:template>
 						<Text text="{list>id}" />

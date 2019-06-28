@@ -1,8 +1,10 @@
 sap.ui.define([
 	"sap/ui/table/Table",
 	"next/core/widget/WidgetUtil",
-	"next/core/widget/FormatText"	
-], function (Table, WidgetUtil, FormatText) {
+	"next/core/widget/FormatText",
+	"next/core/widget/FormatLink",
+	"next/core/widget/CoreUtil",
+], function (Table, WidgetUtil, FormatText, FormatLink, CoreUtil) {
 	"use strict";
 	var theClass =  Table.extend("next.core.ui.table.ListViewTable", {
 		metadata : {
@@ -24,13 +26,25 @@ sap.ui.define([
     	for(let col of this.getDefaultColumns()){
     		var dataBind = col.getDataBind();
     		var text = col.getText();
+    		var template = null;
+    		var metaCol = CoreUtil.getMdColumnByBind(this.getDataTable()+"."+dataBind);
+    		if(metaCol.linkTo) {
+	    		template = new FormatLink({
+		    			dataValue:"{list>"+dataBind+"}",
+		    			dataFormat:this.getDataTable()+"."+dataBind
+		    			});
+    		}else {
+        		template = new FormatText({
+	    			dataValue:"{list>"+dataBind+"}",
+	    			dataFormat:this.getDataTable()+"."+dataBind
+	    			});
+    		}
+    		
        	 	this.addColumn(new sap.ui.table.Column({
        		    label: new sap.m.Label({text: text}),
-       		    template: new FormatText({
-       		    			dataValue:"{list>"+dataBind+"}",
-       		    			dataFormat:this.getDataTable()+"."+dataBind
-       		    			})
-       		  }));    		
+       		    template: template
+       		    }
+       		  ));    		
     	}    	
     	var oActionItem = new sap.ui.table.RowActionItem({type:"Navigation", press:this.onPress});
     	var oAction = new sap.ui.table.RowAction({items:[oActionItem]})

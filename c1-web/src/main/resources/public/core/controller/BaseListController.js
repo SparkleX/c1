@@ -53,7 +53,30 @@ sap.ui.define([
         }
         MessageToast.show("Successful");
         this.refresh();
-    }
+    };
+    
+    theClass.prototype.openQuickView= function (oEvent, oModel) {
+		this.createPopover();
+
+		this._oQuickView.setModel(oModel);
+
+		// delay because addDependent will do a async rerendering and the actionSheet will immediately close without it.
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+			this._oQuickView.openBy(oButton);
+		});
+	};
+
+	theClass.prototype.onQuickView= function (oEvent) {
+		this.openQuickView(oEvent, this.oModel);
+	};
+
+	theClass.prototype.createPopover= function() {
+		if (!this._oQuickView) {
+			this._oQuickView = sap.ui.xmlfragment("next.share.quick.OCRD", this);
+			this.getView().addDependent(this._oQuickView);
+		}
+	};
 	return theClass;
 
 });
