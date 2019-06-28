@@ -9,11 +9,11 @@
 	width="100%">
 	<layout:Grid width="100%" defaultSpan="L6 M6 S12">
 		<layout:content>
-			<form:SimpleForm layout="ColumnLayout">
+			<form:SimpleForm id = "zzz" layout="ColumnLayout">
 				<core:Title text="Basic Information"/>
 				<form:content>
 					<Label text="Business Partner Code" />
-					<widget:LinkInput type="Text" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
+					<widget:LinkInput id="bpId" type="Text" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
 					</widget:LinkInput>
 				</form:content>
 			</form:SimpleForm>

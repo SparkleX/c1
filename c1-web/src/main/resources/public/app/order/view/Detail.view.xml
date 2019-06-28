@@ -9,12 +9,11 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns:semantic="sap.m.semantic"
+	xmlns:widget="next.core.widget"
 	displayBlock="true">
 	<semantic:FullscreenPage title="{i18n>detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
 		<semantic:content>
-			<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false"
-
-			>
+			<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false">
 				<uxap:headerTitle>
 					<uxap:ObjectPageDynamicHeaderTitle areaShrinkRatio="1:1.6:1.6">
 						<uxap:expandedHeading>
@@ -54,7 +53,7 @@
 				</uxap:headerTitle>
 
 				<uxap:sections>
-					<uxap:ObjectPageSection id="section1" title="Section 1">
+					<uxap:ObjectPageSection id="idSectionA" title="AAA">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="idGeneralPage" title="General">
 								<uxap:blocks>
@@ -63,7 +62,7 @@
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
-					<uxap:ObjectPageSection title="Details">
+					<uxap:ObjectPageSection id="idSectionB"  title="Details">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>

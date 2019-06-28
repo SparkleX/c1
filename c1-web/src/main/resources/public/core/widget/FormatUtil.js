@@ -9,11 +9,15 @@ function(CoreUtil,NumberFormat) {
 	theClass.format=function(dataFormat) {
 		var rt = {right:false};
 		var metaCol = CoreUtil.getMdColumnByBind(dataFormat);
-		switch(metaCol.dbType) {
-		case "IDENTITY":
-		case "INTEGER":
-		case "DECIMAL":
-			rt.right=true;
+		if(metaCol.linkTo) {
+			
+		}else{
+			switch(metaCol.dbType) {
+			case "IDENTITY":
+			case "INTEGER":
+			case "DECIMAL":
+				rt.right=true;
+			}
 		}
 		rt.decimalPlaces = CoreUtil.getDecimalPlaces(metaCol);
 		return rt;
@@ -23,6 +27,7 @@ function(CoreUtil,NumberFormat) {
 			return null;
 		}
 		var metaCol = CoreUtil.getMdColumnByBind(dataFormat);
+		
 		switch(metaCol.dbType) {
 		case "DECIMAL":
 			var decimalPlaces = CoreUtil.getDecimalPlaces(metaCol);

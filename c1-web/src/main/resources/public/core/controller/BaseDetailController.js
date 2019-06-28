@@ -6,7 +6,8 @@ sap.ui.define([
 	"./FormMode",
 	"./ServiceUtil",
     "next/core/controller/RouterUtil",
-], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ServiceUtil, RouterUtil) {
+    "next/core/widget/WidgetUtil",
+], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ServiceUtil, RouterUtil, WidgetUtil) {
 	"use strict";
 
 	var BaseDetailController=Controller.extend("app.core.controller.BaseDetailController", {});
@@ -23,9 +24,11 @@ sap.ui.define([
 			oRouter.getRoute("detail").attachMatched(function(oEvent) {
 			    this.dataId = oEvent.getParameter("arguments").id
 			    if(this.dataId==="#")   {
+			    	this.formMode = FormMode.addMode;
 			        this.onInitData();
 			    }
 				else {
+					this.formMode = FormMode.viewMode;
 				    this.onLoadData(this.dataId);
 				}
 			}, this);
@@ -39,21 +42,13 @@ sap.ui.define([
 		this.oModel = oModel;
 		oModel.loadData(`/api/${this.dataTable}/${id}`);
 		this.getOwnerComponent().setModel(oModel);
-
-        this.objectPageLayout.setShowFooter(false);
-        this.editButton.setVisible(true);
-        this.newButton.setVisible(true);
-        this.deleteButton.setVisible(true);
+		this.onRefreshUiStatus();
 	}
 	BaseDetailController.prototype.onInitData = function() {
 	    var json = {};
         var oModel = new JSONModel(json);
 		this.getOwnerComponent().setModel(oModel);
-        this.objectPageLayout.setShowFooter(true);
-        this.editButton.setVisible(false);
-        this.newButton.setVisible(false);
-        this.deleteButton.setVisible(false);
-
+		this.onRefreshUiStatus();
 	}
 	BaseDetailController.prototype.onNavBack = function(){
 		window.history.back();
@@ -64,13 +59,12 @@ sap.ui.define([
 		window.history.back();
 	}
 	BaseDetailController.prototype.onEdit = function()	{
-        this.objectPageLayout.setShowFooter(true);
-        this.editButton.setVisible(false);
-        this.newButton.setVisible(true);
-        this.deleteButton.setVisible(true);
+		this.formMode=FormMode.editMode;
+		this.onRefreshUiStatus();
 	};
 	BaseDetailController.prototype.onCancel = function()	{
-        this.objectPageLayout.setShowFooter(false);
+		this.formMode=FormMode.viewMode;
+        this.onRefreshUiStatus();
 	};
 	BaseDetailController.prototype.onSave = function()	{
 	    this.saveObject();
@@ -92,7 +86,8 @@ sap.ui.define([
 
 	}
 	BaseDetailController.prototype.onNew = function()	{
-	    this.objectPageLayout.setShowFooter(true);
+		this.formMode=FormMode.addMode;
+        this.onRefreshUiStatus();
 	}
 
 
@@ -114,7 +109,35 @@ sap.ui.define([
 	BaseDetailController.prototype.onRefresh = function()	{
 		this.onLoadData(this.dataId);
 	}	
-	
+	BaseDetailController.prototype.onRefreshUiStatus = function()	{
+		if(this.formMode === FormMode.addMode) {
+	        this.objectPageLayout.setShowFooter(true);
+	        this.editButton.setVisible(false);
+	        this.newButton.setVisible(false);
+	        this.deleteButton.setVisible(false);
+	        this.setOrigStatus();	        
+		}
+		if(this.formMode === FormMode.viewMode) {
+	        this.objectPageLayout.setShowFooter(false);
+	        this.editButton.setVisible(true);
+	        this.newButton.setVisible(true);
+	        this.deleteButton.setVisible(true);
+	        this.setReadonlyStatus();
+		}
+		if(this.formMode === FormMode.editMode) {
+	        this.objectPageLayout.setShowFooter(true);
+	        this.editButton.setVisible(false);
+	        this.newButton.setVisible(true);
+	        this.deleteButton.setVisible(true);
+	        this.setOrigStatus();
+		}		
+	}
+	BaseDetailController.prototype.setOrigStatus = function()	{
+		WidgetUtil.scan(this.getView(), WidgetUtil.editableTrue);
+	}
+	BaseDetailController.prototype.setReadonlyStatus = function()	{
+		WidgetUtil.scan(this.getView(), WidgetUtil.editableFalse);
+	}	
 	return BaseDetailController;
 
 });

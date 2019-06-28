@@ -4,7 +4,8 @@ sap.ui.define([
 	"use strict";
 	const FormMode = {
 		editMode: 'editMode',
-		viewMode: 'viewMode'		
+		viewMode: 'viewMode',
+		addMode: 'addMode'
 	};
 	
 	/*AnalyticalColumn.prototype.init = function() {
