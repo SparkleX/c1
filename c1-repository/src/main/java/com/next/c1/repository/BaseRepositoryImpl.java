@@ -25,22 +25,34 @@ public class BaseRepositoryImpl<T,ID> extends JpatisRepositoryImpl<T,ID> impleme
 		List<Object[]> rt = conn.select(String.format("select min(id) from %s", tableName));
 		return (ID) rt.get(0)[0];
 	}
-	@SuppressWarnings("unchecked")
 	public ID getLast() {
 		SqlConnection conn = getSqlConnection();
 		List<Object[]> rt = conn.select(String.format("select max(id) from %s", tableName));
-		return (ID) rt.get(0)[0];
+		return getSeekResult(rt);
 	}
-	@SuppressWarnings("unchecked")
 	public ID getNext(ID id) {
 		SqlConnection conn = getSqlConnection();
 		List<Object[]> rt = conn.select(String.format("select min(id) from %s where id>?", tableName), id);
-		return (ID) rt.get(0)[0];
-	}	
-	@SuppressWarnings("unchecked")
+		return getSeekResult(rt);
+	}
 	public ID getPrev(ID id) {
 		SqlConnection conn = getSqlConnection();
 		List<Object[]> rt = conn.select(String.format("select max(id) from %s where id<?", tableName),id);
+		return getSeekResult(rt);
+	}
+	@SuppressWarnings("unchecked")
+	public ID getSeekResult(List<Object[]> rt) {
+		if(rt.size()==0) {
+			return null;
+		}
+		return (ID) rt.get(0)[0];
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ID getNextId() {
+		SqlConnection conn = getSqlConnection();
+		List<Object[]> rt = conn.select("select max(id) from %s where id<?", tableName);
 		return (ID) rt.get(0)[0];
 	}
 }

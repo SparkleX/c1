@@ -34,22 +34,34 @@ public class BaseController<T, SERVICE extends BaseService<T, ?>> {
 
 	@GetMapping(path = "/{id}/.next")
 	public Integer getNext(@PathVariable Integer id) {
-		return service.getNext(id);
+		Integer newId=service.getNext(id);
+		return seek(newId);
+		
+	}
+
+	private Integer seek(Integer newId) {
+		if(newId==null) {
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return newId;
 	}
 
 	@GetMapping(path = "/{id}/.prev")
 	public Integer getPrev(@PathVariable Integer id) {
-		return service.getPrev(id);
+		Integer newId=service.getPrev(id);
+		return seek(newId);
 	}
 
 	@GetMapping(path = "/.first")
 	public Integer getFirst() {
-		return service.getFirst();
+		Integer newId=service.getFirst();
+		return seek(newId);
 	}
 
 	@GetMapping(path = "/.last")
 	public Integer getLast() {
-		return service.getLast();
+		Integer newId=service.getLast();
+		return seek(newId);
 	}
 
 	@GetMapping(path = "/{id}")

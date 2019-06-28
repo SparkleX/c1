@@ -37,29 +37,35 @@ sap.ui.define([
             }
         });
 	}
-	theClass.getNext = function (table, id) {
-		var rt;
+	theClass.getNext = function (table, id, fuSuccess, fnNoMore) {
         jQuery.ajax({
             url: `/api/${table}/${id}/.next`,
             async: false,
             method : 'get',
+			statusCode: {
+            	204: fnNoMore
+			},
             success : function(data) {
-            	rt = data;
+            	if(data!==undefined) {
+            		fuSuccess(data);
+            	}
             }
         });
-        return rt;
 	}
-	theClass.getPrev = function (table, id) {
-		var rt;
+	theClass.getPrev = function (table, id, fuSuccess, fnNoMore) {
         jQuery.ajax({
             url: `/api/${table}/${id}/.prev`,
             async: false,
             method : 'get',
+			statusCode: {
+            	204: fnNoMore
+			},
             success : function(data) {
-            	rt = data;
+            	if(data!==undefined) {
+            		fuSuccess(data);
+            	}
             }
         });
-        return rt;
 	}	
 	return theClass;
 });

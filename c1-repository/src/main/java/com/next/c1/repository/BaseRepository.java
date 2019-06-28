@@ -9,4 +9,5 @@ public interface BaseRepository<T,ID> extends JpatisRepository<T,ID>{
 	ID getLast();
 	ID getNext(ID id);
 	ID getPrev(ID id);
+	ID getNextId();
 }

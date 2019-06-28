@@ -99,12 +99,21 @@ sap.ui.define([
 		console.log(data);
 	}
 	BaseDetailController.prototype.onNext = function()	{
-		var id = ServiceUtil.getNext(this.dataTable, this.dataId);
-		this.onLoadData(id);
+		var that = this;
+		var id = ServiceUtil.getNext(this.dataTable, this.dataId, function(id){
+			that.onLoadData(id);
+		}, function(){
+			MessageToast.show("Last Records");
+		});
+		
 	}
 	BaseDetailController.prototype.onPrev = function()	{
-		var id = ServiceUtil.getPrev(this.dataTable, this.dataId);
-		this.onLoadData(id);
+		var that = this;
+		var id = ServiceUtil.getPrev(this.dataTable, this.dataId, function(id){
+			that.onLoadData(id);
+		}, function(){
+			MessageToast.show("First Records");
+		});
 	}	
 	BaseDetailController.prototype.onRefresh = function()	{
 		this.onLoadData(this.dataId);
