@@ -18,7 +18,7 @@
 				<table:defaultColumn text="Remarks" dataBind="remarks"/>
 			</table:defaultColumns>
 			<table:extension>
-				<OverflowToolbar id="otb1">
+				<OverflowToolbar>
 					<Button icon="sap-icon://add" type="Transparent" press="onAdd"/>
 					<Button icon="sap-icon://delete" type="Transparent" press="onDelete"/>
 					<Button icon="sap-icon://action-settings" type="Transparent" press="onTestClick"/>
