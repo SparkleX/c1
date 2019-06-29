@@ -25,11 +25,11 @@
 						</uxap:snappedHeading>
 
 						<uxap:expandedContent>
-							<m:Text text="Document Number" />
+							<m:Text text="{/id}" />
 						</uxap:expandedContent>
 
 						<uxap:snappedContent>
-							<m:Text text="Document Number" />
+							<m:Text text="{/id}" />
 						</uxap:snappedContent>
 
 						<uxap:actions>

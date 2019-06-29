@@ -16,12 +16,6 @@
 			</table:extension>
 			<table:columns>
 				<table:Column>
-					<Label text="#" />
-					<table:template>
-						<Text text="{visOrder}" />
-					</table:template>
-				</table:Column>
-				<table:Column>
 					<Label text="Item" />
 					<table:template>
 						<widget:LinkInput dataValue="{itemId}" dataFormat="RDR1.itemId"/>
