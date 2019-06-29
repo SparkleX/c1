@@ -3,9 +3,10 @@ sap.ui.define([
 	"sap/ui/core/TextAlign",
 	"sap/ui/core/format/NumberFormat",
 	"next/core/widget/CoreUtil",
-	"./FormatUtil"
+	"./FormatUtil",
+	"sap/ui/model/json/JSONModel",
 ],
-function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
+function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 	"use strict";
 	var theClass = BaseClass.extend("next.core.widget.FormatLink", { 
 	metadata: {
@@ -18,6 +19,7 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
     	var rt = BaseClass.prototype.applySettings.call(this, mSettings, oScope);
     	
     	var dataFormat = this.getDataFormat(); 
+    	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
     	var format = FormatUtil.format(dataFormat);
     	if(format.right){
     		this.setTextAlign(TextAlign.Right);
@@ -32,7 +34,7 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
 	}
 	theClass.prototype.setText = function (value) {
 		var formattedVal = this.formatValue(value);
-		this.setProperty("dataValue", value);
+		//this.setProperty("dataValue", value);
 		BaseClass.prototype.setText.call(this, formattedVal);
 	}
 	theClass.prototype.getText = function () {
@@ -43,32 +45,26 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
 		this.setText(value);
 		this.setProperty("dataValue", value);
 	}	
-	theClass.prototype.getDataValue = function () {
-		return this.getText();
-	}	
 
-    theClass.prototype.openQuickView= function (oEvent, oModel) {
-		this.createPopover();
 
+	theClass.prototype.onPress= function (evt) {
+		var table = this.metaCol.linkTo;
+		if (!this._oQuickView) {
+			
+			this._oQuickView = sap.ui.xmlfragment("next.share.quick."+table, this);
+			//this.getView().addDependent(this._oQuickView);
+		}
+		var oModel = new JSONModel();
+		var url ="/api/"+table+"/"+this.getDataValue();
+		oModel.loadData(url,null,false)
 		this._oQuickView.setModel(oModel);
 
-		// delay because addDependent will do a async rerendering and the actionSheet will immediately close without it.
-		var oButton = oEvent.getSource();
+		var oButton = evt.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
 			this._oQuickView.openBy(oButton);
 		});
-	};
 
-	theClass.prototype.onPress= function (evt) {
-		this.openQuickView(evt, null);
-	};
+	}	
 
-	theClass.prototype.createPopover= function() {
-
-		if (!this._oQuickView) {
-			this._oQuickView = sap.ui.xmlfragment("next.share.quick.OCRD", this);
-			//this.getView().addDependent(this._oQuickView);
-		}
-	};	
 	return theClass;
 });

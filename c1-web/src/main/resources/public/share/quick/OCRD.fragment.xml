@@ -1,25 +1,14 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<QuickView pages="{ path : '/pages', templateShareable : 'true'}" navigate=".onNavigate">
-		<QuickViewPage
-				pageId="{pageId}"
-				header="{header}"
-				icon="{icon}"
-				title="{title}"
-				titleUrl="{titleUrl}"
-				description="{description}"
-				groups="{ path : 'groups', templateShareable : 'true'}">
-			<QuickViewGroup heading="{heading}" elements="{ path : 'elements', templateShareable : 'true'}">
-				<QuickViewGroupElement
-						label="{label}"
-						value="{value}"
-						url="{url}"
-						type="{elementType}"
-						pageLinkId="{pageLinkId}"
-						emailSubject="{emailSubject}"
-						target="{target}"
-						>
-				</QuickViewGroupElement>
-			</QuickViewGroup>
-		</QuickViewPage>
-	</QuickView>
+	<Popover title="Business Partner" class="sapUiContentPadding" placement="Bottom">
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Link text="Go" target="_blank" href="/app/OCRD/#/detail/1" />
+			</Toolbar>
+		</footer>
+		<Label text="Basic Information" width="100%" />
+		<Text  text="{/bpCode}" width="100%" />
+		<Text  text="{/bpName}" width="100%" />
+		<Label text="Address" width="100%" />
+	</Popover>
 </core:FragmentDefinition>
