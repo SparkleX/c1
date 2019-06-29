@@ -16,7 +16,7 @@ function(JSONModel, jQuery) {
 	
 	theClass.scan=function(view, applyFunction) {
 		console.debug(view.getId());
-		if(view.getId()==="__general0-defaultXML--zzz"){
+		if(view.getId()==="__input0"){
 			console.debug(view.getId());	
 		}
 		applyFunction(view);

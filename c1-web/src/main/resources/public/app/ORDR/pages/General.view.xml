@@ -12,8 +12,9 @@
 			<form:SimpleForm id = "zzz" layout="ColumnLayout">
 				<core:Title text="Basic Information"/>
 				<form:content>
+					<widget:LabelInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
 					<Label text="Business Partner Code" />
-					<widget:LinkInput id="bpId" type="Text" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
+					<widget:LinkInput id="bpId" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
 					</widget:LinkInput>
 				</form:content>
 			</form:SimpleForm>
