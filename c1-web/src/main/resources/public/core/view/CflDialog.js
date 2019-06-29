@@ -22,20 +22,20 @@ sap.ui.define([
 	theClass.prototype.open = function (inputId) {
 		var oView = this._oView;
 
-		this._oDialog = sap.ui.xmlfragment("next.core.view.CflDialog", this);
-		//this._oDialog = new sap.ui.core.Fragment("next.core.view.CflDialog", this);
+		//this._oDialog = sap.ui.xmlfragment("next.core.view.CflDialog", this);
+		this._oDialog = sap.ui.xmlfragment("next.share.choose."+this._table, this);
         oView.addDependent(this._oDialog);
         var oModelList = new JSONModel();
 
         oModelList.loadData("/api/"+this._table+"/");
         this._oDialog.setModel(oModelList, "cfl");
         
-		var oItemTemplate = new sap.m.StandardListItem({
+		/*var oItemTemplate = new sap.m.StandardListItem({
 				title: "{cfl>id}",
 				description: "{cfl>"+this._metaTable.descColumn+"}",
 				type: "Active"
 			})
-        this._oDialog.bindAggregation("items", "cfl>/", oItemTemplate);
+        this._oDialog.bindAggregation("items", "cfl>/", oItemTemplate);*/
         this._oDialog.open();
 	};
 	theClass.prototype._onSearch = function(oEvent) {
@@ -50,11 +50,14 @@ sap.ui.define([
 	theClass.prototype._onClose = function (evt) {
     }	
 	theClass.prototype._onConfirm = function (evt) {
-        var oSelectedItem = evt.getParameter("selectedItem");
+       /* var oSelectedItem = evt.getParameter("selectedItem");
         var value = oSelectedItem.getTitle();
         var desc= oSelectedItem.getDescription();
-        this._oView.setDataValue(value);
-        //this._oView.setDataDesc(desc);
+        this._oView.setDataValue(value);*/
+
+        var aContexts = evt.getParameter("selectedContexts");
+		var id = aContexts[0].getObject().id;
+		this._oView.setDataValue(id);
 
     }
 	return theClass;
