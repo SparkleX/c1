@@ -2,11 +2,9 @@ sap.ui.define([
 	"sap/ui/core/Control",
 	"sap/m/Input",
 	"sap/m/Label",
-	"sap/ui/core/TextAlign",
-	"sap/ui/core/format/NumberFormat",
 	"next/core/widget/CoreUtil"
 ],
-function(BaseClass, Input, Label, TextAlign,NumberFormat, CoreUtil) {
+function(BaseClass, Input, Label, CoreUtil) {
 	"use strict";
 	var theClass = BaseClass.extend("next.core.widget.LabelInput", { 
 		metadata: {

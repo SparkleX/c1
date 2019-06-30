@@ -24,8 +24,8 @@
 					<Label text="Document Number" />
 					<Input value="{/id}"/>
 					<Label text="Document Status" />
-					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false">
-					</widget:Select>
+					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false"/>
+					<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
 				</form:content>
 			</form:SimpleForm>
 		</layout:content>
