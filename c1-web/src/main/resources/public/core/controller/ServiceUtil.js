@@ -52,6 +52,22 @@ sap.ui.define([
             }
         });
 	}
+	theClass.change = function (data, table, column, row) {
+	    var json = JSON.stringify(data)
+	    var params = jQuery.param({table:table,column:column,row:row});
+	    var rt;
+        jQuery.ajax({
+            url: `/api/${table}/change?${params}`,
+            async: false,
+            method : 'post',
+            contentType :'application/json',
+            data : json,
+            success : function(data) {
+            	rt = data;
+            }
+        });
+        return rt;
+	}	
 	theClass.getPrev = function (table, id, fuSuccess, fnNoMore) {
         jQuery.ajax({
             url: `/api/${table}/${id}/.prev`,

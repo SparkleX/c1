@@ -20,4 +20,12 @@ public class ORDRService extends BaseService<DoORDR, ORDRRepository> {
 		doORDR.setRDR1(listRDR1);
 		return doORDR;
 	}
+	@Override
+	public DoORDR change(DoORDR data, String table, String column, Integer row) {
+		DoORDR rt = data;
+		for(DoRDR1 line:data.getRDR1())	{
+			line.setItemId(3-line.getItemId());
+		}
+		return rt;
+	}
 }

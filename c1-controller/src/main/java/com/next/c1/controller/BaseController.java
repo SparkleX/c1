@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.next.c1.service.BaseService;
 
@@ -79,7 +80,11 @@ public class BaseController<T, SERVICE extends BaseService<T, ?>> {
 		service.delete(id);
 		response.setStatus(HttpStatus.NO_CONTENT.value());
 	}
-
+	@PostMapping(path = "/change")
+	public T change(@RequestBody T data, @RequestParam("table") String table, @RequestParam("column") String column, @RequestParam("row") Integer row) {
+		T rt = service.change(data, table, column, row);
+		return rt;
+	}
 	@GetMapping
 	public List<T> search() {
 		return service.search();

@@ -27,7 +27,9 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	private String getMdTable() {
 		return this.getClass().getSimpleName().substring(0,4);
 	}
-
+	public T change(T data, String table, String column, Integer line) {
+		return data;
+	}
 	public T get(Integer id) {
 		return repository.findById(id).get();
 	}
