@@ -8,7 +8,7 @@ function(BaseClass, Input, Label, CoreUtil) {
 	"use strict";
 	var theClass = BaseClass.extend("next.core.widget.LabelInput", { 
 		metadata: {
-			interfaces : ["sap.ui.core.IFormContent"],
+			interfaces : ["sap.ui.core.IFormContent","sap.ui.core.Label"],
 			properties: {
 				label: { type: "string", group: "Misc", defaultValue: "" },
 				dataFormat: { type: "string", group: "Misc", defaultValue: null },
@@ -22,9 +22,11 @@ function(BaseClass, Input, Label, CoreUtil) {
 	});
 	theClass.prototype.init = function () {
 		BaseClass.prototype.init.call(this);
-		 var that = this;
-		  this.setAggregation("_input", new sap.m.Input({type:"Text"}));
-		  this.setAggregation("_label", new sap.m.Label());		
+		var that = this;
+		var oInput = new sap.m.Input({type:"Text",width:"100%"});
+		this.setAggregation("_input", oInput);
+		var oLabel = new sap.m.Label({width:"100%"});
+		this.setAggregation("_label", oLabel);		
 	}
     theClass.prototype.applySettings = function(mSettings, oScope) {
     	var rt = BaseClass.prototype.applySettings.call(this, mSettings, oScope);
@@ -35,6 +37,9 @@ function(BaseClass, Input, Label, CoreUtil) {
     	oLabel.setText(this.getLabel());
     	return rt;
      }	  
+    theClass.prototype.setAlternativeLabelFor = function() {
+    	
+    }
 
 	return theClass;
 });

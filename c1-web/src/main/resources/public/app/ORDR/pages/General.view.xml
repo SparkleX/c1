@@ -7,27 +7,19 @@
 	xmlns:core="sap.ui.core"
 	xmlns:widget="next.core.widget"
 	width="100%">
-	<layout:Grid width="100%" defaultSpan="L6 M6 S12">
-		<layout:content>
-			<form:SimpleForm id = "zzz" layout="ColumnLayout">
-				<core:Title text="Basic Information"/>
-				<form:content>
-					<widget:LabelInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
-					<Label text="Business Partner Code" />
-					<widget:LinkInput id="bpId" dataValue="{/bpId}" dataFormat = "ORDR.bpId">
-					</widget:LinkInput>
-				</form:content>
-			</form:SimpleForm>
-			<form:SimpleForm layout="ColumnLayout" >
-				<core:Title text="Document Status"/>
-				<form:content>
-					<Label text="Document Number" />
-					<Input value="{/id}"/>
-					<Label text="Document Status" />
-					<widget:Select selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false"/>
-					<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
-				</form:content>
-			</form:SimpleForm>
-		</layout:content>
-	</layout:Grid>
+	<layout:BlockLayout>
+		<layout:BlockLayoutRow>
+			<layout:BlockLayoutCell title="Basic Information">
+				<widget:LabelInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
+				<Label text="Business Partner Code"/>
+				<widget:LinkInput dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>			
+			</layout:BlockLayoutCell>
+			<layout:BlockLayoutCell	title="Document Status">
+				<widget:LabelInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
+				<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
+				<Label text="Document Status" width="100%"/>
+				<widget:Select  width="100%" selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false"/>
+			</layout:BlockLayoutCell>
+		</layout:BlockLayoutRow>
+	</layout:BlockLayout>	
 </mvc:View>

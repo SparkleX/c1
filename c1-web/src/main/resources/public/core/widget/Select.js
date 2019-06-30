@@ -7,7 +7,7 @@ sap.ui.define([
 	var theClass =  Select.extend("next.core.widget.Select", {
 		metadata : {
 			properties : {
-				dataFormat:  {type: "string", group: "Behavior"}
+				dataFormat:  {type: "string", group: "Behavior"},
 			}
 		}
 	});

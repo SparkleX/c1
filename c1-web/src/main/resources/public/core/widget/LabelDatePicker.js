@@ -34,6 +34,9 @@ function(BaseClass, DatePicker, Label) {
     	oLabel.setText(this.getLabel());
     	return rt;
      }	  
-
+    theClass.prototype.getFormDoNotAdjustWidth = function() {
+    	return true;
+    	
+    }
 	return theClass;
 });
