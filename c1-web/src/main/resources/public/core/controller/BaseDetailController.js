@@ -38,9 +38,6 @@ sap.ui.define([
 				}
 			}, this);
 	};
-	BaseDetailController.prototype.isAddMode = function() {
-	    return this.dataId ==="#";
-	}
 	BaseDetailController.prototype.onLoadData = function(id) {
 		this.dataId = id;
 		var oModel = new JSONModel();
@@ -84,7 +81,7 @@ sap.ui.define([
 		var model = component.getModel();
 		var data = model.getData();
 		console.log(data);
-	    if(this.isAddMode()) {
+	    if(this.formMode === FormMode.addMode) {
     		ApiUtils.create(this.dataTable, data);
     	} else {
     	    ApiUtils.update(this.dataTable, this.dataId, data);

@@ -5,11 +5,13 @@ sap.ui.define([
 	var theClass = {}
 
 	theClass.create = function (table, data) {
+		 var json = JSON.stringify(data);
         jQuery.ajax({
             url: `/api/${table}/`,
             async: false,
             method : 'post',
-            data : data,
+            contentType :'application/json',
+            data : json,
             success : function(data) {
             }
         });

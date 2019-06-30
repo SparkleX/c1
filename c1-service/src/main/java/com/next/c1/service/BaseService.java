@@ -34,6 +34,8 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		return repository.findById(id).get();
 	}
 	public void create(T o) {
+		Integer id = this.repository.newId();
+		FieldUtilsEx.writeField(o, "id", id);
 		repository.insert(o);;
 	}
 	public void update(Integer id, T entity) {

@@ -10,4 +10,12 @@ public class FieldUtilsEx {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public static void writeField(Object target, String fieldName, Object value) {
+		try {
+			FieldUtils.writeField(target, fieldName, value, true);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

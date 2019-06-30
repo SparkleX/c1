@@ -24,7 +24,7 @@ public class BaseController<T, SERVICE extends BaseService<T, ?>> {
 	protected HttpServletResponse response;
 
 	@PostMapping
-	public void create(T o) {
+	public void create(@RequestBody T o) {
 		service.create(o);
 	}
 

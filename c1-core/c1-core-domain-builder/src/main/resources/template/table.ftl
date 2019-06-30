@@ -45,6 +45,7 @@ public class Do${data.id}
 		if(${array.id}==null) ${array.id} = new ArrayList<>();
 		return ${array.id};
 	}
+	@JsonIgnore
 	public void set${array.id}(List<Do${array.type}> val) {
 		${array.id}=val;
 	}

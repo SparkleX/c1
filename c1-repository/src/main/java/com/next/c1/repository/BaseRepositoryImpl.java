@@ -50,9 +50,9 @@ public class BaseRepositoryImpl<T,ID> extends JpatisRepositoryImpl<T,ID> impleme
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public ID getNextId() {
+	public ID newId() {
 		SqlConnection conn = getSqlConnection();
-		List<Object[]> rt = conn.select("select max(id) from %s where id<?", tableName);
+		List<Object[]> rt = conn.select("select "+tableName+"_S.nextval from dual");
 		return (ID) rt.get(0)[0];
 	}
 }
