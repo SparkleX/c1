@@ -38,9 +38,9 @@ function(Input, CflDialog, JSONModel, CoreUtil,ServiceUtil) {
 		var that = this;
 		var desc = ServiceUtil.getDescription(linkToTable, value, function(val){
 			that.setDataDesc(val);
-			that.setValue(val);
+			that.setValue(val);			
 		});
-		ServiceUtil.finishBatchDesc();
+		//ServiceUtil.finishBatchDesc();
 	};
 	
 	theClass.prototype._onChooseFromList = function (oEvent) {

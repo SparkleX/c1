@@ -18,7 +18,12 @@ sap.ui.define([
             this.newButton = this.byId("newButton");
             this.deleteButton = this.byId("deleteButton");
 			var oView = this.getView();
-
+			oView.addEventDelegate({
+			  onAfterRendering: function(evt){
+				ServiceUtil.finishBatchDesc();
+			  },
+			}, oView);
+			
 			var component =  this.getOwnerComponent();
 			var oRouter = component.getRouter();
 			oRouter.getRoute("detail").attachMatched(function(oEvent) {

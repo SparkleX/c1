@@ -21,6 +21,7 @@ sap.ui.define([
 		var data = oModel.getData();
 		var newData = ServiceUtil.change(data,"ORDR","",0);
 		oModel.setData(newData);
+		this.getView().invalidate();
 	}	
 	return theClass;
 });
