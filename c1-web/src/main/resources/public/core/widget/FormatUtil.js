@@ -1,9 +1,9 @@
 sap.ui.define([
     "./CoreUtil",
     "sap/ui/core/format/NumberFormat",
-    "next/core/controller/ServiceUtil",
+    "next/core/controller/ApiUtils",
 ],
-function(CoreUtil,NumberFormat,ServiceUtil) {
+function(CoreUtil,NumberFormat,ApiUtils) {
 	"use strict";
 
 	var theClass={};
@@ -38,7 +38,7 @@ function(CoreUtil,NumberFormat,ServiceUtil) {
 		}
 		
 		if(metaCol.linkTo) {
-			ServiceUtil.getDescription(metaCol.linkTo, dataValue, fnCallback);
+			ApiUtils.getDescription(metaCol.linkTo, dataValue, fnCallback);
 			return ;
 		}
 		fnCallback(dataValue);

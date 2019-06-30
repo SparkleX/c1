@@ -3,9 +3,9 @@ sap.ui.define([
 	"next/core/view/CflDialog",
     "sap/ui/model/json/JSONModel",
     "next/core/widget/CoreUtil",
-    "next/core/controller/ServiceUtil",
+    "next/core/controller/ApiUtils",
 ],
-function(Input, CflDialog, JSONModel, CoreUtil,ServiceUtil) {
+function(Input, CflDialog, JSONModel, CoreUtil,ApiUtils) {
 	"use strict";
 	var theClass = Input.extend("next.core.widget.LinkInput", { 
 	metadata: {
@@ -36,11 +36,11 @@ function(Input, CflDialog, JSONModel, CoreUtil,ServiceUtil) {
 		var metaCol = CoreUtil.getMdColumn(table, field);
 		var linkToTable = metaCol.linkTo;
 		var that = this;
-		var desc = ServiceUtil.getDescription(linkToTable, value, function(val){
+		var desc = ApiUtils.getDescription(linkToTable, value, function(val){
 			that.setDataDesc(val);
 			that.setValue(val);			
 		});
-		//ServiceUtil.finishBatchDesc();
+		//ApiUtils.finishBatchDesc();
 	};
 	
 	theClass.prototype._onChooseFromList = function (oEvent) {

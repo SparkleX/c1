@@ -4,8 +4,8 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"next/core/controller/RouterUtil",
-	"next/core/controller/ServiceUtil"
-], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ServiceUtil) {
+	"next/core/controller/ApiUtils"
+], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ApiUtils) {
 	"use strict";
 
 	var theClass =Controller.extend("next.core.controller.BaseListController", {});
@@ -17,7 +17,7 @@ sap.ui.define([
 			that.refresh();
 		  },
 		  onAfterRendering: function(evt){
-			ServiceUtil.finishBatchDesc();
+			ApiUtils.finishBatchDesc();
 		  },
 		}, oView);
 	}
@@ -53,7 +53,7 @@ sap.ui.define([
 
         for(let row of rowid) {
         	var id = tb.getRows()[row].getCells()[0].getText();
-        	ServiceUtil.delete(this.dataTable, id);
+        	ApiUtils.delete(this.dataTable, id);
         }
         MessageToast.show("Successful");
         this.refresh();

@@ -3,8 +3,8 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
-	"next/core/controller/ServiceUtil",
-], function (BaseClass, MessageToast, Fragment, JSONModel, ServiceUtil) {
+	"next/core/controller/ApiUtils",
+], function (BaseClass, MessageToast, Fragment, JSONModel, ApiUtils) {
 	"use strict";
 
 	var theClass =BaseClass.extend("next.app.order.controller.Detail", {
@@ -19,7 +19,7 @@ sap.ui.define([
 	theClass.prototype.onChange=function(evt) {
 		var oModel = this.getOwnerComponent().getModel()
 		var data = oModel.getData();
-		var newData = ServiceUtil.change(data,"ORDR","",0);
+		var newData = ApiUtils.change(data,"ORDR","",0);
 		oModel.setData(newData);
 		this.getView().invalidate();
 	}	

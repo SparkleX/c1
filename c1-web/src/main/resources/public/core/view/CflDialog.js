@@ -5,8 +5,8 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
     'sap/ui/model/Filter',
     "next/core/widget/CoreUtil",
-    "next/core/controller/ServiceUtil",
-], function (ManagedObject, Controller, Fragment, JSONModel, Filter, CoreUtil,ServiceUtil) {
+    "next/core/controller/ApiUtils",
+], function (ManagedObject, Controller, Fragment, JSONModel, Filter, CoreUtil,ApiUtils) {
 	"use strict";
 	var theClass = Controller.extend("next.core.view.CflDialog", {
 		constructor : function (oView, table) {
@@ -59,7 +59,7 @@ sap.ui.define([
         var aContexts = evt.getParameter("selectedContexts");
 		var id = aContexts[0].getObject().id;
 		this._oView.setDataValue(id);
-		ServiceUtil.finishBatchDesc();
+		ApiUtils.finishBatchDesc();
 
     }
 	return theClass;

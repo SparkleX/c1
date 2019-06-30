@@ -4,10 +4,10 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"./FormMode",
-	"./ServiceUtil",
+	"./ApiUtils",
     "next/core/controller/RouterUtil",
     "next/core/widget/WidgetUtil",
-], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ServiceUtil, RouterUtil, WidgetUtil) {
+], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ApiUtils, RouterUtil, WidgetUtil) {
 	"use strict";
 
 	var BaseDetailController=Controller.extend("app.core.controller.BaseDetailController", {});
@@ -20,7 +20,7 @@ sap.ui.define([
 			var oView = this.getView();
 			oView.addEventDelegate({
 			  onAfterRendering: function(evt){
-				ServiceUtil.finishBatchDesc();
+				ApiUtils.finishBatchDesc();
 			  },
 			}, oView);
 			
@@ -60,7 +60,7 @@ sap.ui.define([
 		window.history.back();
 	}
 	BaseDetailController.prototype.onDelete = function(){
-		ServiceUtil.delete(this.dataTable, this.dataId);
+		ApiUtils.delete(this.dataTable, this.dataId);
 		MessageToast.show("Successful");
 		window.history.back();
 	}
@@ -85,9 +85,9 @@ sap.ui.define([
 		var data = model.getData();
 		console.log(data);
 	    if(this.isAddMode()) {
-    		ServiceUtil.create(this.dataTable, data);
+    		ApiUtils.create(this.dataTable, data);
     	} else {
-    	    ServiceUtil.update(this.dataTable, this.dataId, data);
+    	    ApiUtils.update(this.dataTable, this.dataId, data);
     	}
 
 	}
@@ -106,7 +106,7 @@ sap.ui.define([
 	}
 	BaseDetailController.prototype.onNext = function()	{
 		var that = this;
-		var id = ServiceUtil.getNext(this.dataTable, this.dataId, function(id){
+		var id = ApiUtils.getNext(this.dataTable, this.dataId, function(id){
 			that.onLoadData(id);
 		}, function(){
 			MessageToast.show("Last Records");
@@ -115,7 +115,7 @@ sap.ui.define([
 	}
 	BaseDetailController.prototype.onPrev = function()	{
 		var that = this;
-		var id = ServiceUtil.getPrev(this.dataTable, this.dataId, function(id){
+		var id = ApiUtils.getPrev(this.dataTable, this.dataId, function(id){
 			that.onLoadData(id);
 		}, function(){
 			MessageToast.show("First Records");
