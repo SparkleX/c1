@@ -1,7 +1,5 @@
 sap.ui.define([
-	"sap/m/InputRenderer",
-	"sap/m/LabelRenderer",	
-], function (InputRenderer, LabelRenderer) {
+], function () {
 	"use strict";
 	var theClass = {};
 	

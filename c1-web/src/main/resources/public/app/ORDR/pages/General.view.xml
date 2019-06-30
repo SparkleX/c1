@@ -13,7 +13,7 @@
 				<widget:LabelLinkInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
 			</layout:BlockLayoutCell>
 			<layout:BlockLayoutCell	title="Document Status">
-				<widget:LabelInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
+				<widget:LabelFormatInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
 				<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
 				<widget:LabelSelect  label="Document Status" dataValue="{/docStatus}" dataFormat="ORDR.docStatus"/>
 				<widget:CheckBox dataValue="{/docStatus}" dataFormat="ORDR.docStatus" label="Closed" dataYes="C" dataNo="O"/>

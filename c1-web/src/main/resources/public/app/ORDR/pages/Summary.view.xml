@@ -11,7 +11,7 @@
 			<layout:BlockLayoutCell>
 			</layout:BlockLayoutCell>
 			<layout:BlockLayoutCell title="Summary">
-				<widget:LabelInput label="Document Total"  dataFormat="ORDR.docTotal" dataValue="{/docTotal}"/>
+				<widget:LabelFormatInput label="Document Total"  dataFormat="ORDR.docTotal" dataValue="{/docTotal}"/>
 			</layout:BlockLayoutCell>
 		</layout:BlockLayoutRow>
 	</layout:BlockLayout>
