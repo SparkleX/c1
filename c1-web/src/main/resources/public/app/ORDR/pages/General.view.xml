@@ -10,14 +10,13 @@
 	<layout:BlockLayout>
 		<layout:BlockLayoutRow>
 			<layout:BlockLayoutCell title="Basic Information">
-				<widget:LabelInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
-				<Label text="Business Partner Code"/>
-				<widget:LinkInput dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>			
+				<widget:LabelLinkInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
 			</layout:BlockLayoutCell>
 			<layout:BlockLayoutCell	title="Document Status">
 				<widget:LabelInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
 				<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
 				<widget:LabelSelect  label="Document Status" dataValue="{/docStatus}" dataFormat="ORDR.docStatus"/>
+				<widget:CheckBox dataValue="{/docStatus}" dataFormat="ORDR.docStatus" label="Closed" dataYes="C" dataNo="O"/>
 			</layout:BlockLayoutCell>
 		</layout:BlockLayoutRow>
 	</layout:BlockLayout>	

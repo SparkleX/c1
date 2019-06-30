@@ -37,9 +37,5 @@ function(BaseClass, Input, Label, CoreUtil) {
     	oLabel.setText(this.getLabel());
     	return rt;
      }	  
-    theClass.prototype.setAlternativeLabelFor = function() {
-    	
-    }
-
 	return theClass;
 });
