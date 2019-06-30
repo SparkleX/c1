@@ -17,8 +17,7 @@
 			<layout:BlockLayoutCell	title="Document Status">
 				<widget:LabelInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
 				<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
-				<Label text="Document Status" width="100%"/>
-				<widget:Select  width="100%" selectedKey="{/docStatus}" dataFormat="ORDR.docStatus" showSecondaryValues="true" forceSelection="false"/>
+				<widget:LabelSelect  label="Document Status" dataValue="{/docStatus}" dataFormat="ORDR.docStatus"/>
 			</layout:BlockLayoutCell>
 		</layout:BlockLayoutRow>
 	</layout:BlockLayout>	
