@@ -28,22 +28,24 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 		this.attachPress(this.onPress);
     	return rt;
      }	
-	theClass.prototype.formatValue = function (value) {
+	theClass.prototype.setDescAnsync = function (value, fn) {
 		var dataFormat = this.getDataFormat(); 
-		return FormatUtil.formatValue(dataFormat, value);
+		return FormatUtil.formatValue(dataFormat, value, fn);
 	}
 	theClass.prototype.setText = function (value) {
-		var formattedVal = this.formatValue(value);
+		//var formattedVal = this.formatValue(value);
 		//this.setProperty("dataValue", value);
-		BaseClass.prototype.setText.call(this, formattedVal);
+		BaseClass.prototype.setText.call(this, value);
 	}
 	theClass.prototype.getText = function () {
 		return BaseClass.prototype.getText.call(this);
 	}	
 	theClass.prototype.setDataValue = function (value) {
-
-		this.setText(value);
 		this.setProperty("dataValue", value);
+		var that = this;
+		this.setDescAnsync(value, function(desc) {
+			that.setText(desc);
+		});		
 	}	
 
 

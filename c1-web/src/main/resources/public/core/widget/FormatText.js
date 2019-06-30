@@ -26,14 +26,14 @@ function(Text, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
 		
     	return rt;
      }	
-	theClass.prototype.formatValue = function (value) {
+	theClass.prototype.formatValue = function (value, fn) {
 		var dataFormat = this.getDataFormat(); 
-		return FormatUtil.formatValue(dataFormat, value);
+		FormatUtil.formatValue(dataFormat, value, fn);
 	}
 	theClass.prototype.setText = function (value) {
-		var formattedVal = this.formatValue(value);
-		this.setProperty("dataValue", value);
-		Text.prototype.setText.call(this, formattedVal);
+		//var formattedVal = this.formatValue(value);
+		//this.setProperty("dataValue", value);
+		Text.prototype.setText.call(this, value);
 	}
 	theClass.prototype.getText = function () {
 		return Text.prototype.getText.call(this);

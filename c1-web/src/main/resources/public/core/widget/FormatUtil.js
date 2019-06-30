@@ -1,8 +1,9 @@
 sap.ui.define([
     "./CoreUtil",
     "sap/ui/core/format/NumberFormat",
+    "next/core/controller/ServiceUtil",
 ],
-function(CoreUtil,NumberFormat) {
+function(CoreUtil,NumberFormat,ServiceUtil) {
 	"use strict";
 
 	var theClass={};
@@ -20,9 +21,10 @@ function(CoreUtil,NumberFormat) {
 		rt.decimalPlaces = CoreUtil.getDecimalPlaces(metaCol);
 		return rt;
 	}
-	theClass.formatValue=function(dataFormat, dataValue) {
+	theClass.formatValue=function(dataFormat, dataValue, fnCallback) {
 		if(dataValue==null) {
-			return null;
+			fnCallback(null);
+			return ;
 		}
 		var metaCol = CoreUtil.getMdColumnByBind(dataFormat);
 		
@@ -30,15 +32,15 @@ function(CoreUtil,NumberFormat) {
 		case "DECIMAL":
 			var decimalPlaces = CoreUtil.getDecimalPlaces(metaCol);
 			var oFormat = NumberFormat.getFloatInstance({decimals: decimalPlaces});
-			return oFormat.format(dataValue);
+			var rt =oFormat.format(dataValue);
+			fnCallback(rt);
 		}
 		
 		if(metaCol.linkTo) {
-			var desc = CoreUtil.getDescription(metaCol.linkTo, dataValue);
-			return desc;
+			ServiceUtil.getDescription(metaCol.linkTo, dataValue, fnCallback);
+			return ;
 		}
-		
-		return dataValue;
+		fnCallback(dataValue);
 	}
 	return theClass;
 });

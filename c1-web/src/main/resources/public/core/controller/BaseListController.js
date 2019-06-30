@@ -15,7 +15,10 @@ sap.ui.define([
 		oView.addEventDelegate({
 		  onAfterShow: function(evt){
 			that.refresh();
-		  }
+		  },
+		  onAfterRendering: function(evt){
+			ServiceUtil.finishBatchDesc();
+		  },
 		}, oView);
 	}
 
@@ -38,7 +41,8 @@ sap.ui.define([
         oModelList.attachRequestCompleted(function() {
         });
         this.getOwnerComponent().setModel(oModelList, "list");
-        oModelList.refresh(true);
+        oModelList.refresh();
+        this.getView().invalidate();
 	}
     theClass.prototype.onAdd = function (evt) {
         RouterUtil.navToNew(this);

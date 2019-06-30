@@ -67,5 +67,42 @@ sap.ui.define([
             }
         });
 	}	
+	theClass.batchDescList = [];
+    theClass.getDescription=function(table, key, fnCallback) {
+    	if (key===undefined || key===null) {
+    		fnCallback("");
+    	}
+    	var data = {table:table, id:key, fn:fnCallback}
+    	this.batchDescList.push(data);
+    }	
+    theClass.finishBatchDesc=function() {
+    	if (this.batchDescList.length==0) {
+    		return;
+    	}
+    	var body = {};
+    	for(let node of this.batchDescList) {
+    		if(body[node.table] === undefined){
+    			body[node.table] = {};
+    		}
+    		body[node.table][node.id]=null;
+    	}
+    	var rt;
+        jQuery.ajax({
+            url: "/api/batch/desc",
+            method:"post",
+            contentType :'application/json',
+            data : JSON.stringify(body),
+            async: false,
+            success : function(data) {
+                rt = data;
+            }
+        });
+    	for(let node of this.batchDescList) {
+    		var desc = rt[node.table][node.id];
+    		node.fn(desc);
+    	}        
+    	this.batchDescList=[];
+
+    }
 	return theClass;
 });
