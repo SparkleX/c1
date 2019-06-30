@@ -25,11 +25,10 @@ public class ORDRService extends BaseService<DoORDR, ORDRRepository> {
 		DoORDR rt = data;
 		for(DoRDR1 line:data.getRDR1())	{
 			Integer a = line.getItemId();
-			System.out.println("a:"+line.getItemId());
-			Integer b = 3-a;
+			Integer b = 4-a;
 			line.setItemId(b);
-			System.out.println(line.getItemId());
 		}
+		data.getRDR1().remove(0);
 		return rt;
 	}
 }
