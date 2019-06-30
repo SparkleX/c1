@@ -34,15 +34,15 @@
 
 						<uxap:actions>
 							<uxap:ObjectPageHeaderActionButton id="editButton" text="Edit" type="Emphasized" hideText="false" press="onEdit"/>
-							<uxap:ObjectPageHeaderActionButton id="newButton" type="Transparent" text="New" hideText="false" hideIcon="true"  press="onNew"/>
-							<uxap:ObjectPageHeaderActionButton id="deleteButton" type="Transparent" text="Delete" hideText="false" hideIcon="true"  press="onDelete"/>
-							<uxap:ObjectPageHeaderActionButton id="testButton" type="Transparent" text="Test" hideText="false" hideIcon="true"  press="onTest"/>
+							<uxap:ObjectPageHeaderActionButton id="newButton"  text="New" hideText="false" hideIcon="true"  press="onNew"/>
+							<uxap:ObjectPageHeaderActionButton id="deleteButton"  text="Delete" hideText="false" hideIcon="true"  press="onDelete"/>
+							<uxap:ObjectPageHeaderActionButton id="testButton"  text="Test" hideText="false" hideIcon="true"  press="onTest"/>
 							<uxap:ObjectPageHeaderActionButton text="Change" hideText="false" press="onChange"/>
 						</uxap:actions>
 						<uxap:navigationActions>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://synchronize" type="Transparent" tooltip="First" press="onRefresh"/>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="Previous" press="onPrev"/>
-							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down" type="Transparent" tooltip="Next"  press="onNext"/>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://synchronize" tooltip="First" press="onRefresh"/>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up"  tooltip="Previous" press="onPrev"/>
+							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-down"  tooltip="Next"  press="onNext"/>
 						</uxap:navigationActions>
 					 <!--	<uxap:content>
 							<uxap:ObjectPageHeaderActionButton icon="sap-icon://slim-arrow-up" type="Transparent" tooltip="slim-arrow-up" />

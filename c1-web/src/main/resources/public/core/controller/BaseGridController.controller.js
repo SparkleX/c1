@@ -16,8 +16,8 @@ sap.ui.define([
 		var rowid = table.getSelectedIndices();
 		var model = this.getView().getModel();
 		var root = model.getData();
-		if(root.rdr1===undefined) root.rdr1 = [];
-		var data = root.rdr1;
+		if(root.RDR1===undefined) root.RDR1 = [];
+		var data = root.RDR1;
 		if (rowid.length==0) {
 			data.push({});
 		} else if(rowid.length==1) {
@@ -34,7 +34,7 @@ sap.ui.define([
 		var model = this.getView().getModel();
 		var count = 0;
         for(let row of rowid) {
-			var data = model.getData().rdr1;
+			var data = model.getData().RDR1;
 			var removed = data.splice(row-count, 1);
 			count++;
         }
