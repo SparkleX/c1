@@ -6,7 +6,7 @@
 		xmlns:core="sap.ui.core"
 		xmlns:widget="next.core.widget"
 		width="100%">
-		<table:Table rows="{/rdr1}">
+		<table:Table rows="{/RDR1}">
 			<table:extension>
 				<OverflowToolbar id="otb1">
 					<Button icon="sap-icon://add" type="Transparent" press="onGridAdd"/>

@@ -24,7 +24,11 @@ public class ORDRService extends BaseService<DoORDR, ORDRRepository> {
 	public DoORDR change(DoORDR data, String table, String column, Integer row) {
 		DoORDR rt = data;
 		for(DoRDR1 line:data.getRDR1())	{
-			line.setItemId(3-line.getItemId());
+			Integer a = line.getItemId();
+			System.out.println("a:"+line.getItemId());
+			Integer b = 3-a;
+			line.setItemId(b);
+			System.out.println(line.getItemId());
 		}
 		return rt;
 	}

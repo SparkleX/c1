@@ -10,7 +10,7 @@
 	<layout:BlockLayout>
 		<layout:BlockLayoutRow>
 			<layout:BlockLayoutCell title="Basic Information">
-				<widget:LabelLinkInput label="Business Partner Code" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
+				<widget:LabelLinkInput label="Business Partner Code" type="Number" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
 			</layout:BlockLayoutCell>
 			<layout:BlockLayoutCell	title="Document Status">
 				<widget:LabelFormatInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>

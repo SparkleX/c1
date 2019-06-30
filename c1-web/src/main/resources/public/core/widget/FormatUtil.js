@@ -43,6 +43,20 @@ function(CoreUtil,NumberFormat,ApiUtils) {
 		}
 		fnCallback(dataValue);
 	}
+	
+	theClass.fromString=function(metaCol, str) {
+		if(str==null) {
+			return null;
+		}
+		switch(metaCol.dbType) {
+			case "IDENTITY":
+			case "INTEGER":
+				return parseInt(str);
+			case "DECIMAL":
+				return Float.parseFloat(str);
+		}
+		return str;
+	}
 	return theClass;
 });
 

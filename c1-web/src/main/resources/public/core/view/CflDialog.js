@@ -6,7 +6,8 @@ sap.ui.define([
     'sap/ui/model/Filter',
     "next/core/widget/CoreUtil",
     "next/core/controller/ApiUtils",
-], function (ManagedObject, Controller, Fragment, JSONModel, Filter, CoreUtil,ApiUtils) {
+    "next/core/widget/FormatUtil",
+], function (ManagedObject, Controller, Fragment, JSONModel, Filter, CoreUtil,ApiUtils, FormatUtil) {
 	"use strict";
 	var theClass = Controller.extend("next.core.view.CflDialog", {
 		constructor : function (oView, table) {
@@ -51,13 +52,9 @@ sap.ui.define([
 	theClass.prototype._onClose = function (evt) {
     }	
 	theClass.prototype._onConfirm = function (evt) {
-       /* var oSelectedItem = evt.getParameter("selectedItem");
-        var value = oSelectedItem.getTitle();
-        var desc= oSelectedItem.getDescription();
-        this._oView.setDataValue(value);*/
-
         var aContexts = evt.getParameter("selectedContexts");
 		var id = aContexts[0].getObject().id;
+		//var value = FormatUtil.fromString(this._oView.metaCol, id);
 		this._oView.setDataValue(id);
 		ApiUtils.finishBatchDesc();
 

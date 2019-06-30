@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 <#assign ColumnTypeUtil=statics['compiler.ColumnTypeUtil']>
 
@@ -38,7 +39,8 @@ public class Do${data.id}
 	<#list data.array as array>
 	@JsonProperty("${array.id}")
 	protected List<Do${array.type}> ${array.id};
-	//@ArrayTable	
+	//@ArrayTable
+	@JsonIgnore	
 	public List<Do${array.type}> get${array.id}() {
 		if(${array.id}==null) ${array.id} = new ArrayList<>();
 		return ${array.id};

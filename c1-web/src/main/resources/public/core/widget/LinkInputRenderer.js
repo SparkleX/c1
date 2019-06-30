@@ -4,10 +4,13 @@ sap.ui.define([
 	'sap/ui/core/Renderer'
 ], function (Control, InputRenderer, Renderer) {
 	"use strict";
-	var theClass = Renderer.extend(InputRenderer);
+	//var theClass = Renderer.extend(InputRenderer);
 
-	theClass.writeInnerValue = function(oRm, oControl) {
-		oRm.writeAttributeEscaped("value", oControl.getDataDesc());
-	};
+	var theClass = Renderer.extend(InputRenderer);
 	return theClass;
+	
+	/*theClass.writeInnerValue = function(oRm, oControl) {
+		oRm.writeAttributeEscaped("value", oControl.getDataDesc());
+	};*/
+	//return theClass;
 });
