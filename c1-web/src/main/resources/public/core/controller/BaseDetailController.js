@@ -17,6 +17,7 @@ sap.ui.define([
             this.editButton = this.byId("editButton");
             this.newButton = this.byId("newButton");
             this.deleteButton = this.byId("deleteButton");
+			var oView = this.getView();
 
 			var component =  this.getOwnerComponent();
 			var oRouter = component.getRouter();
@@ -42,6 +43,7 @@ sap.ui.define([
 		oModel.loadData(`/api/${this.dataTable}/${id}`);
 		this.getOwnerComponent().setModel(oModel);
 		this.onRefreshUiStatus();
+		this.getView().invalidate();
 	}
 	BaseDetailController.prototype.onInitData = function() {
 	    var json = {};

@@ -34,6 +34,7 @@ function(CoreUtil,NumberFormat,ServiceUtil) {
 			var oFormat = NumberFormat.getFloatInstance({decimals: decimalPlaces});
 			var rt =oFormat.format(dataValue);
 			fnCallback(rt);
+			return;
 		}
 		
 		if(metaCol.linkTo) {

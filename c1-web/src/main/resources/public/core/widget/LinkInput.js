@@ -2,9 +2,10 @@ sap.ui.define([
 	"sap/m/Input",
 	"next/core/view/CflDialog",
     "sap/ui/model/json/JSONModel",
-    "next/core/widget/CoreUtil"
+    "next/core/widget/CoreUtil",
+    "next/core/controller/ServiceUtil",
 ],
-function(Input, CflDialog, JSONModel, CoreUtil) {
+function(Input, CflDialog, JSONModel, CoreUtil,ServiceUtil) {
 	"use strict";
 	var theClass = Input.extend("next.core.widget.LinkInput", { 
 	metadata: {
@@ -25,10 +26,7 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 		//this.setSuggestionItems("")
 	   // this.attachSuggestionItemSelected(this.suggestionItemSelected);
 	};
-	theClass.prototype.setValue = function (value) {
-	    Input.prototype.setValue.call(this, value);
-		//this.setProperty("dataValue", value);
-	};
+
 	theClass.prototype.setDataValue = function (value) {
 
 		this.setProperty("dataValue", value);
@@ -37,14 +35,14 @@ function(Input, CflDialog, JSONModel, CoreUtil) {
 		var field = CoreUtil.getDataBindField(dataFormat);
 		var metaCol = CoreUtil.getMdColumn(table, field);
 		var linkToTable = metaCol.linkTo;
-		var desc = CoreUtil.getDescription(linkToTable, value);
-		this.setDataDesc(desc);
-		this.setValue(desc);
-
+		var that = this;
+		var desc = ServiceUtil.getDescription(linkToTable, value, function(val){
+			that.setDataDesc(val);
+			that.setValue(val);
+		});
+		ServiceUtil.finishBatchDesc();
 	};
-	theClass.prototype.getDataValue = function () {
-		return this.setProperty("dataValue");
-	};	
+	
 	theClass.prototype._onChooseFromList = function (oEvent) {
 		var sInputValue = this.getDataValue();
 		var dataFormat = this.getDataFormat();

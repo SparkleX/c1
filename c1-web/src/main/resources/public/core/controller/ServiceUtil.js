@@ -71,6 +71,7 @@ sap.ui.define([
     theClass.getDescription=function(table, key, fnCallback) {
     	if (key===undefined || key===null) {
     		fnCallback("");
+    		return;
     	}
     	var data = {table:table, id:key, fn:fnCallback}
     	this.batchDescList.push(data);

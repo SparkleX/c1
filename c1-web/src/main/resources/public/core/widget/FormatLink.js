@@ -20,11 +20,6 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
     	
     	var dataFormat = this.getDataFormat(); 
     	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
-    	var format = FormatUtil.format(dataFormat);
-    	if(format.right){
-    		this.setTextAlign(TextAlign.Right);
-    	}
-		//this.setWidth("100%");
 		this.attachPress(this.onPress);
     	return rt;
      }	
@@ -32,14 +27,6 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 		var dataFormat = this.getDataFormat(); 
 		return FormatUtil.formatValue(dataFormat, value, fn);
 	}
-	theClass.prototype.setText = function (value) {
-		//var formattedVal = this.formatValue(value);
-		//this.setProperty("dataValue", value);
-		BaseClass.prototype.setText.call(this, value);
-	}
-	theClass.prototype.getText = function () {
-		return BaseClass.prototype.getText.call(this);
-	}	
 	theClass.prototype.setDataValue = function (value) {
 		this.setProperty("dataValue", value);
 		var that = this;
@@ -54,7 +41,6 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 		if (!this._oQuickView) {
 			
 			this._oQuickView = sap.ui.xmlfragment("next.share.quick."+table, this);
-			//this.getView().addDependent(this._oQuickView);
 		}
 		var oModel = new JSONModel();
 		var url ="/api/"+table+"/"+this.getDataValue();
