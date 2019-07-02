@@ -56,7 +56,7 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="idGeneralPage" title="General">
 								<uxap:blocks>
-									<pages:General/>
+									<pages:General id="idGen" dummy="onDummy"/>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>

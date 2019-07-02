@@ -7,7 +7,7 @@ sap.ui.define([
 ], function (BaseClass, MessageToast, Fragment, JSONModel, ApiUtils) {
 	"use strict";
 
-	var theClass =BaseClass.extend("next.app.order.controller.Detail", {
+	var theClass =BaseClass.extend("next.app.controller.Detail", {
 		dataTable:'ORDR'
 	});
 
@@ -15,13 +15,19 @@ sap.ui.define([
 		BaseClass.prototype.onInit.call(this);
 
 	}
-
+	theClass.prototype.onDummy=function (evt) {
+		alert('a');
+	}
 	theClass.prototype.onChange=function(evt) {
-		var oModel = this.getOwnerComponent().getModel()
+
+		var oView = this.getView();
+		var oView2 = this.getView("idView");
+		alert('a');
+		/*var oModel = this.getOwnerComponent().getModel()
 		var data = oModel.getData();
 		var newData = ApiUtils.change(data,"ORDR","",0);
 		oModel.setData(newData);
-		this.getView().invalidate();
+		this.getView().invalidate();*/
 	}	
 	return theClass;
 });

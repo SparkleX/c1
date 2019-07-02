@@ -3,9 +3,14 @@ sap.ui.define(['sap/uxap/BlockBase'], function (BlockBase) {
 
 	var GeneralPage =  BlockBase.extend("next.app.pages.General", {
 		metadata: {
+			events: {
+				"dummy": {}
+			}
 		}
 	});
-	GeneralPage.prototype.onInit=function() {
+	
+
+	/*GeneralPage.prototype.onInit=function() {
 		BlockBase.prototype.onInit.call(this);
 	}
 	GeneralPage.prototype.onChangeBpCurrency=function(oEvent) {
@@ -13,6 +18,6 @@ sap.ui.define(['sap/uxap/BlockBase'], function (BlockBase) {
 	}
 	GeneralPage.prototype.onChangeFName=function(oEvent) {
 		console.log("change");
-	}
+	}*/
 	return GeneralPage;
 }, true);
