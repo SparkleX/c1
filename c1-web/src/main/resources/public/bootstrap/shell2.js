@@ -1,9 +1,10 @@
 this.sap = this.sap || {};
-sap.ushell = sap.ushell || {};
-//"use strict";
-	
 
-function fnMakeTile(oApplication, iIdSuffix, sKey) {
+(function() {
+	"use strict";
+	sap.ushell = sap.ushell || {};
+
+	function fnMakeTile(oApplication, iIdSuffix, sKey) {
 		var sApplicationTitle = oApplication.title
 				|| oApplication.additionalInformation.replace(
 						"SAPUI5.Component=", "").split(".").pop();
@@ -20,7 +21,7 @@ function fnMakeTile(oApplication, iIdSuffix, sKey) {
 			}
 		};
 	}
-function fnGetApplicationKeys(oCfg) {
+	function fnGetApplicationKeys(oCfg) {
 		var aApplicationKeys = [], sApplicationKey;
 
 		if (!oCfg || !oCfg.applications
@@ -39,7 +40,7 @@ function fnGetApplicationKeys(oCfg) {
 
 		return aApplicationKeys;
 	}
-function adjustApplicationConfiguration(oConfig) {
+	function adjustApplicationConfiguration(oConfig) {
 
 		var aApplicationKeys = fnGetApplicationKeys(oConfig);
 
@@ -84,43 +85,44 @@ function adjustApplicationConfiguration(oConfig) {
 		return oConfig;
 	}
 
-function bootstrap(fnCallback) {
-	jQuery.sap.require("sap.ushell.services.Container");
-	var config = window["sap-ushell-config"];
-	var apps = jQuery.getJSON({
-		url : "/bootstrap/apps.json",
-		dataType : "json",
-		async : false
-	});
-	config.applications = apps.responseJSON;
+	function bootstrap(fnCallback) {
+		jQuery.sap.require("sap.ushell.services.Container");
+		var config = window["sap-ushell-config"];
+		var apps = jQuery.getJSON({
+			url : "/bootstrap/apps.json",
+			dataType : "json",
+			async : false
+		});
+		config.applications = apps.responseJSON;
 
-	var oClientSideTargetResolutionConfig, oRendererConfig, oUi5ComponentLoaderConfig;
+		var oClientSideTargetResolutionConfig, oRendererConfig, oUi5ComponentLoaderConfig;
 
-	window["sap-ushell-config"] = adjustApplicationConfiguration(config);
-	oRendererConfig = jQuery.sap.getObject(
-			"renderers.fiori2.componentData.config", 0,
-			window["sap-ushell-config"]);
-	if (!oRendererConfig.rootIntent) {
-		oRendererConfig.rootIntent = "Shell-home";
+		window["sap-ushell-config"] = adjustApplicationConfiguration(window["sap-ushell-config"]);
+		oRendererConfig = jQuery.sap.getObject(
+				"renderers.fiori2.componentData.config", 0,
+				window["sap-ushell-config"]);
+		if (!oRendererConfig.rootIntent) {
+			oRendererConfig.rootIntent = "Shell-home";
+		}
+		sap.ushell.bootstrap("local").done(fnCallback);
 	}
-	sap.ushell.bootstrap("local").done(fnCallback);
-}
 
-window["sap-ushell-config"] = {
-	defaultRenderer : "fiori2",
-	renderers : {
-		fiori2 : {
-			componentData : {
-				config : {
-					search : "hidden"
+	window["sap-ushell-config"] = {
+		defaultRenderer : "fiori2",
+		renderers : {
+			fiori2 : {
+				componentData : {
+					config : {
+						search : "hidden"
+					}
 				}
 			}
-		}
-	},
-	applications : []
-};
+		},
+		applications : []
+	};
 
-window['sap-ui-config'] = {
-	"xx-bootTask" : bootstrap
-};
-	
+	window['sap-ui-config'] = {
+		"xx-bootTask" : bootstrap
+	};
+
+}());
