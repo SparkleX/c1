@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="next.app.controller.List"
+	controllerName="next.app.ORDR.controller.List"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:table="next.core.ui.table"
@@ -9,7 +9,7 @@
 	xmlns:widget="next.core.widget"
 	displayBlock="true">
 	<Page title="{i18n>list/title}">
-	<content>
+		<content>	
 		<table:ListViewTable dataTable="ORDR" id="listTable" rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle">
 			<table:defaultColumns>
 				<table:defaultColumn text="#" dataBind="id"/>
@@ -53,7 +53,7 @@
 					</table:items>
 				</table:RowAction>
 			</table:rowActionTemplate> -->
-		</table:ListViewTable>
-	</content>
+			</table:ListViewTable>
+		</content>
 	</Page>
 </mvc:View>

@@ -1,6 +1,6 @@
 <mvc:View
 	id="idView"
-	controllerName="next.app.controller.GeneralPage"
+	controllerName="next.app.ORDR.controller.GeneralPage"
 	xmlns:layout="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:form="sap.ui.layout.form"
