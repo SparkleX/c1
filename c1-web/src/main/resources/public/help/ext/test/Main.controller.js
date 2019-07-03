@@ -37,6 +37,7 @@ sap.ui.define([
 
 			//Having a call to our public method we can override
 			oToolbarTitle.setText(this.getToolbarTitle());
+			this.addChanges();
 		},
 
 		/*
@@ -101,11 +102,11 @@ sap.ui.define([
 				}
 			);
 			this._addControllerExtension(sCode, "sap.my");
-			MessageBox.confirm("We will reload the page to apply the controller extension", {
+			/*MessageBox.confirm("We will reload the page to apply the controller extension", {
 				onClose: function(){
 					window.location.reload();
 				}
-			});
+			});*/
 		},
 		addOtherChanges: function(){
 			var sFragment = jQuery.sap.loadResource(
