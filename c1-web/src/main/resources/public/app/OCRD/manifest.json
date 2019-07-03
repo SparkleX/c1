@@ -24,7 +24,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "next.app.view.App",
+			"viewName": "next.app.OCRD.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -39,7 +39,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "next.app.i18n.i18n"
+					"bundleName": "next.app.OCRD.i18n.i18n"
 				}
 			}
 		},
@@ -47,7 +47,7 @@
 		  "config": {
 			"routerClass": "sap.m.routing.Router",
 			"viewType": "XML",
-			"viewPath": "next.app.view",
+			"viewPath": "next.app.OCRD.view",
 			"controlId": "app1",
 			"controlAggregation": "pages",
 			"async": true

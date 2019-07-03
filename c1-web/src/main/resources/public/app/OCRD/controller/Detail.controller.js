@@ -5,7 +5,7 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel"
 ], function (BaseDetailController, MessageToast, Fragment, JSONModel) {
 	"use strict";
-	var theClass =BaseDetailController.extend("next.app.order.controller.Detail", {
+	var theClass =BaseDetailController.extend("next.app.OCRD.controller.Detail", {
 		dataTable:'OCRD'
 	});
 

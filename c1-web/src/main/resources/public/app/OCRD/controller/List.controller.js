@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (Controller, MessageToast, Fragment) {
 	"use strict";
 
-	var theClass = Controller.extend("next.app.controller.List", {
+	var theClass = Controller.extend("next.app.OCRD.controller.List", {
 		dataTable : "OCRD"
 	});
 	

@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="next.app.controller.List"
+	controllerName="next.app.OCRD.controller.List"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:table="next.core.ui.table"
