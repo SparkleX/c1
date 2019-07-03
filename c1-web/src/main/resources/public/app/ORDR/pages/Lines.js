@@ -1,7 +1,7 @@
 sap.ui.define(['sap/uxap/BlockBase'], function (BlockBase) {
 	"use strict";
 
-	var theClass = BlockBase.extend("next.app.pages.Lines", {
+	var theClass = BlockBase.extend("next.app.ORDR.pages.Lines", {
 		metadata: {
 			/* no additional views provided */
 		}

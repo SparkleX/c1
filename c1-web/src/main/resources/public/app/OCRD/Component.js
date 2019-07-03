@@ -4,7 +4,7 @@ sap.ui.define([
 	"next/core/widget/CoreUtil"
 ], function (UIComponent, JSONModel, CoreUtil) {
 	"use strict";
-	return UIComponent.extend("next.app.Component", {
+	return UIComponent.extend("next.app.OCRD.Component", {
 		metadata : {
 			manifest: "json"
 		},

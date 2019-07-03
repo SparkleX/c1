@@ -16,6 +16,7 @@
 	"sap.ui": {
 		
 		"technology": "UI5",
+		"fullWidth": true,
 		"deviceTypes": {
 			"desktop": true,
 			"tablet": true,
@@ -24,7 +25,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "next.app.view.App",
+			"viewName": "next.app.ORDR.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -39,7 +40,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "next.app.i18n.i18n"
+					"bundleName": "next.app.ORDR.i18n.i18n"
 				}
 			}
 		},
@@ -47,7 +48,7 @@
 		  "config": {
 			"routerClass": "sap.m.routing.Router",
 			"viewType": "XML",
-			"viewPath": "next.app.view",
+			"viewPath": "next.app.ORDR.view",
 			"controlId": "app1",
 			"controlAggregation": "pages",
 			"async": true

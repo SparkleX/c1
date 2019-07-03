@@ -1,0 +1,16 @@
+{
+	"ORDR-App": {
+		"additionalInformation": "SAPUI5.Component=next.app.ORDR",
+		"applicationType": "URL",
+		"url": "/app/ORDR",
+		"description": "Sales Order Applications",
+		"title": "Sales Order"
+	},
+	"Worklist-display": {
+		"additionalInformation": "SAPUI5.Component=next.app.OCRD",
+		"applicationType": "URL",
+		"url": "/app/OCRD",
+		"description": "Business Partners Master Data",
+		"title": "Businss Partners"
+	}
+}
