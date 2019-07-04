@@ -63,4 +63,11 @@
 		<validValue id="O">Open</validValue>
 		<validValue id="C">Close</validValue>
 	</column>
+	<column>
+		<id>shipToAddr</id>
+		<dbType>AlphaNumeric</dbType>
+		<dbSize>255</dbSize>
+		<editType>None</editType>
+		<editSize>255</editSize>
+	</column>	
 </table>

@@ -28,6 +28,10 @@ sap.ui.define([
 		var newData = ApiUtils.change(data,"ORDR","",0);
 		oModel.setData(newData);
 		this.getView().invalidate();*/
+	}
+	theClass.prototype.onAddressChange=function(item) {
+		alert('a');
 	}	
+		
 	return theClass;
 });

@@ -2,25 +2,35 @@ sap.ui.define([
 	"sap/ui/core/Control",
 	"sap/m/Select",
 	"next/core/widget/CoreUtil"
-], function (Control, Select, CoreUtil) {
+], function (Control, BaseClass, CoreUtil) {
 	"use strict";
-	var theClass =  Select.extend("next.core.widget.Select", {
+	var theClass =  BaseClass.extend("next.core.widget.Select", {
 		metadata : {
 			properties : {
 				dataValue:  {type: "string", group: "Behavior"},
 				dataFormat:  {type: "string", group: "Behavior"},
+			},
+			events: {
+				dataChange:{
+					parameters: {
+						selectedItem: {
+							type: "sap.ui.core.Item"
+						}
+					}
+				}
 			}
 		}
 	});
 
 	theClass.prototype.init = function () {
-		Select.prototype.init.call(this);
+		BaseClass.prototype.init.call(this);
 
 
 	};
 
 	theClass.prototype.applySettings = function(mSettings, oScope) {
-        Select.prototype.applySettings.call(this, mSettings, oScope);
+		BaseClass.prototype.applySettings.call(this, mSettings, oScope);
+		this.attachChange(this.onChange);
         this.removeAllItems();
 		var bind = this.getDataFormat();
 		var oColumn = CoreUtil.getMdColumnByBind(bind);
@@ -31,16 +41,19 @@ sap.ui.define([
 		}
     }
 	theClass.prototype.setValue = function (value) {
-		var rt = Select.prototype.setValue.call(this, value);
+		var rt = BaseClass.prototype.setValue.call(this, value);
 		this.setProperty("dataValue", value);
 		return rt;
 	};
 	
 	theClass.prototype.setDataValue = function (value) {
 		var rt = this.setProperty("dataValue", value);
-		Select.prototype.setValue.call(this, value);
+		BaseClass.prototype.setValue.call(this, value);
 		return rt;
 	};
-
+	theClass.prototype.onChange = function (evt) {
+		var params = evt.getParameters()
+		return this.fireDataChange(params);
+	};	
 	return theClass;
 });
