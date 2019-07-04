@@ -2,6 +2,7 @@
 <table xmlns="urn:next:table">
 	<id>OCRD</id>
 	<description>Business Partner</description>
+	<array id="CRD1" type="CRD1"/>
 	<descColumn>bpCode</descColumn>
 	<column>
 		<id>id</id>

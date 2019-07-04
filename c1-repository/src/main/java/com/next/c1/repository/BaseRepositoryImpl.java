@@ -55,4 +55,10 @@ public class BaseRepositoryImpl<T,ID> extends JpatisRepositoryImpl<T,ID> impleme
 		List<Object[]> rt = conn.select("select "+tableName+"_S.nextval from dual");
 		return (ID) rt.get(0)[0];
 	}
+	@Override
+	public List<T> findByParentId(ID parentId) {
+		SqlConnection conn = getSqlConnection();
+		List<T> rt = conn.select(super.type, "select * from "+tableName+" where parentId = ?",parentId);
+		return rt;
+	}
 }

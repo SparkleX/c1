@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table">
-	<id>OCRD1</id>
+	<id>CRD1</id>
 	<description>Business Partner - Address</description>
 	<descColumn>name</descColumn>
 	<column>

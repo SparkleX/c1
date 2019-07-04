@@ -1,11 +1,16 @@
 package com.next.c1.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.ClassUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import com.next.c1.reflect.FieldUtilsEx;
 import com.next.c1.repository.BaseRepository;
+import com.next.c1.repository.ORDRRepository;
+import com.next.c1.schema.table.Array;
 import com.next.c1.schema.table.Table;
 
 public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
@@ -14,7 +19,8 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	protected REPO repository;
 	@Autowired
 	MetadataService metadataService;
-
+	@Autowired
+	ApplicationContext appContext;
 	public String getDescription(Integer id) {
 		String table = this.getMdTable();
 		Table metaTable = metadataService.getMetadata(table);
@@ -31,7 +37,28 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		return data;
 	}
 	public T get(Integer id) {
-		return repository.findById(id).get();
+		T rt = repository.findById(id).get();
+		String table = this.getMdTable();
+		Table metaTable = metadataService.getMetadata(table);
+		for(Array array:metaTable.getArray()) {
+			array.getId();
+			BaseRepository<?, Integer> baseRepo = (BaseRepository<?, Integer>) getRepository(array.getType());
+			List ar = baseRepo.findByParentId(id);
+			FieldUtilsEx.writeField(rt, array.getId(), ar);
+		}
+		return rt;
+	}
+	
+	protected BaseRepository<?,?> getRepository(String tableName) {
+		String className = ORDRRepository.class.getName();
+		String newClassName = className.replaceAll("ORDR", tableName);
+		Class<?> clazz;
+		try {
+			clazz = Class.forName(newClassName);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		return (BaseRepository<?, ?>) appContext.getBean(clazz);
 	}
 	public void create(T o) {
 		Integer id = this.repository.newId();

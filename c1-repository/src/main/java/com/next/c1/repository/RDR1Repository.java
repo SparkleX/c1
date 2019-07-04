@@ -9,7 +9,5 @@ import com.next.jpatis.spring.SQL;
 
 public interface RDR1Repository extends BaseRepository<DoRDR1, Integer> {
 
-	@SQL("select * from RDR1 where parentId = :id")
-	List<DoRDR1> findByOrderId(@Param("id")Integer id);
 
 }
