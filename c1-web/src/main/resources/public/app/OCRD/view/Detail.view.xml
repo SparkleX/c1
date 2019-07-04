@@ -57,7 +57,11 @@
 												<widget:LabelFormatInput label="Business Partner Code" dataValue="{/bpCode}" dataFormat="OCRD.bpCode"/>
 												<widget:LabelFormatInput label="Business Partner Name" dataValue="{/bpName}" dataFormat="OCRD.bpName"/>
 											</layout:BlockLayoutCell>
+											<layout:BlockLayoutCell title="Basic Information">
+												<widget:LabelSelect label="Business Partner Type" dataValue="{/bpType}" dataFormat="OCRD.bpType"/>
+											</layout:BlockLayoutCell>											
 										</layout:BlockLayoutRow>
+										
 									</layout:BlockLayout>									
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>

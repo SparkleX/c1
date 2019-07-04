@@ -21,4 +21,8 @@ public class ColumnTypeUtil
 		}
 		throw new RuntimeException(type.value());
 	}
+	static public String normalizeValidValue(String value){
+		String rt = value.replaceAll("\\s", "");
+		return rt;
+	}	
 }

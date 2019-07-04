@@ -6,12 +6,14 @@ import java.util.List;
 import org.apache.commons.lang3.ClassUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.GenericTypeResolver;
 
 import com.next.c1.reflect.FieldUtilsEx;
 import com.next.c1.repository.BaseRepository;
 import com.next.c1.repository.ORDRRepository;
 import com.next.c1.schema.table.Array;
 import com.next.c1.schema.table.Table;
+import com.next.jpatis.core.JpatisUtils;
 
 public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	
@@ -43,12 +45,13 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		return metaTable;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T get(Integer id) {
 		T rt = repository.findById(id).get();
 		Table metaTable = getMetadata();
 		for(Array array:metaTable .getArray()) {
 			BaseRepository<?, Integer> baseRepo = (BaseRepository<?, Integer>) getRepository(array.getType());
-			List ar = baseRepo.findByParentId(id);
+			List<?> ar = baseRepo.findByParentId(id);
 			FieldUtilsEx.writeField(rt, array.getId(), ar);
 		}
 		return rt;
@@ -65,13 +68,26 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		}
 		return (BaseRepository<?, ?>) appContext.getBean(clazz);
 	}
+	@SuppressWarnings("unchecked")
+	public T init() {
+		Class<T> clazz = (Class<T>) GenericTypeResolver.resolveTypeArguments(this.getClass(), BaseService.class)[0];
+		T rt;
+		try {
+			rt = clazz.newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
+		JpatisUtils.initWithDefault(rt);
+		return rt;
+	}	
+	@SuppressWarnings("unchecked")
 	public void create(T o) {
 		Integer id = this.repository.newId();
 		FieldUtilsEx.writeField(o, "id", id);
 		repository.insert(o);;
 		Table metaTable = getMetadata();
 		for(Array metaArray:metaTable .getArray()) {
-			List oArray = (List) FieldUtilsEx.readField(o, metaArray.getId());
+			List<?> oArray = (List<?>) FieldUtilsEx.readField(o, metaArray.getId());
 			if(oArray==null) {
 				continue;
 			}

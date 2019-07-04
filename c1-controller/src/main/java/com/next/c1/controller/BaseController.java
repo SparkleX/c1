@@ -64,7 +64,11 @@ public class BaseController<T, SERVICE extends BaseService<T, ?>> {
 		Integer newId=service.getLast();
 		return seek(newId);
 	}
-
+	@GetMapping(path = "/init")
+	public T init() {
+		T rt = this.service.init();
+		return rt;
+	}
 	@GetMapping(path = "/{id}")
 	public T get(@PathVariable Integer id) {
 		return service.get(id);

@@ -34,6 +34,11 @@
 			<artifactId>c1-core-xsd</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.next</groupId>
+			<artifactId>jpatis-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -3,7 +3,21 @@ sap.ui.define([
 ], function (jquery) {
 	"use strict";
 	var theClass = {}
-
+	
+	theClass.ajax=function(params)  {
+		params.contentType ='application/json';
+		return jQuery.ajax(params);		
+	} 
+	theClass.init = function (table) {
+		var rt;
+		this.ajax({ url: `/api/${table}/init`,
+					async: false,
+					success : function(data) {
+						rt = data;
+					}
+				});
+		return rt;
+	}	
 	theClass.create = function (table, data) {
 		 var json = JSON.stringify(data);
         jQuery.ajax({

@@ -25,4 +25,15 @@
 		<editType>None</editType>
 		<editSize>127</editSize>
 	</column>
+	<column>
+		<id>bpType</id>
+		<dbType>AlphaNumeric</dbType>
+		<dbSize>1</dbSize>
+		<editType>None</editType>
+		<editSize>1</editSize>
+		<defaultValue>C</defaultValue>
+		<validValue id="L">Leads</validValue>
+		<validValue id="C">Customer</validValue>
+		<validValue id="S">Vendor</validValue>		
+	</column>	
 </table>

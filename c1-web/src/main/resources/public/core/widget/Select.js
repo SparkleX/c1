@@ -7,6 +7,7 @@ sap.ui.define([
 	var theClass =  Select.extend("next.core.widget.Select", {
 		metadata : {
 			properties : {
+				dataValue:  {type: "string", group: "Behavior"},
 				dataFormat:  {type: "string", group: "Behavior"},
 			}
 		}
@@ -29,9 +30,17 @@ sap.ui.define([
 			this.addItem(item);
 		}
     }
-	/*theClass.prototype.getDataFormat = function () {
-		return this.getProperty("dataFormat");
-	};*/
+	theClass.prototype.setValue = function (value) {
+		var rt = Select.prototype.setValue.call(this, value);
+		this.setProperty("dataValue", value);
+		return rt;
+	};
+	
+	theClass.prototype.setDataValue = function (value) {
+		var rt = this.setProperty("dataValue", value);
+		Select.prototype.setValue.call(this, value);
+		return rt;
+	};
 
 	return theClass;
 });

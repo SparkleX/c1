@@ -48,7 +48,7 @@ sap.ui.define([
 		this.getView().invalidate();
 	}
 	BaseDetailController.prototype.onInitData = function() {
-	    var json = {};
+	    var json = ApiUtils.init(this.dataTable);
         var oModel = new JSONModel(json);
 		this.getOwnerComponent().setModel(oModel);
 		this.onRefreshUiStatus();
@@ -100,7 +100,7 @@ sap.ui.define([
 		var data = omFormMode.getData();
 		//var data = this.oModel.getData();
 		console.log(data);
-		this.onRefreshUiStatus();
+		//this.onRefreshUiStatus();
 	}
 	BaseDetailController.prototype.onNext = function()	{
 		var that = this;
