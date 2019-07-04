@@ -8,8 +8,13 @@ function(CoreUtil,NumberFormat,ApiUtils) {
 
 	var theClass={};
 	theClass.format=function(dataFormat) {
-		var rt = {right:false};
 		var metaCol = CoreUtil.getMdColumnByBind(dataFormat);
+		var rt = {right:false, editSize :metaCol.dbSize};
+		
+		if(metaCol.editSize) {
+			rt.editSize = metaCol.editSize;
+		}
+		
 		if(!metaCol.linkTo) {			
 			switch(metaCol.dbType) {
 			case "IDENTITY":
@@ -19,6 +24,7 @@ function(CoreUtil,NumberFormat,ApiUtils) {
 			}
 		}
 		rt.decimalPlaces = CoreUtil.getDecimalPlaces(metaCol);
+		
 		return rt;
 	}
 	theClass.formatValue=function(dataFormat, dataValue, fnCallback) {
@@ -57,6 +63,24 @@ function(CoreUtil,NumberFormat,ApiUtils) {
 		}
 		return str;
 	}
+	theClass.toString1 = function (metaCol, value) {
+		if(!value) {
+			return "";
+		}
+		switch(metaCol.dbType) {
+			case "ALPHA_NUMERIC":
+				return value;
+		}
+		var decimalPlaces = CoreUtil.getDecimalPlaces(metaCol);
+
+		var oFormat = NumberFormat.getFloatInstance({decimals: decimalPlaces});
+		var formattedVal = null;
+		if(value!=null) {
+			formattedVal = oFormat.format(value);
+		}
+		
+		return formattedVal;
+	}	
 	return theClass;
 });
 

@@ -1,54 +1,42 @@
 sap.ui.define([
 	"sap/m/Input",
 	"sap/ui/core/TextAlign",
-	"sap/ui/core/format/NumberFormat",
-	"next/core/widget/CoreUtil"
+	"next/core/widget/CoreUtil",
+	"next/core/widget/FormatUtil"
 ],
-function(Input, TextAlign,NumberFormat, CoreUtil) {
+function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 	"use strict";
-	var theClass = Input.extend("next.core.widget.FmtInput", { 
+	var theClass = BaseClass.extend("next.core.widget.FmtInput", { 
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },
 			dataValue: { type: "string", group: "Misc", defaultValue: null }
 		}
 	}});
-	theClass.prototype.init = function () {
-		Input.prototype.init.call(this);
-		this.setTextAlign(TextAlign.Right);
-		//this.setTextFormatter(oFormat);
-		this.setMaxLength(8);
-
-	};
-	theClass.prototype.formatValue = function (value) {
-		var bind = this.getDataFormat();
-		var oColumn = CoreUtil.getMdColumnByBind(bind);
-		var decimalPlaces = CoreUtil.getDecimalPlaces(oColumn);
-
-		var oFormat = NumberFormat.getFloatInstance({decimals: decimalPlaces});
-		var formattedVal = null;
-		if(value!=null) {
-			formattedVal = oFormat.format(value);
-		}
+	
+    theClass.prototype.applySettings = function(mSettings, oScope) {
+    	var rt = BaseClass.prototype.applySettings.call(this, mSettings, oScope);    	
+    	var dataFormat = this.getDataFormat(); 
+    	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
+    	var format = FormatUtil.format(dataFormat);
+    	if(format.right){
+    		this.setTextAlign(TextAlign.Right);
+    	}
+		this.setWidth("100%");	
+		this.setMaxLength(format.editSize);
+    	return rt;
+     }	
+	theClass.prototype.setValue = function (str) {
+		BaseClass.prototype.setValue.call(this, str);
 		
-		return formattedVal;
-	}
-	theClass.prototype.setValue = function (value) {
-
-		var formattedVal = this.formatValue(value);
+		var value = FormatUtil.fromString(this.metaCol, str);
 		this.setProperty("dataValue", value);
-		Input.prototype.setValue.call(this, formattedVal);
+		
 	}
-	theClass.prototype.getValue = function () {
-		return Input.prototype.getValue.call(this);
-	};	
 	theClass.prototype.setDataValue = function (value) {
-
-		this.setValue(value);
 		this.setProperty("dataValue", value);
-	};	
-	theClass.prototype.getDataValue = function () {
-		return this.getValue();
+		var str = FormatUtil.toString1(this.metaCol, value);
+		BaseClass.prototype.setValue.call(this, str);		
 	};	
 	return theClass;
 });

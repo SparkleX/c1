@@ -44,35 +44,28 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="idGeneralPage" title="General">
 								<uxap:blocks>
-									<layout:Grid width="100%" defaultSpan="L6 M6 S12">
-										<layout:content>
-											<form:SimpleForm layout="ColumnLayout">
-												<core:Title text="Basic Information" />
-												<form:content>
-													<m:Label text="Business Partner Id" />
-													<m:Input id="bpId" type="Text" value="{/id}" dataFormat="ORDR.id"/>
-													<m:Label text="Business Partner Code" />
-													<m:Input id="bpCode" type="Text" value="{/bpCode}" dataFormat="ORDR.bpCode"/>
-													<m:Label text="Business Partner Name" />
-													<m:Input id="bpName" type="Text" value="{/bpName}" dataFormat="ORDR.bpName"/>
-													
-												</form:content>
-											</form:SimpleForm>
-											<form:SimpleForm layout="ColumnLayout">
-												<core:Title text="Contact" />
-												<form:content>
-												</form:content>
-											</form:SimpleForm>
-										</layout:content>
-									</layout:Grid>
+									<layout:BlockLayout>
+										<layout:BlockLayoutRow>
+											<layout:BlockLayoutCell title="Basic Information">
+												<widget:LabelFormatInput label="Business Partner Code" dataValue="{/bpCode}" dataFormat="OCRD.bpCode"/>
+												<widget:LabelFormatInput label="Business Partner Name" dataValue="{/bpName}" dataFormat="OCRD.bpName"/>
+											</layout:BlockLayoutCell>
+										</layout:BlockLayoutRow>
+									</layout:BlockLayout>									
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
-					<uxap:ObjectPageSection title="Details">
+					<uxap:ObjectPageSection title="Address">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
-								<uxap:blocks>									
+								<uxap:blocks>
+									<layout:BlockLayout>
+										<layout:BlockLayoutRow>
+											<layout:BlockLayoutCell title="Address">
+											</layout:BlockLayoutCell>
+										</layout:BlockLayoutRow>										
+									</layout:BlockLayout>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
