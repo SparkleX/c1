@@ -100,6 +100,7 @@ sap.ui.define([
 		var data = omFormMode.getData();
 		//var data = this.oModel.getData();
 		console.log(data);
+		this.onRefreshUiStatus();
 	}
 	BaseDetailController.prototype.onNext = function()	{
 		var that = this;
@@ -142,7 +143,8 @@ sap.ui.define([
 	        this.newButton.setVisible(true);
 	        this.deleteButton.setVisible(true);
 	        this.setOrigStatus();
-		}		
+		}	
+		this.getView().invalidate();	
 	}
 	BaseDetailController.prototype.setOrigStatus = function()	{
 		WidgetUtil.scan(this.getView(), WidgetUtil.editableTrue);

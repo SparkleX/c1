@@ -38,5 +38,8 @@ function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 		var str = FormatUtil.toString1(this.metaCol, value);
 		BaseClass.prototype.setValue.call(this, str);		
 	};	
+	theClass.prototype.setEditable = function (value) {
+		BaseClass.prototype.setEditable.call(this, value);		
+	};	
 	return theClass;
 });
