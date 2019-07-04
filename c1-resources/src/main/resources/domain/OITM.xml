@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table">
 	<id>OITM</id>
+	<description>Items</description>
 	<descColumn>itemCode</descColumn>
 	<column>
 		<id>id</id>
@@ -23,4 +24,11 @@
 		<editType>None</editType>
 		<editSize>0</editSize>
 	</column>
+	<column>
+		<id>dfltPrice</id>
+		<dbType>Decimal</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>	
 </table>

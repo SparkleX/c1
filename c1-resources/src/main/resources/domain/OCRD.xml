@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table">
 	<id>OCRD</id>
+	<description>Business Partner</description>
 	<descColumn>bpCode</descColumn>
 	<column>
 		<id>id</id>

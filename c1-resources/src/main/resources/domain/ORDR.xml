@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table" >
 	<id>ORDR</id>
+	<description>Orders</description>
 	<array id="RDR1" type="RDR1"/>
 	<column>
 		<id>id</id>
@@ -31,6 +32,20 @@
 		<editType>Sum</editType>
 		<editSize>0</editSize>
 	</column>
+	<column>
+		<id>docDate</id>
+		<dbType>Date</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>docDueDate</id>
+		<dbType>Date</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>	
 	<column>
 		<id>createDate</id>
 		<dbType>Date</dbType>

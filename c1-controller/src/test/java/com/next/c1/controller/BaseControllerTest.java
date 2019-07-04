@@ -106,6 +106,7 @@ public class BaseControllerTest<T, SERVICE extends BaseService<T,?>>{
 		String table = getTableName();
 		this.mvc.perform(
 				MockMvcRequestBuilders.post("/api/"+table)
+				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON)
 				.content(str))
 				.andExpect(status().isOk())

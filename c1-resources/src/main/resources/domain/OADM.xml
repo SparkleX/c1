@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <table xmlns="urn:next:table">
 	<id>OADM</id>
+	<description>Administration</description>
 	<column>
 		<id>id</id>
 		<dbType>Identity</dbType>

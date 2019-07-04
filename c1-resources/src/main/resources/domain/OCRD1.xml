@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<table xmlns="urn:next:table">
+	<id>OCRD1</id>
+	<description>Business Partner - Address</description>
+	<descColumn>name</descColumn>
+	<column>
+		<id>id</id>
+		<dbType>Identity</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>parentId</id>
+		<dbType>Identity</dbType>
+		<dbSize>0</dbSize>
+		<editType>None</editType>
+		<editSize>0</editSize>
+	</column>
+	<column>
+		<id>name</id>
+		<dbType>AlphaNumeric</dbType>
+		<dbSize>127</dbSize>
+		<editType>None</editType>
+		<editSize>127</editSize>
+	</column>
+	<column>
+		<id>type</id>
+		<dbType>AlphaNumeric</dbType>
+		<dbSize>1</dbSize>
+		<editType>None</editType>
+		<editSize>1</editSize>
+		<validValue id="B">Bill to Address</validValue>
+		<validValue id="S">Ship to Addesss</validValue>		
+	</column>	
+	<column>
+		<id>address</id>
+		<dbType>AlphaNumeric</dbType>
+		<dbSize>127</dbSize>
+		<editType>None</editType>
+		<editSize>127</editSize>
+	</column>	
+</table>
