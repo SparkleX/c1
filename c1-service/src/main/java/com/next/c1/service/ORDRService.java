@@ -11,20 +11,7 @@ import com.next.c1.repository.RDR1Repository;
 public class ORDRService extends BaseService<DoORDR, ORDRRepository> {
 	@Autowired
 	RDR1Repository repoRDR1;
-	@Override
-	public void create(DoORDR o) {
-		super.create(o);
-		for(DoRDR1 line:o.getRDR1()) {
-			line.setParentId(o.getId());
-			line.setId(repoRDR1.newId());
-			repoRDR1.insert(line);
-		}
-	}
-	@Override
-	public DoORDR get(Integer id) {
-		DoORDR doORDR = super.get(id);
-		return doORDR;
-	}
+	
 	@Override
 	public DoORDR change(DoORDR data, String table, String column, Integer row) {
 		DoORDR rt = data;

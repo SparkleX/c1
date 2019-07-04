@@ -36,12 +36,17 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	public T change(T data, String table, String column, Integer line) {
 		return data;
 	}
-	public T get(Integer id) {
-		T rt = repository.findById(id).get();
+	
+	protected Table getMetadata() {
 		String table = this.getMdTable();
 		Table metaTable = metadataService.getMetadata(table);
-		for(Array array:metaTable.getArray()) {
-			array.getId();
+		return metaTable;
+	}
+	
+	public T get(Integer id) {
+		T rt = repository.findById(id).get();
+		Table metaTable = getMetadata();
+		for(Array array:metaTable .getArray()) {
 			BaseRepository<?, Integer> baseRepo = (BaseRepository<?, Integer>) getRepository(array.getType());
 			List ar = baseRepo.findByParentId(id);
 			FieldUtilsEx.writeField(rt, array.getId(), ar);
@@ -64,6 +69,21 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		Integer id = this.repository.newId();
 		FieldUtilsEx.writeField(o, "id", id);
 		repository.insert(o);;
+		Table metaTable = getMetadata();
+		for(Array metaArray:metaTable .getArray()) {
+			List oArray = (List) FieldUtilsEx.readField(o, metaArray.getId());
+			if(oArray==null) {
+				continue;
+			}
+			BaseRepository<Object, Integer> baseRepo = (BaseRepository<Object, Integer>) getRepository(metaArray.getType());
+			for(Object line:oArray) {
+				Integer newId = baseRepo.newId();
+				FieldUtilsEx.writeField(line, "parentId", id);
+				FieldUtilsEx.writeField(line, "id", newId);
+				baseRepo.insert(line);
+			}			
+		}	
+		
 	}
 	public void update(Integer id, T entity) {
 		repository.updateById(id, entity);

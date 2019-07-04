@@ -51,7 +51,7 @@ sap.ui.define([
 		var rowid = grid.getSelectedIndices();
 		var model = grid.getModel();
 		var path = grid.getBindingPath("rows");
-		var data = model.getProperty("/CRD1")		
+		var data = model.getProperty(path);
 		var count = 0;
         for(let row of rowid) {
 			var removed = data.splice(row-count, 1);
