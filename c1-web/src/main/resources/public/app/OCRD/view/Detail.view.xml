@@ -1,4 +1,11 @@
-<mvc:View id="idBpDetail" controllerName="next.app.OCRD.controller.Detail" xmlns:uxap="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:pages="next.app.pages" xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic" xmlns:widget="next.core.widget" xmlns:form="sap.ui.layout.form" displayBlock="true">
+<mvc:View id="idBpDetail" controllerName="next.app.OCRD.controller.Detail"
+		  xmlns:uxap="sap.uxap"
+		  xmlns:m="sap.m"
+		  xmlns:layout="sap.ui.layout"
+		  xmlns:table="sap.ui.table"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:widget="next.core.widget"
+		  displayBlock="true">
 <!-- 	<semantic:FullscreenPage title="{i18n>detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
 		<semantic:content> 		
 		</semantic:content>
@@ -60,12 +67,29 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<layout:BlockLayout>
-										<layout:BlockLayoutRow>
-											<layout:BlockLayoutCell title="Address">
-											</layout:BlockLayoutCell>
-										</layout:BlockLayoutRow>										
-									</layout:BlockLayout>
+									<widget:Grid rows="{/OCRD1}">
+										<widget:extension>
+											<m:OverflowToolbar id="otb1">
+												<m:Button icon="sap-icon://add" type="Transparent" press="onGridAdd"/>
+												<m:Button icon="sap-icon://delete" type="Transparent"  press="onGridDelete"/>
+												<m:Button icon="sap-icon://action-settings" type="Transparent"/>
+											</m:OverflowToolbar>
+										</widget:extension>
+										<widget:columns>
+											<table:Column>
+												<m:Label text="Name" />
+												<table:template>
+													<widget:FmtInput dataValue="{name}" dataFormat="OCRD1.name"/>
+												</table:template>
+											</table:Column>
+											<table:Column >
+												<m:Label text="Address" />
+												<table:template>
+													<widget:FmtInput dataValue="{address}" dataFormat="OCRD1.address"/>
+												</table:template>
+											</table:Column>
+										</widget:columns>
+									</widget:Grid>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
