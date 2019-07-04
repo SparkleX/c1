@@ -1,5 +1,7 @@
 package com.next.c1.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,16 @@ public class ORDRService extends BaseService<DoORDR, ORDRRepository> {
 	public DoORDR change(DoORDR data, String table, String column, Integer row) {
 		DoORDR rt = data;
 		for(DoRDR1 line:data.getRDR1())	{
-			Integer a = line.getItemId();
-			Integer b = 4-a;
-			line.setItemId(b);
+			if(line.getPrice()==null) {
+				line.setPrice(BigDecimal.ZERO);
+			}
+			if(line.getQuantity()==null) {
+				line.setQuantity(BigDecimal.ZERO);
+			}
+			line.setLineTotal(line.getPrice().multiply(line.getQuantity()));
 		}
-		data.getRDR1().remove(0);
+		BigDecimal total = data.getRDR1().stream().map(DoRDR1::getLineTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
+		rt.setDocTotal(total);
 		return rt;
 	}
 }

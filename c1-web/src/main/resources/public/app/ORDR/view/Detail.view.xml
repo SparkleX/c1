@@ -92,19 +92,19 @@
 											<table:Column >
 												<m:Label text="Price" />
 												<table:template>
-													<widget:FmtInput dataValue="{price}" dataFormat="RDR1.price"/>
+													<widget:FmtInput dataValue="{price}" dataFormat="RDR1.price" dataChange="onCalcTotal"/>
 												</table:template>
 											</table:Column>
 											<table:Column>
 												<m:Label text="Quantity" />
 												<table:template>
-													<widget:FmtInput dataValue="{quantity}" dataFormat="RDR1.quantity" />
+													<widget:FmtInput dataValue="{quantity}" dataFormat="RDR1.quantity" dataChange="onCalcTotal" />
 												</table:template>
 											</table:Column>
 											<table:Column>
 												<m:Label text="Total" />
 												<table:template>
-													<widget:FmtInput dataValue="{lineTotal}" dataFormat="RDR1.lineTotal"/>
+													<widget:FmtInput dataValue="{lineTotal}" dataFormat="RDR1.lineTotal" editableAddMode="false"/>
 												</table:template>
 											</table:Column>
 										</widget:columns>
@@ -130,7 +130,7 @@
 												<layout:BlockLayoutCell>
 												</layout:BlockLayoutCell>
 												<layout:BlockLayoutCell title="Summary">
-													<widget:LabelFormatInput label="Document Total"  dataFormat="ORDR.docTotal" dataValue="{/docTotal}"/>
+													<widget:LabelFormatInput label="Document Total"  dataFormat="ORDR.docTotal" dataValue="{/docTotal}"  editableAddMode="false"/>
 												</layout:BlockLayoutCell>
 											</layout:BlockLayoutRow>
 										</layout:BlockLayout>

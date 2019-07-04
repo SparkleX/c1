@@ -43,6 +43,7 @@ function(JSONModel, jQuery) {
                 theClass.decimals.QUANTITY = theClass.oadm.qtyDec;
                 theClass.decimals.RATE = theClass.oadm.rateDec;
                 theClass.decimals.SUM = theClass.oadm.sumDec;
+                theClass.decimals.PRICE = theClass.oadm.priceDec;
             }
         }).fail(function (result,result1,result2) {
 			alert('fail');

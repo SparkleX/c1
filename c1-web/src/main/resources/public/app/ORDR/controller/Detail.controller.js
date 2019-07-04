@@ -32,6 +32,13 @@ sap.ui.define([
 	theClass.prototype.onAddressChange=function(item) {
 		alert('a');
 	}	
-		
+	theClass.prototype.onCalcTotal=function(evt) {
+		var oModel = this.getView().getModel()
+		var data = oModel.getData();
+		var newData = ApiUtils.change(data,"ORDR","",0);
+		oModel.setData(newData);
+		this.getView().invalidate();
+	}	
+	
 	return theClass;
 });

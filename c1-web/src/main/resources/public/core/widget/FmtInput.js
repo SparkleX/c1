@@ -13,7 +13,16 @@ function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 			dataValue: { type: "string", group: "Misc", defaultValue: null },
 			editableAddMode: { type: "boolean", group: "Misc", defaultValue: true, multiple : false},
 			editableEditMode: { type: "boolean", group: "Misc", defaultValue: true, multiple : false},
-		}
+		},
+		events: {
+			dataChange:{
+				parameters: {
+					value: {
+						type: "string"
+					}
+				}
+			}
+		}	
 	}});
 	
     theClass.prototype.applySettings = function(mSettings, oScope) {
@@ -26,12 +35,15 @@ function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
     	}
 		this.setWidth("100%");	
 		this.setMaxLength(format.editSize);
+		this.attachChange(this.onChangeHandler);
     	return rt;
      }	
 	theClass.prototype.setValue = function (str) {
+		var value = FormatUtil.fromString(this.metaCol, str);
+		var str = FormatUtil.toString1(this.metaCol,value);
 		BaseClass.prototype.setValue.call(this, str);
 		
-		var value = FormatUtil.fromString(this.metaCol, str);
+		
 		this.setProperty("dataValue", value);
 		
 	}
@@ -42,6 +54,9 @@ function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 	};	
 	theClass.prototype.setEditable = function (value) {
 		BaseClass.prototype.setEditable.call(this, value);		
+	};	
+	theClass.prototype.onChangeHandler = function (evt) {
+		return this.fireDataChange(evt);
 	};	
 	return theClass;
 });

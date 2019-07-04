@@ -10,7 +10,16 @@ function(BaseClass, FmtInput, Label, CoreUtil) {
 		metadata: {
 			aggregations: {
 				"_input" : {type : "next.core.widget.FmtInput", multiple : false},
-		    }		
+		    },	
+			events: {
+				dataChange:{
+					parameters: {
+						value: {
+							type: "string"
+						}
+					}
+				}
+			}		
 		}
 	});
     theClass.prototype.applySettings = function(mSettings, oScope) {
@@ -23,10 +32,17 @@ function(BaseClass, FmtInput, Label, CoreUtil) {
 			dataFormat: this.getDataFormat(),
 			editableAddMode: this.getEditableAddMode(),
 			editableEditMode: this.getEditableEditMode(),
+			dataChange: this.onDataChange
 				});
 
 		this.setAggregation("_input", oInput);
     	return rt;
-     }	  
+    }	
+    theClass.prototype.onDataChange = function(evt) {
+    	var source = evt.getSource();
+    	var that = source.getParent();
+    	var params = evt.getParameters();
+    	return that.fireDataChange(params);
+     }    
 	return theClass;
 });
