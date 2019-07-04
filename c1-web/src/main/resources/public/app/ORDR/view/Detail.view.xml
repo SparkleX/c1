@@ -4,7 +4,6 @@
 	xmlns:uxap="sap.uxap"
 	xmlns:m="sap.m"
 	xmlns:layout="sap.ui.layout"
-	xmlns:pages="next.app.ORDR.pages"
 	xmlns:table="sap.ui.table"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
@@ -56,7 +55,19 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="idGeneralPage" title="General">
 								<uxap:blocks>
-									<pages:General id="idGen" dummy="onDummy"/>
+									<layout:BlockLayout>
+										<layout:BlockLayoutRow>
+											<layout:BlockLayoutCell title="Basic Information">
+												<widget:LabelLinkInput id="idTest" label="Business Partner Code" type="Number" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
+											</layout:BlockLayoutCell>
+											<layout:BlockLayoutCell	title="Document Status">
+												<widget:LabelFormatInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
+												<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
+												<widget:LabelSelect  label="Document Status" dataValue="{/docStatus}" dataFormat="ORDR.docStatus"/>
+												<widget:CheckBox dataValue="{/docStatus}" dataFormat="ORDR.docStatus" label="Closed" dataYes="C" dataNo="O"/>
+											</layout:BlockLayoutCell>
+										</layout:BlockLayoutRow>
+									</layout:BlockLayout>
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
@@ -65,7 +76,41 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<pages:Lines/>
+									<table:Table rows="{/RDR1}">
+										<table:extension>
+											<m:OverflowToolbar id="otb1">
+												<m:Button icon="sap-icon://add" type="Transparent" press="onGridAdd"/>
+												<m:Button icon="sap-icon://delete" type="Transparent"  press="onGridDelete"/>
+												<m:Button icon="sap-icon://action-settings" type="Transparent"/>
+											</m:OverflowToolbar>
+										</table:extension>
+										<table:columns>
+											<table:Column>
+												<m:Label text="Item" />
+												<table:template>
+													<widget:LinkInput dataValue="{itemId}" dataFormat="RDR1.itemId"/>
+												</table:template>
+											</table:Column>
+											<table:Column >
+												<m:Label text="Price" />
+												<table:template>
+													<widget:FmtInput dataValue="{price}" dataFormat="RDR1.price"/>
+												</table:template>
+											</table:Column>
+											<table:Column>
+												<m:Label text="Quantity" />
+												<table:template>
+													<widget:FmtInput dataValue="{quantity}" dataFormat="RDR1.quantity" />
+												</table:template>
+											</table:Column>
+											<table:Column>
+												<m:Label text="Total" />
+												<table:template>
+													<widget:FmtInput dataValue="{lineTotal}" dataFormat="RDR1.lineTotal"/>
+												</table:template>
+											</table:Column>
+										</table:columns>
+									</table:Table>
 								</uxap:blocks>
                                 </uxap:ObjectPageSubSection>
                             </uxap:subSections>
@@ -82,7 +127,15 @@
                             <uxap:subSections>
                                 <uxap:ObjectPageSubSection>
                                     <uxap:blocks>
-										 <pages:Summary/>
+										<layout:BlockLayout>
+											<layout:BlockLayoutRow>
+												<layout:BlockLayoutCell>
+												</layout:BlockLayoutCell>
+												<layout:BlockLayoutCell title="Summary">
+													<widget:LabelFormatInput label="Document Total"  dataFormat="ORDR.docTotal" dataValue="{/docTotal}"/>
+												</layout:BlockLayoutCell>
+											</layout:BlockLayoutRow>
+										</layout:BlockLayout>
                                      </uxap:blocks>
                                  </uxap:ObjectPageSubSection>
                              </uxap:subSections>
