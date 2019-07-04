@@ -25,6 +25,13 @@
 		<editSize>127</editSize>
 	</column>
 	<column>
+		<id>dfltAddr</id>
+		<dbType>AlphaNumeric</dbType>
+		<dbSize>1</dbSize>
+		<editType>None</editType>
+		<editSize>1</editSize>
+	</column>		
+	<column>
 		<id>type</id>
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>1</dbSize>

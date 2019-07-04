@@ -70,6 +70,12 @@
 									<widget:Grid rows="{/CRD1}">
 										<widget:columns>
 											<table:Column>
+												<m:Label text="Default" />
+												<table:template>
+													<m:RadioButton text="" selected="{= ${dfltAddr} === 'Y'}" select="onDefaultAddress"/>
+												</table:template>
+											</table:Column>
+											<table:Column>
 												<m:Label text="Name" />
 												<table:template>
 													<widget:FmtInput dataValue="{name}" dataFormat="CRD1.name"/>

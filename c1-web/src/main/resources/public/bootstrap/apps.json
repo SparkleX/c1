@@ -6,7 +6,7 @@
 		"description": "Sales Order Applications",
 		"title": "Sales Order"
 	},
-	"Worklist-display": {
+	"OCRD-App": {
 		"additionalInformation": "SAPUI5.Component=next.app.OCRD",
 		"applicationType": "URL",
 		"url": "/app/OCRD",
