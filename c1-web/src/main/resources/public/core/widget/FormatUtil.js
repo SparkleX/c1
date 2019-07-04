@@ -2,8 +2,9 @@ sap.ui.define([
     "./CoreUtil",
     "sap/ui/core/format/NumberFormat",
     "next/core/controller/ApiUtils",
+    "sap/ui/model/type/Float",
 ],
-function(CoreUtil,NumberFormat,ApiUtils) {
+function(CoreUtil,NumberFormat,ApiUtils,Float) {
 	"use strict";
 
 	var theClass={};
@@ -59,7 +60,7 @@ function(CoreUtil,NumberFormat,ApiUtils) {
 			case "INTEGER":
 				return parseInt(str);
 			case "DECIMAL":
-				return Float.parseFloat(str);
+				return parseFloat(str);
 		}
 		return str;
 	}

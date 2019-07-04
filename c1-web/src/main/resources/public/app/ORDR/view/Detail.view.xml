@@ -76,15 +76,8 @@
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection>
 								<uxap:blocks>
-									<table:Table rows="{/RDR1}">
-										<table:extension>
-											<m:OverflowToolbar id="otb1">
-												<m:Button icon="sap-icon://add" type="Transparent" press="onGridAdd"/>
-												<m:Button icon="sap-icon://delete" type="Transparent"  press="onGridDelete"/>
-												<m:Button icon="sap-icon://action-settings" type="Transparent"/>
-											</m:OverflowToolbar>
-										</table:extension>
-										<table:columns>
+									<widget:Grid rows="{/RDR1}">
+										<widget:columns>
 											<table:Column>
 												<m:Label text="Item" />
 												<table:template>
@@ -109,8 +102,8 @@
 													<widget:FmtInput dataValue="{lineTotal}" dataFormat="RDR1.lineTotal"/>
 												</table:template>
 											</table:Column>
-										</table:columns>
-									</table:Table>
+										</widget:columns>
+									</widget:Grid>
 								</uxap:blocks>
                                 </uxap:ObjectPageSubSection>
                             </uxap:subSections>
