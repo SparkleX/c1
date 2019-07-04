@@ -11,7 +11,12 @@ function(BaseClass, DatePicker, Label) {
 			properties: {
 				label: { type: "string", group: "Misc", defaultValue: "" },
 				dataFormat: { type: "string", group: "Misc", defaultValue: null },
-				dataValue: { type: "string", group: "Misc", defaultValue: null }
+				dataValue: { type: "string", group: "Misc", defaultValue: null },
+				editableAddMode: { type: "boolean", group: "Misc", defaultValue: true},
+				editableEditMode: { type: "boolean", group: "Misc", defaultValue: true},
+				visibleAddMode: { type: "boolean", group: "Misc", defaultValue: true},
+				visibleViewMode: { type: "boolean", group: "Misc", defaultValue: true},
+				visibleEditMode: { type: "boolean", group: "Misc", defaultValue: true},				
 			},
 			aggregations: {
 				"_label" : {type : "sap.m.Label", multiple : false},

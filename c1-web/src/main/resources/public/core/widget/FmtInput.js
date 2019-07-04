@@ -10,7 +10,9 @@ function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },
-			dataValue: { type: "string", group: "Misc", defaultValue: null }
+			dataValue: { type: "string", group: "Misc", defaultValue: null },
+			editableAddMode: { type: "boolean", group: "Misc", defaultValue: true, multiple : false},
+			editableEditMode: { type: "boolean", group: "Misc", defaultValue: true, multiple : false},
 		}
 	}});
 	

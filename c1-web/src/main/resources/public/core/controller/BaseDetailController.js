@@ -128,30 +128,25 @@ sap.ui.define([
 	        this.editButton.setVisible(false);
 	        this.newButton.setVisible(false);
 	        this.deleteButton.setVisible(false);
-	        this.setOrigStatus();	        
+	        WidgetUtil.scan(this.getView(), WidgetUtil.editableAddMode);
 		}
 		if(this.formMode === FormMode.viewMode) {
 	        this.objectPageLayout.setShowFooter(false);
 	        this.editButton.setVisible(true);
 	        this.newButton.setVisible(true);
 	        this.deleteButton.setVisible(true);
-	        this.setReadonlyStatus();
+	        WidgetUtil.scan(this.getView(), WidgetUtil.editableFalse);
 		}
 		if(this.formMode === FormMode.editMode) {
 	        this.objectPageLayout.setShowFooter(true);
 	        this.editButton.setVisible(false);
 	        this.newButton.setVisible(true);
 	        this.deleteButton.setVisible(true);
-	        this.setOrigStatus();
+	        WidgetUtil.scan(this.getView(), WidgetUtil.editableEditMode);
 		}	
 		this.getView().invalidate();	
 	}
-	BaseDetailController.prototype.setOrigStatus = function()	{
-		WidgetUtil.scan(this.getView(), WidgetUtil.editableTrue);
-	}
-	BaseDetailController.prototype.setReadonlyStatus = function()	{
-		WidgetUtil.scan(this.getView(), WidgetUtil.editableFalse);
-	}	
+
 	return BaseDetailController;
 
 });

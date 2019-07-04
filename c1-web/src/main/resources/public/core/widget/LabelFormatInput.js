@@ -9,8 +9,8 @@ function(BaseClass, FmtInput, Label, CoreUtil) {
 	var theClass = BaseClass.extend("next.core.widget.LabelFormatInput", { 
 		metadata: {
 			aggregations: {
-				"_input" : {type : "next.core.widget.FmtInput", multiple : false}
-		    },			
+				"_input" : {type : "next.core.widget.FmtInput", multiple : false},
+		    }		
 		}
 	});
     theClass.prototype.applySettings = function(mSettings, oScope) {
@@ -21,7 +21,10 @@ function(BaseClass, FmtInput, Label, CoreUtil) {
 			width:"100%",
 			dataValue: {parts: [{path: this.getBindingPath("dataValue")}]},
 			dataFormat: this.getDataFormat(),
+			editableAddMode: this.getEditableAddMode(),
+			editableEditMode: this.getEditableEditMode(),
 				});
+
 		this.setAggregation("_input", oInput);
     	return rt;
      }	  

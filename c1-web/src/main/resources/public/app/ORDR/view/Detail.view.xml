@@ -65,7 +65,7 @@
 												<widget:LabelTextArea label="Address" dataValue="{/docStatus}"/>
 											</layout:BlockLayoutCell>												
 											<layout:BlockLayoutCell	title="Status">
-												<widget:LabelFormatInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"/>
+												<widget:LabelFormatInput label="Document Number" dataValue="{/id}" dataFormat = "ORDR.bpId"  editableAddMode="false" editableEditMode="false"/>
 												<widget:LabelDatePicker label="Document Date"  dataValue="{/createDate}" dataFormat = "ORDR.createDate"/>
 												<widget:LabelDatePicker label="Due Date"  dataValue="{/docDueDate}" dataFormat = "ORDR.docDueDate"/>
 												<widget:LabelSelect  label="Document Status" dataValue="{/docStatus}" dataFormat="ORDR.docStatus"/>

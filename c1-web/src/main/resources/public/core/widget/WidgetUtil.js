@@ -52,6 +52,24 @@ function(JSONModel, jQuery) {
 			}
 		}		
 	}
+	theClass.editableAddMode=function(o) {
+		var value = true;
+		if(o.getEditableAddMode) {
+			value = o.getEditableAddMode();
+		}
+		if(o.setEditable) {
+			o.setEditable(value);
+		}
+	}	
+	theClass.editableEditMode=function(o) {
+		var value = true;
+		if(o.getEditableEditMode) {
+			value = o.getEditableEditMode();
+		}
+		if(o.setEditable) {
+			o.setEditable(value);
+		}
+	}	
 	theClass.editableFalse=function(o) {
 		console.debug(o);
 		if(o.setEditable) {
