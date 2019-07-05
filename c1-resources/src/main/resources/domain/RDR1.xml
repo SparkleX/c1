@@ -4,6 +4,7 @@
 	<description>Orders - Details</description>
  	<column>
 		<id>id</id>
+		<description></description>		
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -11,6 +12,7 @@
 	</column>
 	<column>
 		<id>parentId</id>
+		<description></description>		
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -18,6 +20,7 @@
 	</column>
 	<column>
 		<id>visOrder</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -25,6 +28,7 @@
 	</column>
 	<column>
 		<id>itemId</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -33,6 +37,7 @@
 	</column>
 	<column>
 		<id>price</id>
+		<description></description>		
 		<dbType>Decimal</dbType>
 		<dbSize>0</dbSize>
 		<editType>Price</editType>
@@ -40,6 +45,7 @@
 	</column>
 	<column>
 		<id>quantity</id>
+		<description></description>		
 		<dbType>Decimal</dbType>
 		<dbSize>0</dbSize>
 		<editType>Quantity</editType>
@@ -47,6 +53,7 @@
 	</column>
 	<column>
 		<id>lineTotal</id>
+		<description></description>		
 		<dbType>Decimal</dbType>
 		<dbSize>0</dbSize>
 		<editType>Sum</editType>

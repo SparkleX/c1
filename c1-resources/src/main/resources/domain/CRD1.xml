@@ -5,6 +5,7 @@
 	<descColumn>name</descColumn>
 	<column>
 		<id>id</id>
+		<description></description>		
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -12,6 +13,7 @@
 	</column>
 	<column>
 		<id>parentId</id>
+		<description></description>		
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -19,6 +21,7 @@
 	</column>
 	<column>
 		<id>name</id>
+		<description></description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>127</dbSize>
 		<editType>None</editType>
@@ -26,6 +29,7 @@
 	</column>
 	<column>
 		<id>dfltAddr</id>
+		<description></description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>1</dbSize>
 		<editType>None</editType>
@@ -33,6 +37,7 @@
 	</column>		
 	<column>
 		<id>type</id>
+		<description></description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>1</dbSize>
 		<editType>None</editType>
@@ -42,6 +47,7 @@
 	</column>	
 	<column>
 		<id>address</id>
+		<description></description>
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>127</dbSize>
 		<editType>None</editType>

@@ -4,6 +4,7 @@
 	<description>Administration</description>
 	<column>
 		<id>id</id>
+		<description></description>
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -11,6 +12,7 @@
 	</column>
 	<column>
 		<id>compnyName</id>
+		<description></description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>50</dbSize>
 		<editType>None</editType>
@@ -18,6 +20,7 @@
 	</column>
 	<column>
 		<id>sumDec</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -25,6 +28,7 @@
 	</column>
 	<column>
 		<id>qtyDec</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -32,6 +36,7 @@
 	</column>
 	<column>
 		<id>priceDec</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -39,6 +44,7 @@
 	</column>
 	<column>
 		<id>rateDec</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -46,6 +52,7 @@
 	</column>
 	<column>
 		<id>percentDec</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -53,6 +60,7 @@
 	</column>
 	<column>
 		<id>measureDec</id>
+		<description></description>		
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>

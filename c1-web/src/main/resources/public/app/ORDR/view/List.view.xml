@@ -17,65 +17,40 @@
 		<!-- DynamicPage Header -->
 		<f:header>
 			<f:DynamicPageHeader pinnable="true">
-				<fb:FilterBar id="filterbar" reset="onReset"
-					search="onSearch" useToolbar="false" showGoOnFB="true">
-					<fb:filterItems>
+				<fb:FilterBar id="idFilterBar" reset="onReset" useToolbar="false" showGoOnFB="true">
+				<!-- 	<fb:filterItems>
 						<fb:FilterItem name="A" label="Name">
 							<fb:control>
-								<widget:LabelFormatInput label="Search"
-									dataValue="1" dataFormat="ORDR.id" />
-								<widget:LabelFormatInput label="Search"
-									dataValue="1" dataFormat="ORDR.id" />
-
+								<widget:LabelFormatInput label="Search"	dataValue="1" dataFormat="ORDR.id" />
 							</fb:control>
 						</fb:FilterItem>
 						<fb:FilterItem name="B" label="Category">
 							<fb:control>
-								<Select id="slCategory" change="onSelectChange"
-									forceSelection="true"
-									items="{
-                                                    path: '/ProductCategories'
-                                                 }">
-									<core:Item key="{key}" text="{name}" />
-								</Select>
+								<widget:LabelFormatInput label="Search"	dataValue="1" dataFormat="ORDR.id" />							
 							</fb:control>
 						</fb:FilterItem>
 						<fb:FilterItem name="C" label="SupplierName">
 							<fb:control>
-								<Select id="slSupplierName" change="onSelectChange"
-									forceSelection="true"
-									items="{
-                                                    path: '/ProductSuppliers'
-                                                }">
-									<core:Item key="{key}" text="{name}" />
-								</Select>
+								<widget:LabelFormatInput label="Search"	dataValue="1" dataFormat="ORDR.id" />
 							</fb:control>
-						</fb:FilterItem>
-					</fb:filterItems>
+						</fb:FilterItem> 
+					</fb:filterItems>-->
 				</fb:FilterBar>
 			</f:DynamicPageHeader>
 		</f:header>
 		<f:content>
-			<table:ListViewTable dataTable="ORDR"
-				id="listTable" rows="{list>/}" rowActionCount="1"
-				selectionMode="MultiToggle">
+			<table:ListViewTable dataTable="ORDR" id="listTable" rows="{list>/}" rowActionCount="1"	selectionMode="MultiToggle">
 				<table:defaultColumns>
 					<table:defaultColumn text="#" dataBind="id" />
-					<table:defaultColumn text="Business Partner"
-						dataBind="bpId" />
-					<table:defaultColumn text="Document Total"
-						dataBind="docTotal" />
-					<table:defaultColumn text="Remarks"
-						dataBind="remarks" />
+					<table:defaultColumn text="Business Partner" dataBind="bpId" />
+					<table:defaultColumn text="Document Total" dataBind="docTotal" />
+					<table:defaultColumn text="Remarks"	dataBind="remarks" />
 				</table:defaultColumns>
 				<table:extension>
 					<OverflowToolbar>
-						<Button icon="sap-icon://add" type="Transparent"
-							press="onAdd" />
-						<Button icon="sap-icon://delete" type="Transparent"
-							press="onDelete" />
-						<Button icon="sap-icon://action-settings"
-							type="Transparent" press="onTestClick" />
+						<Button icon="sap-icon://add" type="Transparent"  press="onAdd" />
+						<Button icon="sap-icon://delete" type="Transparent" press="onDelete" />
+						<Button icon="sap-icon://action-settings" type="Transparent" press="onTestClick" />
 					</OverflowToolbar>
 				</table:extension>
 			</table:ListViewTable>

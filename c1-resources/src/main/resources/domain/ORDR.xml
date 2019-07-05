@@ -5,6 +5,7 @@
 	<array id="RDR1" type="RDR1"/>
 	<column>
 		<id>id</id>
+		<description>ID</description>
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -12,6 +13,7 @@
 	</column>
 	<column>
 		<id>bpId</id>
+		<description>Business Partner</description>
 		<dbType>Integer</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -20,6 +22,7 @@
 	</column>
 	<column>
 		<id>remarks</id>
+		<description>Remarks</description>
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>255</dbSize>
 		<editType>None</editType>
@@ -27,6 +30,7 @@
 	</column>
 	<column>
 		<id>docTotal</id>
+		<description>Document Total</description>		
 		<dbType>Decimal</dbType>
 		<dbSize>0</dbSize>
 		<editType>Sum</editType>
@@ -34,6 +38,7 @@
 	</column>
 	<column>
 		<id>docDate</id>
+		<description>Document Date</description>		
 		<dbType>Date</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -41,6 +46,7 @@
 	</column>
 	<column>
 		<id>docDueDate</id>
+		<description>Due Date</description>		
 		<dbType>Date</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -48,6 +54,7 @@
 	</column>	
 	<column>
 		<id>createDate</id>
+		<description>Create Date</description>
 		<dbType>Date</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -55,6 +62,7 @@
 	</column>
 	<column>
 		<id>docStatus</id>
+		<description>Document Status</description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>1</dbSize>
 		<editType>None</editType>
@@ -65,6 +73,7 @@
 	</column>
 	<column>
 		<id>shipToAddr</id>
+		<description>Ship to Address</description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>255</dbSize>
 		<editType>None</editType>

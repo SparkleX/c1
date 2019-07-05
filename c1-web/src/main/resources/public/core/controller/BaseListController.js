@@ -4,14 +4,18 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"next/core/controller/RouterUtil",
-	"next/core/controller/ApiUtils"
-], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ApiUtils) {
+	"next/core/controller/ApiUtils",
+	"sap/ui/comp/filterbar/FilterItem",
+	"next/core/widget/CoreUtil",	
+], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ApiUtils,FilterItem, CoreUtil) {
 	"use strict";
 
 	var theClass =Controller.extend("next.core.controller.BaseListController", {});
 	theClass.prototype.onInit=function() {
+		this.dataTable = "ORDR";
 	    var that = this;
 	    var oView = this.getView();
+	    this.initFilter();
 		oView.addEventDelegate({
 		  onAfterShow: function(evt){
 			that.refresh();
@@ -21,7 +25,41 @@ sap.ui.define([
 		  },
 		}, oView);
 	}
-
+	theClass.prototype.initFilter=function() {
+		var oView = this.getView();
+		var oFilterBar = oView.byId("idFilterBar");
+		oFilterBar.attachSearch(this.onSearch.bind(this));
+		var oModelFilter = new JSONModel({});
+		oView.setModel(oModelFilter,"filter");
+		
+		var oInput = new sap.m.Input();
+		var oFilterItem = new FilterItem({
+			name:"__search",
+			name:"search",
+			label:"Search",
+			control:oInput
+				});		
+		oFilterBar.addFilterItem(oFilterItem);
+		for(let metaCol of this.getMetaCols()) {
+			var oInput = new sap.m.Input({value:"{filter>/"+metaCol.id+"}"});
+			var oFilterItem = new FilterItem({
+				id: metaCol.id,
+				name: metaCol.id,
+				label:metaCol.description,
+				control:oInput,
+				
+					});	
+			oFilterBar.addFilterItem(oFilterItem);
+		}
+		
+	}
+	theClass.prototype.onSearch=function(evt) {
+		this.refresh();	
+	}
+	theClass.prototype.getMetaCols=function() {
+		var metaTable = CoreUtil.getMdTable(this.dataTable);
+		return metaTable.column;
+	}
     theClass.prototype.onTestClick = function () {
 			//var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			//oRouter.navTo("detail");
@@ -36,8 +74,19 @@ sap.ui.define([
         RouterUtil.navTo(this, id);
 	}
 	theClass.prototype.refresh = function () {
+		var oView = this.getView();
+		var oModel = oView.getModel("filter");
+		var data = oModel.getData();
+		var params = "";
+		for(var key in data) {
+			if(data[key]==="") {
+				continue;
+			}
+			params = params + key+"="+data[key]+"&";
+		}
+		
         var oModelList = new JSONModel();
-        oModelList.loadData("/api/"+this.dataTable+"/");
+        oModelList.loadData("/api/"+this.dataTable+"/?"+params);
         oModelList.attachRequestCompleted(function() {
         });
         this.getOwnerComponent().setModel(oModelList, "list");

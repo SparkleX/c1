@@ -5,6 +5,7 @@
 	<descColumn>itemCode</descColumn>
 	<column>
 		<id>id</id>
+		<description></description>		
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -12,6 +13,7 @@
 	</column>
 	<column>
 		<id>itemCode</id>
+		<description></description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>40</dbSize>
 		<editType>None</editType>
@@ -19,6 +21,7 @@
 	</column>
 	<column>
 		<id>itemName</id>
+		<description></description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>127</dbSize>
 		<editType>None</editType>
@@ -26,6 +29,7 @@
 	</column>
 	<column>
 		<id>dfltPrice</id>
+		<description></description>		
 		<dbType>Decimal</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>

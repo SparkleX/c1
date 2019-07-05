@@ -14,6 +14,7 @@
 	<xs:complexType name="column">
 		<xs:sequence>
 			<xs:element name="id" type="columnName" />
+			<xs:element name="description" type="xs:string" />
 			<xs:element name="dbType" type="DbType"/>
 			<xs:element name="dbSize" type="xs:int" />
 			<xs:element name="editType" type="EditType" />

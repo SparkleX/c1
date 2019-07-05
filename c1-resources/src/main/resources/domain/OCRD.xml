@@ -6,6 +6,7 @@
 	<descColumn>bpCode</descColumn>
 	<column>
 		<id>id</id>
+		<description>ID</description>
 		<dbType>Identity</dbType>
 		<dbSize>0</dbSize>
 		<editType>None</editType>
@@ -13,6 +14,7 @@
 	</column>
 	<column>
 		<id>bpCode</id>
+		<description>Business Partner Code</description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>40</dbSize>
 		<editType>None</editType>
@@ -20,6 +22,7 @@
 	</column>
 	<column>
 		<id>bpName</id>
+		<description>Business Partner Name</description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>127</dbSize>
 		<editType>None</editType>
@@ -27,6 +30,7 @@
 	</column>
 	<column>
 		<id>bpType</id>
+		<description>Type</description>		
 		<dbType>AlphaNumeric</dbType>
 		<dbSize>1</dbSize>
 		<editType>None</editType>
