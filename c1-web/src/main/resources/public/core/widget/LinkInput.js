@@ -23,17 +23,50 @@ function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
 		this.setPlaceholder("Enter ...");
 		this.setShowSuggestion(true);
 		this.setShowValueHelp(true);
+		this.setShowTableSuggestionValueHelp(false);
 		this.attachValueHelpRequest(this._onChooseFromList);
 		//this.setSuggestionItems("")
-	   // this.attachSuggestionItemSelected(this.suggestionItemSelected);
+	    this.attachSuggestionItemSelected(this.onSuggestionItemSelected);
+	    this.attachSuggest(this._onSuggest);
 	};
     theClass.prototype.applySettings = function(mSettings, oScope) {
     	var rt = BaseClass.prototype.applySettings.call(this, mSettings, oScope);
-    	//var oBinding = this.getBindingInfo("dataValue");
-    	//oBinding.parts[0].type = sap.ui.model.type.Integer;
+    	var dataFormat = this.getDataFormat();
+    	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
+    	
     	this.bindDataValue({parts: [{path: this.getBindingPath("dataValue"), type:"sap.ui.model.type.Integer"}]});
+    	this.buildSuggestions();
+
     	return rt;
      }
+    theClass.prototype.buildSuggestions = function() {
+		var oModel = new JSONModel([]);
+		this.setModel(oModel,"filter");
+
+    	var metaLinkToTable = CoreUtil.getMdTable(this.metaCol.linkTo);
+
+    	for(var metaLinkToColumn of metaLinkToTable.column) {
+	    	var oLabel = new sap.m.Label({text:metaLinkToColumn.description});
+	    	var oColumn = new sap.m.Column({
+	    		demandPopin:true,
+	    		popinDisplay:"Inline",
+	    		header:oLabel
+	    		});
+    		this.addSuggestionColumn(oColumn);
+    	}
+    	var cells = [];
+    	for(var metaLinkToColumn of metaLinkToTable.column) {
+    		var oLabel = new sap.m.Label({text:"{filter>"+metaLinkToColumn.id+"}"});
+   			cells.push(oLabel);
+    	}
+    	var oColListItem = new sap.m.ColumnListItem({
+    		cells: cells
+    	});
+    	this.bindSuggestionRows({
+    		  path : "filter>/",
+    		  template : oColListItem
+    	});
+    }
 	theClass.prototype.setDataValue = function (value) {
 
 		this.setProperty("dataValue", value);
@@ -68,5 +101,15 @@ function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
 		this._cflDialog = new CflDialog(this, table);
         this._cflDialog.open(sInputValue);
 	};
+	theClass.prototype.onSuggestionItemSelected = function (evt) {
+		alert(1);
+	}
+	theClass.prototype._onSuggest = function (evt) {
+		var sTerm = evt.getParameter("suggestValue");
+		var oModel = new JSONModel();
+		var url ="/api/"+this.metaCol.linkTo+"/";//"?id="+sTerm;
+		oModel.loadData(url,null,false);
+		this.setModel(oModel,"filter");
+	}
 	return theClass;
 });
