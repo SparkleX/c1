@@ -82,13 +82,13 @@
 											<table:Column>
 												<m:Label text="Name" />
 												<table:template>
-													<widget:FmtInput dataValue="{name}" dataFormat="CRD1.name"/>
+													<widget:FormatInput dataValue="{name}" dataFormat="CRD1.name"/>
 												</table:template>
 											</table:Column>
 											<table:Column >
 												<m:Label text="Address" />
 												<table:template>
-													<widget:FmtInput dataValue="{address}" dataFormat="CRD1.address"/>
+													<widget:FormatInput dataValue="{address}" dataFormat="CRD1.address"/>
 												</table:template>
 											</table:Column>
 										</widget:columns>

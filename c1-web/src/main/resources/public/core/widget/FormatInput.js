@@ -6,7 +6,7 @@ sap.ui.define([
 ],
 function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.FmtInput", { 
+	var theClass = BaseClass.extend("next.core.widget.FormatInput", { 
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },

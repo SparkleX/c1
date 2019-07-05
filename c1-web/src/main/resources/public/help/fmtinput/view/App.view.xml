@@ -4,6 +4,6 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:widget="next.core.widget"
 	xmlns:core="sap.ui.core">
-	<widget:FmtInput id="idActive" data="{/value}"/>
+	<widget:FormatInput id="idActive" data="{/value}"/>
 	<m:Button text="Test" press=".onTest"/>	
 </mvc:View>
