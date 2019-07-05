@@ -62,13 +62,12 @@ public class SqlConnectionProxy implements SqlConnection{
 
 	@Override
 	public <T> List<T> select(Class<T> clazz, String sql, Object... params) {
-		return null;
+		return getSqlConnection().select(clazz, sql, params);
 	}
 
 	@Override
 	public List<Object[]> select(String sql, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSqlConnection().select(sql, params);
 	}
 	
 }

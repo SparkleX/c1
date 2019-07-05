@@ -110,7 +110,7 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		repository.deleteById(id);
 	}
 	public List<T> search() {
-		List<T> rt = this.searchService.search(repository);
+		List<T> rt = this.searchService.search(this);
 		return rt;
 	}	
 	public Integer getNext(Integer id) {
@@ -124,5 +124,11 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	}
 	public Integer getLast() {
 		return repository.getLast();
+	}
+
+	public Class<T> getDomainType() {
+		@SuppressWarnings("unchecked")
+		Class<T> t = (Class<T>) GenericTypeResolver.resolveTypeArguments(this.getClass(), BaseService.class)[0];
+		return t;
 	}	
 }
