@@ -29,15 +29,36 @@ sap.ui.define([
 		oModel.setData(newData);
 		this.getView().invalidate();*/
 	}
-	theClass.prototype.onAddressChange=function(item) {
-		alert('a');
-	}	
+	theClass.prototype.onTest=function(item) {
+		var src = this.byId("test");
+		src.getIcon().attachPress(this.onLoadItems.bind(this, true));
+	}
+	theClass.prototype.popup=function(item) {
+		var src = this.byId("test");
+		var data = {RDR1: [{id:1,desc:"a"},{id:2,desc:"b"}]};
+		var oModel = new JSONModel(data);
+		src.setModel(oModel);
+		//src.bindItems("\RDR1");
+		this.b = src.bindItems({
+                path : "/RDR1", 
+               // suspended: true,
+                template : new sap.ui.core.Item({
+                    key: "{id}",
+                    text: "{id}"
+                })
+            });		
+	}		
 	theClass.prototype.onCalcTotal=function(evt) {
 		var oModel = this.getView().getModel()
 		var data = oModel.getData();
 		var newData = ApiUtils.change(data,"ORDR","",0);
 		oModel.setData(newData);
+
 		this.getView().invalidate();
+	}	
+	theClass.prototype.onLoadItems=function(evt) {
+		console.debug("onLoadItems");
+		this.popup(null);
 	}	
 	
 	return theClass;

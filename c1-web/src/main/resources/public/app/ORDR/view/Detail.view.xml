@@ -61,6 +61,9 @@
 												<widget:LabelLinkInput id="idTest" label="Business Partner Code" type="Number" dataValue="{/bpId}" dataFormat = "ORDR.bpId"/>
 											</layout:BlockLayoutCell>
 											<layout:BlockLayoutCell	title="Logistics">
+												<m:ComboBox id="test">
+													
+												</m:ComboBox>
 												<widget:LabelSelect  label="Ship To" dataValue="{/docStatus}" dataFormat="ORDR.docStatus" dataChange="onAddressChange"/>
 												<widget:LabelTextArea label="Address" dataValue="{/docStatus}"/>
 											</layout:BlockLayoutCell>												
