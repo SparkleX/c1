@@ -1,59 +1,84 @@
-<mvc:View
-	controllerName="next.app.ORDR.controller.List"
-	xmlns="sap.m"
-	xmlns:l="sap.ui.layout"
-	xmlns:table="next.core.ui.table"
-	xmlns:table2="sap.ui.table"
-	xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc.View"
-	xmlns:widget="next.core.widget"
-	displayBlock="true">
-	<Page title="{i18n>list/title}">
-		<content>	
-		<table:ListViewTable dataTable="ORDR" id="listTable" rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle">
-			<table:defaultColumns>
-				<table:defaultColumn text="#" dataBind="id"/>
-				<table:defaultColumn text="Business Partner" dataBind="bpId"/>
-				<table:defaultColumn text="Document Total" dataBind="docTotal"/>
-				<table:defaultColumn text="Remarks" dataBind="remarks"/>
-			</table:defaultColumns>
-			<table:extension>
-				<OverflowToolbar>
-					<Button icon="sap-icon://add" type="Transparent" press="onAdd"/>
-					<Button icon="sap-icon://delete" type="Transparent" press="onDelete"/>
-					<Button icon="sap-icon://action-settings" type="Transparent" press="onTestClick"/>
-				</OverflowToolbar>
-			</table:extension>
-				<!--<table:columns>
-				<table2:Column>
-					<Label text="test" />
-					<table2:template>
-						<Button text="Test" press="onQuickView"/>
-					</table2:template>
-				</table2:Column>
-				<table2:Column>
-					<Label text="test3" />
-					<table2:template>
-						<widget:FormatLink press="onQuickView" dataFormat="ORDR.bpId" dataValue="{list>bpId}"/>
-					</table2:template>
-				</table2:Column>				
+<mvc:View controllerName="next.app.ORDR.controller.List"
+	xmlns="sap.m" xmlns:layout="sap.ui.layout"
+	xmlns:table="next.core.ui.table" xmlns:table2="sap.ui.table"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc.View"
+	xmlns:widget="next.core.widget" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar" displayBlock="true">
+	<f:DynamicPage headerExpanded="true"
+		preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Sales Orders" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<fb:FilterBar id="filterbar" reset="onReset"
+					search="onSearch" useToolbar="false" showGoOnFB="true">
+					<fb:filterItems>
+						<fb:FilterItem name="A" label="Name">
+							<fb:control>
+								<widget:LabelFormatInput label="Search"
+									dataValue="1" dataFormat="ORDR.id" />
+								<widget:LabelFormatInput label="Search"
+									dataValue="1" dataFormat="ORDR.id" />
 
-	  		</table:columns>		
-				<table2:Column>
-					<Label text="Item" />
-					<table2:template>
-						<Text text="{list>id}" />
-					</table2:template>
-				</table2:Column>
-			</table:columns>				
-		 	<table:rowActionTemplate>
-				<table:RowAction>
-					<table:items>
-						<table:RowActionItem type="Navigation" press="onListItemPress"></table:RowActionItem>
-					</table:items>
-				</table:RowAction>
-			</table:rowActionTemplate> -->
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="B" label="Category">
+							<fb:control>
+								<Select id="slCategory" change="onSelectChange"
+									forceSelection="true"
+									items="{
+                                                    path: '/ProductCategories'
+                                                 }">
+									<core:Item key="{key}" text="{name}" />
+								</Select>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="C" label="SupplierName">
+							<fb:control>
+								<Select id="slSupplierName" change="onSelectChange"
+									forceSelection="true"
+									items="{
+                                                    path: '/ProductSuppliers'
+                                                }">
+									<core:Item key="{key}" text="{name}" />
+								</Select>
+							</fb:control>
+						</fb:FilterItem>
+					</fb:filterItems>
+				</fb:FilterBar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<table:ListViewTable dataTable="ORDR"
+				id="listTable" rows="{list>/}" rowActionCount="1"
+				selectionMode="MultiToggle">
+				<table:defaultColumns>
+					<table:defaultColumn text="#" dataBind="id" />
+					<table:defaultColumn text="Business Partner"
+						dataBind="bpId" />
+					<table:defaultColumn text="Document Total"
+						dataBind="docTotal" />
+					<table:defaultColumn text="Remarks"
+						dataBind="remarks" />
+				</table:defaultColumns>
+				<table:extension>
+					<OverflowToolbar>
+						<Button icon="sap-icon://add" type="Transparent"
+							press="onAdd" />
+						<Button icon="sap-icon://delete" type="Transparent"
+							press="onDelete" />
+						<Button icon="sap-icon://action-settings"
+							type="Transparent" press="onTestClick" />
+					</OverflowToolbar>
+				</table:extension>
 			</table:ListViewTable>
-		</content>
-	</Page>
+		</f:content>
+	</f:DynamicPage>
 </mvc:View>
