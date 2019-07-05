@@ -18,7 +18,10 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 	@Autowired
 	protected REPO repository;
 	@Autowired
-	MetadataService metadataService;
+	protected MetadataService metadataService;
+	@Autowired
+	protected BaseSearchService<T,REPO> searchService;
+	
 	@Autowired
 	ApplicationContext appContext;
 	public String getDescription(Integer id) {
@@ -107,7 +110,8 @@ public class BaseService<T,REPO extends BaseRepository<T,Integer>> {
 		repository.deleteById(id);
 	}
 	public List<T> search() {
-		return repository.findAll();
+		List<T> rt = this.searchService.search(repository);
+		return rt;
 	}	
 	public Integer getNext(Integer id) {
 		return repository.getNext(id);
