@@ -1,4 +1,4 @@
-package com.next.c1.controller;
+package com.next.c1.controller.system;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.next.c1.schema.table.Table;
-import com.next.c1.service.MetadataService;
+import com.next.c1.service.sys.MetadataService;
 
 @RestController
 @RequestMapping(path="/api/metadata")

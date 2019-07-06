@@ -15,7 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.next.c1.service.MetadataService;
+import com.next.c1.controller.system.MetadataController;
+import com.next.c1.service.sys.MetadataService;
 @RunWith(SpringRunner.class)
 @WebMvcTest(MetadataController.class)
 public class MetadataControllerTest{

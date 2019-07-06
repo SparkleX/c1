@@ -11,6 +11,7 @@ import com.next.c1.repository.BaseRepository;
 import com.next.c1.repository.ORDRRepository;
 import com.next.c1.schema.table.Array;
 import com.next.c1.schema.table.Table;
+import com.next.c1.service.sys.MetadataService;
 import com.next.jpatis.core.JpatisUtils;
 
 public class BaseService<T,REPO extends BaseRepository<T,Integer>> {

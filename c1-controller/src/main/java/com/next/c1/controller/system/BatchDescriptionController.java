@@ -1,4 +1,4 @@
-package com.next.c1.controller;
+package com.next.c1.controller.system;
 
 import java.util.Map;
 import java.util.Map.Entry;

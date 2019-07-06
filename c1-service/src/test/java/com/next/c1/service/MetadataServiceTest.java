@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.next.c1.schema.table.Table;
+import com.next.c1.service.sys.MetadataService;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=MetadataService.class)
 public class MetadataServiceTest {

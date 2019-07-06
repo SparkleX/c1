@@ -5,12 +5,7 @@
 			<jaxb:package name="com.next.c1.schema.table" />
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
-	<jaxb:bindings schemaLocation="quick.xsd">
-		<jaxb:schemaBindings>
-			<jaxb:package name="com.next.c1.schema.quick" />
-		</jaxb:schemaBindings>
-	</jaxb:bindings>
-	<jaxb:bindings schemaLocation="choose.xsd">
+	<jaxb:bindings schemaLocation="list.xsd">
 		<jaxb:schemaBindings>
 			<jaxb:package name="com.next.c1.schema.choose" />
 		</jaxb:schemaBindings>
