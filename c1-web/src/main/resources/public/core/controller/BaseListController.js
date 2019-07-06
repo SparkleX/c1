@@ -49,7 +49,7 @@ sap.ui.define([
 
 			var oInput =  WidgetUtil.newEditableControl(metaTable, metaCol, "filter>");
 			var oFilterItem = new FilterItem({
-				id: metaCol.id,
+				id: "idFilter" + metaCol.id,
 				name: metaCol.id,
 				label:metaCol.description,
 				control:oInput,

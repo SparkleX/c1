@@ -9,7 +9,7 @@ sap.ui.define([
     "c1/core/widget/FormatUtil",
 ], function (ManagedObject, Controller, Fragment, JSONModel, Filter, CoreUtil,ApiUtils, FormatUtil) {
 	"use strict";
-	var theClass = Controller.extend("c1.core.view.CflDialog", {
+	var theClass = Controller.extend("c1.core.view.choose.ChooseDialog", {
 		constructor : function (oView, table) {
 			this._oView = oView;
 			this._table = table;

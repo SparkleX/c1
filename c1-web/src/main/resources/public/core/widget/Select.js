@@ -9,6 +9,7 @@ sap.ui.define([
 			properties : {
 				dataValue:  {type: "string", group: "Behavior"},
 				dataFormat:  {type: "string", group: "Behavior"},
+				allowEmpty:  {type: "boolean", group: "Behavior", defaultValue: "false"},
 			},
 			events: {
 				dataChange:{
@@ -32,6 +33,10 @@ sap.ui.define([
 		BaseClass.prototype.applySettings.call(this, mSettings, oScope);
 		this.attachChange(this.onChange);
         this.removeAllItems();
+        if(this.getAllowEmpty()) {
+            var item =  new sap.ui.core.ListItem({key:"".id,text:""});
+            this.addItem(item);
+        }
 		var bind = this.getDataFormat();
 		var oColumn = CoreUtil.getMdColumnByBind(bind);
 		for(var v in oColumn.validValue)	{
@@ -42,7 +47,11 @@ sap.ui.define([
     }
 	theClass.prototype.setValue = function (value) {
 		var rt = BaseClass.prototype.setValue.call(this, value);
-		var key = this.getSelectedItem().getKey()
+		var select = this.getSelectedItem();
+		var key = null;
+		if(select) {
+			key = select.getKey()
+		}
 		this.setProperty("dataValue", key);
 		return rt;
 	};

@@ -1,12 +1,12 @@
 sap.ui.define([
 	"sap/m/Input",
-	"c1/core/view/CflDialog",
+	"c1/core/view/choose/ChooseDialog",
     "sap/ui/model/json/JSONModel",
     "c1/core/util/CoreUtil",
     "c1/core/util/ApiUtils",
     "c1/core/widget/FormatUtil",
 ],
-function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
+function(BaseClass, ChooseDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
 	"use strict";
 	var theClass = BaseClass.extend("c1.core.widget.LinkInput", { 
 	metadata: {
@@ -34,14 +34,15 @@ function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
     	var dataFormat = this.getDataFormat();
     	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
     	
-    	this.bindDataValue({parts: [{path: this.getBindingPath("dataValue"), type:"sap.ui.model.type.Integer"}]});
+    	//var path = this.getBindingPath("dataValue");
+    	//this.bindDataValue({parts: [{path: this.getBindingPath("dataValue"), type:"sap.ui.model.type.Integer"}]});
     	this.buildSuggestions();
 
     	return rt;
      }
     theClass.prototype.buildSuggestions = function() {
 		var oModel = new JSONModel([]);
-		this.setModel(oModel,"filter");
+		this.setModel(oModel,"suggest");
 
     	var metaLinkToTable = CoreUtil.getMdTable(this.metaCol.linkTo);
 
@@ -56,25 +57,21 @@ function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
     	}
     	var cells = [];
     	for(var metaLinkToColumn of metaLinkToTable.column) {
-    		var oLabel = new sap.m.Label({text:"{filter>"+metaLinkToColumn.id+"}"});
+    		var oLabel = new sap.m.Label({text:"{suggest>"+metaLinkToColumn.id+"}"});
    			cells.push(oLabel);
     	}
     	var oColListItem = new sap.m.ColumnListItem({
     		cells: cells
     	});
     	this.bindSuggestionRows({
-    		  path : "filter>/",
+    		  path : "suggest>/",
     		  template : oColListItem
     	});
     }
 	theClass.prototype.setDataValue = function (value) {
 
 		this.setProperty("dataValue", value);
-		var dataFormat = this.getDataFormat();
-		var table = CoreUtil.getDataBindTable(dataFormat);
-		var field = CoreUtil.getDataBindField(dataFormat);
-		var metaCol = CoreUtil.getMdColumn(table, field);
-		var linkToTable = metaCol.linkTo;
+		var linkToTable = this.metaCol.linkTo;
 		var that = this;
 		var desc = ApiUtils.getDescription(linkToTable, value, function(val){
 			//that.setDataDesc(val);
@@ -98,7 +95,7 @@ function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
 		var field = CoreUtil.getDataBindField(dataFormat);
 		this.metaCol = CoreUtil.getMdColumn(table, field);
 		table = this.metaCol.linkTo;
-		this._cflDialog = new CflDialog(this, table);
+		this._cflDialog = new ChooseDialog(this, table);
         this._cflDialog.open(sInputValue);
 	};
 	theClass.prototype.onSuggestionItemSelected = function (evt) {
@@ -109,7 +106,7 @@ function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
 		var oModel = new JSONModel();
 		var url ="/api/"+this.metaCol.linkTo+"/";//"?id="+sTerm;
 		oModel.loadData(url,null,false);
-		this.setModel(oModel,"filter");
+		this.setModel(oModel,"suggest");
 	}
 	return theClass;
 });
