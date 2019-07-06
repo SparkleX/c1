@@ -40,12 +40,6 @@
 		</f:header>
 		<f:content>
 			<table:ListViewTable dataTable="ORDR" id="listTable" rows="{list>/}" rowActionCount="1"	selectionMode="MultiToggle">
-				<table:defaultColumns>
-					<table:defaultColumn text="#" dataBind="id" />
-					<table:defaultColumn text="Business Partner" dataBind="bpId" />
-					<table:defaultColumn text="Document Total" dataBind="docTotal" />
-					<table:defaultColumn text="Remarks"	dataBind="remarks" />
-				</table:defaultColumns>
 				<table:extension>
 					<OverflowToolbar>
 						<Button icon="sap-icon://add" type="Transparent"  press="onAdd" />

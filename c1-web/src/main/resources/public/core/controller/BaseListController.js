@@ -31,7 +31,10 @@ sap.ui.define([
 		oFilterBar.attachSearch(this.onSearch.bind(this));
 		var oModelFilter = new JSONModel({});
 		oView.setModel(oModelFilter,"filter");
-		
+
+        var metaTable = CoreUtil.getMdTable(this.dataTable);
+        var listColumns = ApiUtils.listView(this.dataTable);
+
 		var oInput = new sap.m.Input();
 		var oFilterItem = new FilterItem({
 			name:"__search",
@@ -40,7 +43,8 @@ sap.ui.define([
 			control:oInput
 				});		
 		oFilterBar.addFilterItem(oFilterItem);
-		for(let metaCol of this.getMetaCols()) {
+		for(let colName of listColumns.column) {
+            var metaCol = metaTable.columnMap[colName];
 			var oInput = new sap.m.Input({value:"{filter>/"+metaCol.id+"}"});
 			var oFilterItem = new FilterItem({
 				id: metaCol.id,
@@ -55,10 +59,6 @@ sap.ui.define([
 	}
 	theClass.prototype.onSearch=function(evt) {
 		this.refresh();	
-	}
-	theClass.prototype.getMetaCols=function() {
-		var metaTable = CoreUtil.getMdTable(this.dataTable);
-		return metaTable.column;
 	}
     theClass.prototype.onTestClick = function () {
 			//var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
