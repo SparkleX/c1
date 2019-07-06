@@ -1,6 +1,8 @@
 sap.ui.define([
+	"c1/core/widget/LinkInput",
+	"c1/core/widget/Select",
 ],
-function(JSONModel, jQuery) {
+function(LinkInput, Select) {
 	"use strict";
 
 	var theClass={};
@@ -81,6 +83,24 @@ function(JSONModel, jQuery) {
 		if(o.setEditable) {
 			o.setEditable(true);
 		}
+	}
+	theClass.newEditableControl=function(metaTable, metaCol, model) {
+	    if(metaCol.linkTo) {
+	        return new LinkInput({
+	            dataFormat:`${metaTable.id}.${metaCol.id}`,
+	            dataValue:`{${model}/${metaCol.id}}`
+	            });
+	    }
+	    if(metaCol.validValue) {
+            return new c1.core.widget.Select({
+                dataFormat:`${metaTable.id}.${metaCol.id}`,
+                dataValue:`{${model}/${metaCol.id}}`
+                });
+	    }
+        return new sap.m.Input({value:`{${model}/${metaCol.id}}`});
+	}
+	theClass.newGridControl=function(metaCol) {
+
 	}
 	return theClass;
 });

@@ -6,8 +6,9 @@ sap.ui.define([
 	"c1/core/util/RouterUtil",
 	"c1/core/util/ApiUtils",
 	"sap/ui/comp/filterbar/FilterItem",
-	"c1/core/util/CoreUtil",	
-], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ApiUtils,FilterItem, CoreUtil) {
+	"c1/core/util/CoreUtil",
+	"c1/core/util/WidgetUtil",
+], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ApiUtils,FilterItem, CoreUtil,WidgetUtil) {
 	"use strict";
 
 	var theClass =Controller.extend("c1.core.controller.BaseListController", {});
@@ -45,7 +46,8 @@ sap.ui.define([
 		oFilterBar.addFilterItem(oFilterItem);
 		for(let colName of this.listColumns.column) {
             var metaCol = metaTable.columnMap[colName];
-			var oInput = new sap.m.Input({value:"{filter>/"+metaCol.id+"}"});
+
+			var oInput =  WidgetUtil.newEditableControl(metaTable, metaCol, "filter>");
 			var oFilterItem = new FilterItem({
 				id: metaCol.id,
 				name: metaCol.id,
