@@ -23,21 +23,43 @@ public class BaseSearchService<T,REPO extends BaseRepository<T,Integer>> {
 	
 	@Autowired
 	HttpServletRequest httpRequest;
+
+	private void buildOrderby(StringBuilder sb) {
+		String order = httpRequest.getParameter("$orderby");
+		if(order==null) {
+			return;
+		}
+		sb.append(" order by").append(" ").append(order);
+	}
+	
+	private void buildSelect(StringBuilder sb) {
+		String select = httpRequest.getParameter("$select");
+		sb.append("select ");
+		if(select==null) {
+			sb.append("* ");
+			return;
+		}
+		sb.append(select).append(" ");
+	}
 	public List<T> search(BaseService<T,REPO> service) {
 		
 		Class<T> domainType = service.getDomainType();
 		String tableName = JpaUtils.getTableName(domainType);
 		StringBuilder sb = new StringBuilder();
-		sb.append("select * from ").append(tableName);
-		if(httpRequest.getParameterMap().entrySet().size()>=1) {
-			sb.append(" where ");
-			for(Entry<String, String[]> entry:httpRequest.getParameterMap().entrySet()) {
-				String column = entry.getKey();
-				String value = entry.getValue()[0];
-				sb.append(column).append("='").append(value).append("' and");
+		buildSelect(sb);
+		sb.append(" from ").append(tableName);
+		
+		sb.append(" where 1=1 and");
+		for(Entry<String, String[]> entry:httpRequest.getParameterMap().entrySet()) {
+			String column = entry.getKey();
+			if(column.startsWith("$")) {
+				continue;
 			}
-			sb.setLength(sb.length()-4);
+			String value = entry.getValue()[0];
+			sb.append(column).append("='").append(value).append("' and");
 		}
+		sb.setLength(sb.length()-4);
+		buildOrderby(sb);
 		List<T> rt = sql.select(domainType, sb.toString());
 		return rt;
 	}
