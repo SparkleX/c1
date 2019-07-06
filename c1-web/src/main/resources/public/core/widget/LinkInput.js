@@ -57,7 +57,10 @@ function(BaseClass, ChooseDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
     	}
     	var cells = [];
     	for(var metaLinkToColumn of metaLinkToTable.column) {
-    		var oLabel = new sap.m.Label({text:"{suggest>"+metaLinkToColumn.id+"}"});
+    		var oLabel = new sap.m.Label({
+    		   // id:metaLinkToColumn.id,
+    		    text:"{suggest>"+metaLinkToColumn.id+"}"
+    		});
    			cells.push(oLabel);
     	}
     	var oColListItem = new sap.m.ColumnListItem({
@@ -99,7 +102,9 @@ function(BaseClass, ChooseDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
         this._cflDialog.open(sInputValue);
 	};
 	theClass.prototype.onSuggestionItemSelected = function (evt) {
-		alert(1);
+		var value = evt.getParameters("selectedRow").selectedRow.getCells()[0].getText();
+		this.setDataValue(value);
+		ApiUtils.finishBatchDesc();
 	}
 	theClass.prototype._onSuggest = function (evt) {
 		var sTerm = evt.getParameter("suggestValue");

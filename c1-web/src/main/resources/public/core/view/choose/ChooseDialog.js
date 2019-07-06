@@ -40,7 +40,7 @@ sap.ui.define([
         this._oDialog.bindAggregation("items", "cfl>/", oItemTemplate);*/
         this._oDialog.open();
 	};
-	theClass.prototype._onSearch = function(oEvent) {
+	theClass.prototype.onSearch = function(oEvent) {
 		var sValue = oEvent.getParameter("value");
 		var oFilter = new Filter({
 		  path: this._metaTable.descColumn,
