@@ -71,14 +71,23 @@ function(BaseClass, ChooseDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
     		  template : oColListItem
     	});
     }
+    theClass.prototype.setValue = function (value) {
+	   	var rt = BaseClass.prototype.setValue.call(this, value);
+	   	var str = value;
+	   	if(value=="") {	 
+	   		str = undefined;
+	   	}
+	   	this.setProperty("dataValue", str);
+		return rt;
+    }
+
 	theClass.prototype.setDataValue = function (value) {
 
 		this.setProperty("dataValue", value);
 		var linkToTable = this.metaCol.linkTo;
 		var that = this;
 		var desc = ApiUtils.getDescription(linkToTable, value, function(val){
-			//that.setDataDesc(val);
-			that.setValue(val);			
+			BaseClass.prototype.setValue.call(that, val);		
 		});
 		//ApiUtils.finishBatchDesc();
 	}
