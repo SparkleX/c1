@@ -1,14 +1,14 @@
 sap.ui.define([
 	"sap/m/Input",
-	"next/core/view/CflDialog",
+	"c1/core/view/CflDialog",
     "sap/ui/model/json/JSONModel",
-    "next/core/widget/CoreUtil",
-    "next/core/controller/ApiUtils",
-    "next/core/widget/FormatUtil",
+    "c1/core/util/CoreUtil",
+    "c1/core/util/ApiUtils",
+    "c1/core/widget/FormatUtil",
 ],
 function(BaseClass, CflDialog, JSONModel, CoreUtil,ApiUtils,FormatUtil) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.LinkInput", { 
+	var theClass = BaseClass.extend("c1.core.widget.LinkInput", { 
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },

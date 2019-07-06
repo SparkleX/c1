@@ -1,10 +1,10 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/model/json/JSONModel",
-	"next/core/widget/CoreUtil"
+	"c1/core/util/CoreUtil"
 ], function (UIComponent, JSONModel, CoreUtil) {
 	"use strict";
-	return UIComponent.extend("next.app.CINF.Component", {
+	return UIComponent.extend("c1.app.CINF.Component", {
 		metadata : {
 			manifest: "json"
 		},

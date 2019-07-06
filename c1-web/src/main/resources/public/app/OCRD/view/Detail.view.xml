@@ -1,10 +1,10 @@
-<mvc:View id="idBpDetail" controllerName="next.app.OCRD.controller.Detail"
+<mvc:View id="idBpDetail" controllerName="c1.app.OCRD.controller.Detail"
 		  xmlns:uxap="sap.uxap"
 		  xmlns:m="sap.m"
 		  xmlns:layout="sap.ui.layout"
 		  xmlns:table="sap.ui.table"
 		  xmlns:mvc="sap.ui.core.mvc"
-		  xmlns:widget="next.core.widget"
+		  xmlns:widget="c1.core.widget"
 		  displayBlock="true">
 <!-- 	<semantic:FullscreenPage title="{i18n>detail/title}" showNavButton="true" navButtonPress="onNavBack" showFooter="false" titleLevel="H1">
 		<semantic:content> 		

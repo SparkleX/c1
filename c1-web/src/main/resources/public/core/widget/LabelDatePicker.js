@@ -5,7 +5,7 @@ sap.ui.define([
 ],
 function(BaseClass, DatePicker, Label) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.LabelDatePicker", { 
+	var theClass = BaseClass.extend("c1.core.widget.LabelDatePicker", { 
 		metadata: {
 			aggregations: {
 				"_input" : {type : "sap.m.DatePicker", multiple : false}

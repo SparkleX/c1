@@ -4,7 +4,7 @@ sap.ui.define([
 	"use strict";
 
 	new ComponentContainer({
-		name: "next.app.OADM",
+		name: "c1.app.OADM",
 		settings : {
 			id : "order"
 		},

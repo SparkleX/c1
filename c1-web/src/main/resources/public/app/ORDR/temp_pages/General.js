@@ -1,7 +1,7 @@
 sap.ui.define(['sap/uxap/BlockBase'], function (BlockBase) {
 	"use strict";
 
-	var GeneralPage =  BlockBase.extend("next.app.ORDR.pages.General", {
+	var GeneralPage =  BlockBase.extend("c1.app.ORDR.pages.General", {
 		metadata: {
 			events: {
 				"dummy": {}

@@ -24,7 +24,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "next.app.view.App",
+			"viewName": "c1.app.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -46,8 +46,8 @@
 		"extends": {
 	        "extensions": {       
 	            "sap.ui.controllerExtensions": {    
-	                "next.app.controller.SampleExtension": {
-	                    "controllerName": "next.app.controller.SampleExtension"
+	                "c1.app.controller.SampleExtension": {
+	                    "controllerName": "c1.app.controller.SampleExtension"
 					}
 				}
 	        }
@@ -62,7 +62,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "next.app.i18n.i18n"
+					"bundleName": "c1.app.i18n.i18n"
 				}
 			}
 		}

@@ -1,12 +1,12 @@
 <mvc:View
 	id="idView"
-	controllerName="next.app.ORDR.controller.GeneralPage"
+	controllerName="c1.app.ORDR.controller.GeneralPage"
 	xmlns:layout="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:form="sap.ui.layout.form"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
-	xmlns:widget="next.core.widget"
+	xmlns:widget="c1.core.widget"
 	width="100%">
 	<Button id="idClick" text="Click" press="onInnerDummy"/>
 	<layout:BlockLayout>

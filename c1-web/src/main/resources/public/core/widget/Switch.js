@@ -3,7 +3,7 @@ sap.ui.define([
 ],
 function(Switch) {
 	"use strict";
-	var theClass = Switch.extend("next.core.widget.Switch", { 
+	var theClass = Switch.extend("c1.core.widget.Switch", { 
 	metadata: {
 		properties: {
 			stateValue: { type: "string", group: "Misc", defaultValue: "F" },

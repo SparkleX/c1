@@ -4,12 +4,12 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
     'sap/ui/model/Filter',
-    "next/core/widget/CoreUtil",
-    "next/core/controller/ApiUtils",
-    "next/core/widget/FormatUtil",
+    "c1/core/util/CoreUtil",
+    "c1/core/util/ApiUtils",
+    "c1/core/widget/FormatUtil",
 ], function (ManagedObject, Controller, Fragment, JSONModel, Filter, CoreUtil,ApiUtils, FormatUtil) {
 	"use strict";
-	var theClass = Controller.extend("next.core.view.CflDialog", {
+	var theClass = Controller.extend("c1.core.view.CflDialog", {
 		constructor : function (oView, table) {
 			this._oView = oView;
 			this._table = table;
@@ -24,8 +24,8 @@ sap.ui.define([
 	theClass.prototype.open = function (inputId) {
 		var oView = this._oView;
 
-		//this._oDialog = sap.ui.xmlfragment("next.core.view.CflDialog", this);
-		this._oDialog = sap.ui.xmlfragment("next.share.choose."+this._table, this);
+		//this._oDialog = sap.ui.xmlfragment("c1.core.view.CflDialog", this);
+		this._oDialog = sap.ui.xmlfragment("c1.share.choose."+this._table, this);
         oView.addDependent(this._oDialog);
         var oModelList = new JSONModel();
 

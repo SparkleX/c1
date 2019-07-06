@@ -3,7 +3,7 @@ sap.ui.define([
 ],
 function(BaseClass) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.CheckBox", { 
+	var theClass = BaseClass.extend("c1.core.widget.CheckBox", { 
 	metadata: {
 		properties: {
 			label: { type: "string", group: "Misc", defaultValue: null },

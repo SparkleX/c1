@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/core/Element"
 ], function (Object,Element) {
 	"use strict";
-	var theClass =  Element.extend("next.core.ui.table.DefaultColumn", {
+	var theClass =  Element.extend("c1.core.ui.table.DefaultColumn", {
 		metadata : {
 			properties: {
 				text: {type: "string", group: "Behavior", defaultValue: null},

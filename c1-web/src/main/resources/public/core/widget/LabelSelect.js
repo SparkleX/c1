@@ -2,14 +2,14 @@ sap.ui.define([
 	"./BaseLabelControl",
 	"./Select",
 	"sap/m/Label",
-	"next/core/widget/CoreUtil"
+	"c1/core/util/CoreUtil"
 ],
 function(BaseClass, Select, Label, CoreUtil) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.LabelSelect", { 
+	var theClass = BaseClass.extend("c1.core.widget.LabelSelect", { 
 		metadata: {
 			aggregations: {
-				"_input" : {type : "next.core.widget.Select", multiple : false}
+				"_input" : {type : "c1.core.widget.Select", multiple : false}
 		    },	
 			events: {
 				dataChange:{

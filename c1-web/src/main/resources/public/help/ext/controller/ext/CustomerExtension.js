@@ -3,7 +3,7 @@ sap.ui.define([
 	'sap/ui/core/mvc/OverrideExecution'
 	], function(ControllerExtension, OverrideExecution) {
   "use strict";
-  return ControllerExtension.extend("next.app.controller.CustomerExtension", {
+  return ControllerExtension.extend("c1.app.controller.CustomerExtension", {
     metadata: {
         methods: {
             "onHook": {"public": true, "final": true},

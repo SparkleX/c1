@@ -1,10 +1,10 @@
 sap.ui.define([
 	"sap/ui/core/Control",
 	"sap/m/Select",
-	"next/core/widget/CoreUtil"
+	"c1/core/util/CoreUtil"
 ], function (Control, BaseClass, CoreUtil) {
 	"use strict";
-	var theClass =  BaseClass.extend("next.core.widget.Select", {
+	var theClass =  BaseClass.extend("c1.core.widget.Select", {
 		metadata : {
 			properties : {
 				dataValue:  {type: "string", group: "Behavior"},

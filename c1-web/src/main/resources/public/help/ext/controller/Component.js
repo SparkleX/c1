@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 ], function (UIComponent, JSONModel) {
 	"use strict";
-	return UIComponent.extend("next.app.Component", {
+	return UIComponent.extend("c1.app.Component", {
 		metadata : {
 			manifest: "json"
 		},

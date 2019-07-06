@@ -1,13 +1,13 @@
 sap.ui.define([
 	"sap/ui/table/Table",
-	"next/core/widget/WidgetUtil",
-	"next/core/widget/FormatText",
-	"next/core/widget/FormatLink",
-	"next/core/widget/CoreUtil",
-	"next/core/controller/ApiUtils",
+	"c1/core/util/WidgetUtil",
+	"c1/core/widget/FormatText",
+	"c1/core/widget/FormatLink",
+	"c1/core/util/CoreUtil",
+	"c1/core/util/ApiUtils",
 ], function (Table, WidgetUtil, FormatText, FormatLink, CoreUtil,ApiUtils) {
 	"use strict";
-	var theClass =  Table.extend("next.core.ui.table.ListViewTable", {
+	var theClass =  Table.extend("c1.core.ui.table.ListViewTable", {
 		metadata : {
 			properties : {
 				dataTable:  {type: "string", group: "Behavior", defaultValue: null},

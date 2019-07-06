@@ -5,7 +5,7 @@ sap.ui.define([
 ],
 function(BaseClass, DatePicker, Label) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.BaseLabelControl", { 
+	var theClass = BaseClass.extend("c1.core.widget.BaseLabelControl", { 
 		metadata: {
 			interfaces : ["sap.ui.core.IFormContent"],
 			properties: {

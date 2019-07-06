@@ -2,12 +2,12 @@ sap.ui.define([
 	"sap/m/Text",
 	"sap/ui/core/TextAlign",
 	"sap/ui/core/format/NumberFormat",
-	"next/core/widget/CoreUtil",
+	"c1/core/util/CoreUtil",
 	"./FormatUtil"
 ],
 function(Text, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
 	"use strict";
-	var theClass = Text.extend("next.core.widget.FormatText", { 
+	var theClass = Text.extend("c1.core.widget.FormatText", { 
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },

@@ -1,10 +1,10 @@
-<mvc:View id="idBpDetail" controllerName="next.app.CINF.controller.Detail"
+<mvc:View id="idBpDetail" controllerName="c1.app.CINF.controller.Detail"
 		  xmlns:uxap="sap.uxap"
 		  xmlns:m="sap.m"
 		  xmlns:layout="sap.ui.layout"
 		  xmlns:table="sap.ui.table"
 		  xmlns:mvc="sap.ui.core.mvc"
-		  xmlns:widget="next.core.widget"
+		  xmlns:widget="c1.core.widget"
 		  displayBlock="true">
 			<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" upperCaseAnchorBar="false">
 				<uxap:headerTitle>

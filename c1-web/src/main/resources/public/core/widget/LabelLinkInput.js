@@ -5,10 +5,10 @@ sap.ui.define([
 ],
 function(BaseClass, LinkInput, Label) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.LabelLinkInput", { 
+	var theClass = BaseClass.extend("c1.core.widget.LabelLinkInput", { 
 		metadata: {
 			aggregations: {
-				"_input" : {type : "next.core.widget.LinkInput", multiple : false}
+				"_input" : {type : "c1.core.widget.LinkInput", multiple : false}
 		    },			
 		}
 	});

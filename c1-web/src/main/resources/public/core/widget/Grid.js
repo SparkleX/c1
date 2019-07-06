@@ -4,7 +4,7 @@ sap.ui.define([
 	"sap/m/OverflowToolbar",
 ], function (BaseClass, Button, OverflowToolbar) {
 	"use strict";
-	var theClass =  BaseClass.extend("next.core.widget.Grid", {
+	var theClass =  BaseClass.extend("c1.core.widget.Grid", {
 		metadata : {
 			properties : {
 				dataTable: { type: "string", group: "Misc", defaultValue: null },

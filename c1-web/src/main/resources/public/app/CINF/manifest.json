@@ -25,7 +25,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "next.app.CINF.view.App",
+			"viewName": "c1.app.CINF.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -40,7 +40,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "next.app.CINF.i18n.i18n"
+					"bundleName": "c1.app.CINF.i18n.i18n"
 				}
 			}
 		},
@@ -48,7 +48,7 @@
 		  "config": {
 			"routerClass": "sap.m.routing.Router",
 			"viewType": "XML",
-			"viewPath": "next.app.CINF.view",
+			"viewPath": "c1.app.CINF.view",
 			"controlId": "app1",
 			"controlAggregation": "pages",
 			"async": true

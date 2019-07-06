@@ -3,14 +3,14 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
-	"next/core/controller/RouterUtil",
-	"next/core/controller/ApiUtils",
+	"c1/core/util/RouterUtil",
+	"c1/core/util/ApiUtils",
 	"sap/ui/comp/filterbar/FilterItem",
-	"next/core/widget/CoreUtil",	
+	"c1/core/util/CoreUtil",	
 ], function (Controller, MessageToast, Fragment, JSONModel, RouterUtil, ApiUtils,FilterItem, CoreUtil) {
 	"use strict";
 
-	var theClass =Controller.extend("next.core.controller.BaseListController", {});
+	var theClass =Controller.extend("c1.core.controller.BaseListController", {});
 	theClass.prototype.onInit=function() {
 		this.dataTable = "ORDR";
 	    var that = this;
@@ -129,7 +129,7 @@ sap.ui.define([
 
 	theClass.prototype.createPopover= function() {
 		if (!this._oQuickView) {
-			this._oQuickView = sap.ui.xmlfragment("next.share.quick.OCRD", this);
+			this._oQuickView = sap.ui.xmlfragment("c1.share.quick.OCRD", this);
 			this.getView().addDependent(this._oQuickView);
 		}
 	};

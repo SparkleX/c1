@@ -1,8 +1,8 @@
 <mvc:View 
-	controllerName="next.app.controller.App"
+	controllerName="c1.app.controller.App"
 	xmlns:m="sap.m" 
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:widget="next.core.widget"
+	xmlns:widget="c1.core.widget"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout"
 	xmlns:core="sap.ui.core">

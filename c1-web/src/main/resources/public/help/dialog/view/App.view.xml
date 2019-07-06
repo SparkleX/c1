@@ -1,5 +1,5 @@
 <mvc:View 
-	controllerName="next.app.controller.App"
+	controllerName="c1.app.controller.App"
 	id="view"
 	xmlns:m="sap.m" 
 	xmlns:mvc="sap.ui.core.mvc"

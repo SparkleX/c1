@@ -1,7 +1,7 @@
 sap.ui.define([
-    "./CoreUtil",
+    "c1/core/util/CoreUtil",
     "sap/ui/core/format/NumberFormat",
-    "next/core/controller/ApiUtils",
+    "c1/core/util/ApiUtils",
     "sap/ui/model/type/Float",
 ],
 function(CoreUtil,NumberFormat,ApiUtils,Float) {

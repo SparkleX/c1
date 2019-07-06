@@ -2,11 +2,11 @@ sap.ui.define([
 	"./BaseLabelControl",
 	"sap/m/TextArea",
 	"sap/m/Label",
-	"next/core/widget/CoreUtil"
+	"c1/core/util/CoreUtil"
 ],
 function(BaseClass, TextArea, Label, CoreUtil) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.LabelTextArea", { 
+	var theClass = BaseClass.extend("c1.core.widget.LabelTextArea", { 
 		metadata: {
 			aggregations: {
 				"_input" : {type : "sap.m.TextArea", multiple : false}

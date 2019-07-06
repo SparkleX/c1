@@ -4,9 +4,9 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"./FormMode",
-	"./ApiUtils",
-    "next/core/controller/RouterUtil",
-    "next/core/widget/WidgetUtil",
+	"c1/core/util/ApiUtils",
+    "c1/core/util/RouterUtil",
+    "c1/core/util/WidgetUtil",
 ], function (Controller, MessageToast, Fragment, JSONModel, FormMode, ApiUtils, RouterUtil, WidgetUtil) {
 	"use strict";
 

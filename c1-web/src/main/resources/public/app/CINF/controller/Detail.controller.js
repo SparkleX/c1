@@ -1,11 +1,11 @@
 sap.ui.define([
-	"next/core/controller/BaseDetailController",
+	"c1/core/controller/BaseDetailController",
 	"sap/m/MessageToast",
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel"
 ], function (BaseDetailController, MessageToast, Fragment, JSONModel) {
 	"use strict";
-	var theClass =BaseDetailController.extend("next.app.CINF.controller.Detail", {
+	var theClass =BaseDetailController.extend("c1.app.CINF.controller.Detail", {
 		dataTable:'CINF'
 	});
 

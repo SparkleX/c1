@@ -4,7 +4,7 @@ sap.ui.define([
    "sap/ui/core/Fragment",
 ], function (Controller, JSONModel,Fragment) {
    "use strict";
-   var theClass= Controller.extend("next.app.controller.Dialog", {});
+   var theClass= Controller.extend("c1.app.controller.Dialog", {});
 	   
    theClass.prototype.onCloseDialog = function (evt) {
 	  var dialog=evt.getSource().getParent();

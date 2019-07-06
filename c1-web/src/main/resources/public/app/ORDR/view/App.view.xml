@@ -1,4 +1,4 @@
-<mvc:View controllerName="next.app.ORDR.controller.App"
+<mvc:View controllerName="c1.app.ORDR.controller.App"
 	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" >
 	<App id="app1"/>
 	<!-- <Page title="{i18n>list/title}">

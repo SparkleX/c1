@@ -4,7 +4,7 @@ sap.ui.define([
 	"use strict";
 
 	new ComponentContainer({
-		name: "next.app.CINF",
+		name: "c1.app.CINF",
 		settings : {
 			id : "order"
 		},

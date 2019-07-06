@@ -1,11 +1,11 @@
 sap.ui.define([
-	"next/core/controller/BaseListController",
+	"c1/core/controller/BaseListController",
 	"sap/m/MessageToast",
 	"sap/ui/core/Fragment"
 ], function (Controller, MessageToast, Fragment) {
 	"use strict";
 
-	var theClass = Controller.extend("next.app.OCRD.controller.List", {
+	var theClass = Controller.extend("c1.app.OCRD.controller.List", {
 		dataTable : "OCRD"
 	});
 	

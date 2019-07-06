@@ -1,12 +1,12 @@
 sap.ui.define([
 	"sap/m/Input",
 	"sap/ui/core/TextAlign",
-	"next/core/widget/CoreUtil",
-	"next/core/widget/FormatUtil"
+	"c1/core/util/CoreUtil",
+	"c1/core/widget/FormatUtil"
 ],
 function(BaseClass, TextAlign, CoreUtil, FormatUtil) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.FormatInput", { 
+	var theClass = BaseClass.extend("c1.core.widget.FormatInput", { 
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },

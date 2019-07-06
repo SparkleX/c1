@@ -2,13 +2,13 @@ sap.ui.define([
 	"sap/m/Link",
 	"sap/ui/core/TextAlign",
 	"sap/ui/core/format/NumberFormat",
-	"next/core/widget/CoreUtil",
+	"c1/core/util/CoreUtil",
 	"./FormatUtil",
 	"sap/ui/model/json/JSONModel",
 ],
 function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 	"use strict";
-	var theClass = BaseClass.extend("next.core.widget.FormatLink", { 
+	var theClass = BaseClass.extend("c1.core.widget.FormatLink", { 
 	metadata: {
 		properties: {
 			dataFormat: { type: "string", group: "Misc", defaultValue: null },
@@ -40,7 +40,7 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 		var table = this.metaCol.linkTo;
 		if (!this._oQuickView) {
 			
-			this._oQuickView = sap.ui.xmlfragment("next.share.quick."+table, this);
+			this._oQuickView = sap.ui.xmlfragment("c1.share.quick."+table, this);
 		}
 		var oModel = new JSONModel();
 		var url ="/api/"+table+"/"+this.getDataValue();

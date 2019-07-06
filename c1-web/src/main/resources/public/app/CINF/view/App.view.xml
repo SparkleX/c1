@@ -1,4 +1,4 @@
-<mvc:View controllerName="next.app.CINF.controller.App"
+<mvc:View controllerName="c1.app.CINF.controller.App"
 		  xmlns="sap.m"
 		  xmlns:mvc="sap.ui.core.mvc"
 		  displayBlock="true">

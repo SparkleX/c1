@@ -1,11 +1,11 @@
 <mvc:View
-	controllerName="next.app.OCRD.controller.List"
+	controllerName="c1.app.OCRD.controller.List"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
-	xmlns:table="next.core.ui.table"
+	xmlns:table="c1.core.ui.table"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc.View"
-	xmlns:widget="next.core.widget"
+	xmlns:widget="c1.core.widget"
 	displayBlock="true">
 	<Page title="{i18n>list/title}">
 	<content>
