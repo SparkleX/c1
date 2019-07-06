@@ -86,7 +86,7 @@ sap.ui.define([
 		}
 		
         var oModelList = new JSONModel();
-        oModelList.loadData("/api/"+this.dataTable+"/?"+params);
+        oModelList.loadData("/api/"+this.dataTable+"/?$orderby=id desc&"+params);
         oModelList.attachRequestCompleted(function() {
         });
         this.getOwnerComponent().setModel(oModelList, "list");
