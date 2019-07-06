@@ -42,7 +42,8 @@ sap.ui.define([
     }
 	theClass.prototype.setValue = function (value) {
 		var rt = BaseClass.prototype.setValue.call(this, value);
-		this.setProperty("dataValue", value);
+		var key = this.getSelectedItem().getKey()
+		this.setProperty("dataValue", key);
 		return rt;
 	};
 	
