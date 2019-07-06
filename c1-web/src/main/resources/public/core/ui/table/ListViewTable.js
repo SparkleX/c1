@@ -28,8 +28,8 @@ sap.ui.define([
     	for(let col of listColumns.column){
     		var metaCol = metaTable.columnMap[col];
     		var text = metaCol.description;
-    		var template = null;
-    		if(metaCol.linkTo) {
+    		var template = WidgetUtil.newGridControl(metaTable, metaCol, "list>");
+    		/*if(metaCol.linkTo) {
 	    		template = new FormatLink({
 		    			dataValue:"{list>"+metaCol.id+"}",
 		    			dataFormat:this.getDataTable()+"."+metaCol.id
@@ -39,7 +39,7 @@ sap.ui.define([
 	    			dataValue:"{list>"+metaCol.id+"}",
 	    			dataFormat:this.getDataTable()+"."+metaCol.id
 	    			});
-    		}
+    		}*/
     		
        	 	this.addColumn(new sap.ui.table.Column({
        		    label: new sap.m.Label({text: text}),

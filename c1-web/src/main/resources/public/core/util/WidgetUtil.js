@@ -1,8 +1,10 @@
 sap.ui.define([
 	"c1/core/widget/LinkInput",
 	"c1/core/widget/Select",
+	"c1/core/widget/FormatText",
+	"c1/core/widget/FormatLink",
 ],
-function(LinkInput, Select) {
+function(LinkInput, Select, FormatText, FormatLink) {
 	"use strict";
 
 	var theClass={};
@@ -85,8 +87,6 @@ function(LinkInput, Select) {
 		}
 	}
 	theClass.newEditableControl=function(metaTable, metaCol, model) {
-
-
 	    if(metaCol.linkTo) {
 	        return new LinkInput({
 	        	id:`${metaCol.id}`,
@@ -94,21 +94,36 @@ function(LinkInput, Select) {
 	            dataValue:`{${model}/${metaCol.id}}`
 	            });
 	    }
-	    if(metaCol.validValue) {
-            return new c1.core.widget.Select({
-            	id:`${metaCol.id}`,
-                dataFormat:`${metaTable.id}.${metaCol.id}`,
-                dataValue:`{${model}/${metaCol.id}}`,
-                allowEmpty : true
-                });
+	    if(metaCol.validValue)
+	    {
+	        if(metaCol.validValue.length>0) {
+                return new c1.core.widget.Select({
+                    id:`${metaCol.id}`,
+                    dataFormat:`${metaTable.id}.${metaCol.id}`,
+                    dataValue:`{${model}/${metaCol.id}}`,
+                    allowEmpty : true
+                    });
+                }
 	    }
         return new sap.m.Input({
         	id:`${metaCol.id}`,
         	value:`{${model}/${metaCol.id}}`
         	});
 	}
-	theClass.newGridControl=function(metaCol) {
-
+	theClass.newGridControl=function(metaTable, metaCol, model) {
+		var template;
+		if(metaCol.linkTo) {
+			template = new FormatLink({
+					dataValue:`{${model}${metaCol.id}}`,
+					dataFormat:`${metaTable.id}.${metaCol.id}`
+					});
+		}else {
+			template = new FormatText({
+				dataValue:`{${model}${metaCol.id}}`,
+				dataFormat:`${metaTable.id}.${metaCol.id}`
+				});
+		}
+		return template;
 	}
 	return theClass;
 });

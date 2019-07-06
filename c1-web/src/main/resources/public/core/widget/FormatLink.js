@@ -3,10 +3,10 @@ sap.ui.define([
 	"sap/ui/core/TextAlign",
 	"sap/ui/core/format/NumberFormat",
 	"c1/core/util/CoreUtil",
-	"./FormatUtil",
+	"c1/core/util/ApiUtils",
 	"sap/ui/model/json/JSONModel",
 ],
-function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
+function(BaseClass, TextAlign,NumberFormat, CoreUtil, ApiUtils, JSONModel) {
 	"use strict";
 	var theClass = BaseClass.extend("c1.core.widget.FormatLink", { 
 	metadata: {
@@ -17,23 +17,18 @@ function(BaseClass, TextAlign,NumberFormat, CoreUtil, FormatUtil, JSONModel) {
 	}});
     theClass.prototype.applySettings = function(mSettings, oScope) {
     	var rt = BaseClass.prototype.applySettings.call(this, mSettings, oScope);
-    	
-    	var dataFormat = this.getDataFormat(); 
+    	var dataFormat = this.getDataFormat();
     	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
 		this.attachPress(this.onPress);
     	return rt;
      }	
-	theClass.prototype.setDescAnsync = function (value, fn) {
-		var dataFormat = this.getDataFormat(); 
-		return FormatUtil.formatValue(dataFormat, value, fn);
-	}
 	theClass.prototype.setDataValue = function (value) {
 		this.setProperty("dataValue", value);
 		var that = this;
-		this.setDescAnsync(value, function(desc) {
-			that.setText(desc);
-		});		
-	}	
+		ApiUtils.getDescription(this.metaCol.linkTo, value, function(desc) {
+            that.setText(desc);
+        });
+	}
 
 
 	theClass.prototype.onPress= function (evt) {

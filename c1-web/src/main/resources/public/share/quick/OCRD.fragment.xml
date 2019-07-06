@@ -3,7 +3,7 @@
 		<footer>
 			<Toolbar>
 				<ToolbarSpacer />
-				<Link text="Go" target="_blank" href="/app/OCRD/#/detail/1" />
+				<Link text="Go" target="_blank" href="/#OCRD-App&amp;/detail/1" />
 			</Toolbar>
 		</footer>
 		<Label text="Basic Information" width="100%" />

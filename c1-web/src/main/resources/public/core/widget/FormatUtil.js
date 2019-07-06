@@ -68,6 +68,13 @@ function(CoreUtil,NumberFormat,ApiUtils,Float) {
 		if(!value) {
 			return "";
 		}
+		if(metaCol.validValue) {
+		    for(let vv of metaCol.validValue) {
+		        if(vv.id==value) {
+		            return vv.value;
+		        }
+		    }
+		}
 		switch(metaCol.dbType) {
 			case "ALPHA_NUMERIC":
 				return value;

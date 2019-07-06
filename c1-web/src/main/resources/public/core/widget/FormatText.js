@@ -16,7 +16,8 @@ function(Text, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
 	}});
     theClass.prototype.applySettings = function(mSettings, oScope) {
     	var rt = Text.prototype.applySettings.call(this, mSettings, oScope);    	
-    	var dataFormat = this.getDataFormat(); 
+    	var dataFormat = this.getDataFormat();
+    	this.metaCol = CoreUtil.getMdColumnByBind(dataFormat);
     	var format = FormatUtil.format(dataFormat);
     	if(format.right){
     		this.setTextAlign(TextAlign.Right);
@@ -24,18 +25,11 @@ function(Text, TextAlign,NumberFormat, CoreUtil, FormatUtil) {
 		this.setWidth("100%");		
     	return rt;
      }	
-	theClass.prototype.formatValue = function (value, fn) {
-		var dataFormat = this.getDataFormat(); 
-		FormatUtil.formatValue(dataFormat, value, fn);
-	}
-	
+
 	theClass.prototype.setDataValue = function (value) {
 		this.setProperty("dataValue", value);
-		var that = this;
-		var formattedVal = this.formatValue(value, function(val){
-			that.setText(val);	
-		});		
-		
+		var str = FormatUtil.toString1(this.metaCol, value);
+		this.setText(str);
 	}
 	
 	return theClass;
