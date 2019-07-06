@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/thirdparty/jquery"
-], function (jquery) {
+    "sap/ui/thirdparty/jquery",
+    'sap/m/MessageBox',
+], function (jquery, MessageBox) {
 	"use strict";
 	var theClass = {}
 	
@@ -9,7 +10,8 @@ sap.ui.define([
 		return jQuery.ajax(params);		
 	}
 
-
+	//MessageBox.error("Select a team in the \"Development\" area.\n\"Marketing\" isn't assigned to this area.");
+	
     theClass.syncAjax=function(params)  {
         var rt;
         params.contentType ='application/json';
@@ -17,7 +19,10 @@ sap.ui.define([
         params.success = function(data) {
             rt = data;
         }
-        jQuery.ajax(params);
+        jQuery.ajax(params)
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+        	MessageBox.error(`${errorThrown} (Status: ${jqXHR.status})`);
+        });
         return rt;
     }
 

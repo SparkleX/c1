@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/model/json/JSONModel",
-    "sap/ui/thirdparty/jquery"
+    "sap/ui/thirdparty/jquery",
+    "c1/core/util/ApiUtils",
 ],
-function(JSONModel, jQuery) {
+function(JSONModel, jQuery, ApiUtils) {
 	"use strict";
 
 	var theClass={};
@@ -14,40 +15,26 @@ function(JSONModel, jQuery) {
 	    this.initOADM();
     }
 	theClass.initMetadata=function() {
-		jQuery.ajax({
-            url: "/api/metadata/",
-            async: false,
-            success : function(data) {
-                theClass.metadata = data;
-				for(var table in theClass.metadata) {
-					var oTable = theClass.metadata[table];
-					oTable.columnMap = {};
-					for(var colIndex in oTable.column) {
-						var oColumn = oTable.column[colIndex];
-						oTable.columnMap[oColumn.id] = oColumn;
-					}
-				}
-            }
-        }).fail(function (result,result1,result2) {
-			alert('fail');
-        })
+		var data = ApiUtils.syncAjax({url: '/api/metadata/'})
+        theClass.metadata = data;
+		for(var table in theClass.metadata) {
+			var oTable = theClass.metadata[table];
+			oTable.columnMap = {};
+			for(var colIndex in oTable.column) {
+				var oColumn = oTable.column[colIndex];
+				oTable.columnMap[oColumn.id] = oColumn;
+			}
+		}
 	}
 	theClass.initOADM=function() {
-		jQuery.ajax({
-            url: "/api/OADM/",
-            async: false,
-            success : function(data) {
-                theClass.oadm = data[0];
-                theClass.decimals.MEASURE = theClass.oadm.measureDec
-                theClass.decimals.PERCENT = theClass.oadm.percentDec;
-                theClass.decimals.QUANTITY = theClass.oadm.qtyDec;
-                theClass.decimals.RATE = theClass.oadm.rateDec;
-                theClass.decimals.SUM = theClass.oadm.sumDec;
-                theClass.decimals.PRICE = theClass.oadm.priceDec;
-            }
-        }).fail(function (result,result1,result2) {
-			alert('fail');
-        })
+		var data = ApiUtils.syncAjax({url: '/api/OADM/'})
+        theClass.oadm = data[0];
+        theClass.decimals.MEASURE = theClass.oadm.measureDec
+        theClass.decimals.PERCENT = theClass.oadm.percentDec;
+        theClass.decimals.QUANTITY = theClass.oadm.qtyDec;
+        theClass.decimals.RATE = theClass.oadm.rateDec;
+        theClass.decimals.SUM = theClass.oadm.sumDec;
+        theClass.decimals.PRICE = theClass.oadm.priceDec;
 	}
 
     theClass.getDataBindTable=function(bind){
