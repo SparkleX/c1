@@ -14,7 +14,7 @@ import com.next.c1.service.sys.ListViewService;
 public class ListViewController {
 	@Autowired
 	ListViewService service;
-	@GetMapping(path="/")
+	@GetMapping()
 	public List getAllMetadata(@RequestParam("table") String table) {
 		return service.getData(table);
 	}

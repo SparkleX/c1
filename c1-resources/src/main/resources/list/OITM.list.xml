@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<list xmlns="urn:next:list">
+	<column>itemCode</column>
+	<column>itemName</column>
+	<column>dfltPrice</column>
+</list>

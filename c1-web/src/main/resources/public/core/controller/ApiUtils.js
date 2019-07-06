@@ -7,7 +7,34 @@ sap.ui.define([
 	theClass.ajax=function(params)  {
 		params.contentType ='application/json';
 		return jQuery.ajax(params);		
-	} 
+	}
+
+
+    theClass.syncAjax=function(params)  {
+        var rt;
+        params.contentType ='application/json';
+        params.async=false;
+        params.success = function(data) {
+            rt = data;
+        }
+        jQuery.ajax(params);
+        return rt;
+    }
+
+    theClass.listView=function(table)  {
+        return this.syncAjax({url:`/api/list?table=${table}`});
+    }
+
+	theClass.init = function (table) {
+		var rt;
+		this.ajax({ url: `/api/${table}/init`,
+					async: false,
+					success : function(data) {
+						rt = data;
+					}
+				});
+		return rt;
+	}
 	theClass.init = function (table) {
 		var rt;
 		this.ajax({ url: `/api/${table}/init`,

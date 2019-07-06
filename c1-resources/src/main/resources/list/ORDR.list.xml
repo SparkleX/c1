@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<list xmlns="urn:next:list">
+	<column>id</column>
+	<column>bpId</column>
+	<column>docTotal</column>
+	<column>docDate</column>
+	<column>docStatus</column>	
+</list>	

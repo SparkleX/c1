@@ -10,11 +10,6 @@
 	<Page title="{i18n>list/title}">
 	<content>
 		<table:ListViewTable dataTable="OCRD" id="listTable" rows="{list>/}" rowActionCount="1" selectionMode="MultiToggle">
-			<table:defaultColumns>
-				<table:defaultColumn text="#" dataBind="id"/>
-				<table:defaultColumn text="Business Partner Code" dataBind="bpCode"/>
-				<table:defaultColumn text="Business Partner Name" dataBind="bpName"/>
-			</table:defaultColumns>
 			<table:extension>
 				<OverflowToolbar>
 					<Button icon="sap-icon://add" type="Transparent" press="onAdd"/>

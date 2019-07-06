@@ -4,7 +4,8 @@ sap.ui.define([
 	"next/core/widget/FormatText",
 	"next/core/widget/FormatLink",
 	"next/core/widget/CoreUtil",
-], function (Table, WidgetUtil, FormatText, FormatLink, CoreUtil) {
+	"next/core/controller/ApiUtils",
+], function (Table, WidgetUtil, FormatText, FormatLink, CoreUtil,ApiUtils) {
 	"use strict";
 	var theClass =  Table.extend("next.core.ui.table.ListViewTable", {
 		metadata : {
@@ -12,9 +13,6 @@ sap.ui.define([
 				dataTable:  {type: "string", group: "Behavior", defaultValue: null},
 				allowAdd:  {type: "boolean", group: "Behavior", defaultValue: true},
 				
-			},
-			aggregations : {
-				defaultColumns: {type: "next.core.ui.table.DefaultColumn", singularName : "defaultColumn", multiple : true},
 			}
 		}
 	});
@@ -23,20 +21,23 @@ sap.ui.define([
      }
     theClass.prototype.applySettings = function(mSettings, oScope) {
     	var rt = Table.prototype.applySettings.call(this, mSettings, oScope);
-    	for(let col of this.getDefaultColumns()){
-    		var dataBind = col.getDataBind();
-    		var text = col.getText();
+    	var table = this.getDataTable();
+    	var metaTable = CoreUtil.getMdTable(table);
+    	var listColumns = ApiUtils.listView(table);
+
+    	for(let col of listColumns.column){
+    		var metaCol = metaTable.columnMap[col];
+    		var text = metaCol.description;
     		var template = null;
-    		var metaCol = CoreUtil.getMdColumnByBind(this.getDataTable()+"."+dataBind);
     		if(metaCol.linkTo) {
 	    		template = new FormatLink({
-		    			dataValue:"{list>"+dataBind+"}",
-		    			dataFormat:this.getDataTable()+"."+dataBind
+		    			dataValue:"{list>"+metaCol.id+"}",
+		    			dataFormat:this.getDataTable()+"."+metaCol.id
 		    			});
     		}else {
         		template = new FormatText({
-	    			dataValue:"{list>"+dataBind+"}",
-	    			dataFormat:this.getDataTable()+"."+dataBind
+	    			dataValue:"{list>"+metaCol.id+"}",
+	    			dataFormat:this.getDataTable()+"."+metaCol.id
 	    			});
     		}
     		
@@ -52,9 +53,9 @@ sap.ui.define([
   	
     	return rt;
      }     
-    theClass.prototype.onBeforeRendering = function() {
+    /*theClass.prototype.onBeforeRendering = function() {
     	Table.prototype.onBeforeRendering.call(this);
-    }
+    }*/
     theClass.prototype.onPress = function(evt) {
     	var view = WidgetUtil.getRootView(this);
     	view.getController().onListItemPress(evt);
