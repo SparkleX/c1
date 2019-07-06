@@ -26,14 +26,21 @@ public class BaseSearchService<T,REPO extends BaseRepository<T,Integer>> {
 	@Autowired
 	HttpServletRequest httpRequest;
 
-	private void buildFuzzSearch(StringBuilder sb) {
+	private String buildFuzzSearch() {
+		StringBuilder sb = new StringBuilder();
 		String search = httpRequest.getParameter("$search");
 		if(StringUtils.isEmpty(search)) {
-			return;
+			return null;
 		}
-		for(String column:getSelectColumn()) {
-			sb.append(column).append(" like '%").append(search).append("%' and ");
-		}		
+		String[] columns = getSelectColumn();
+		if(columns.length == 0) {
+			return null;
+		}
+		for(String column:columns) {
+			sb.append(column).append(" like '%").append(search).append("%' or ");
+		}
+		sb.setLength(sb.length()-4);
+		return sb.toString(); 
 		
 	}
 	private void buildOrderby(StringBuilder sb) {
@@ -70,6 +77,19 @@ public class BaseSearchService<T,REPO extends BaseRepository<T,Integer>> {
 		}
 		return rt;
 	}
+	private String getFilterExpr() {
+		StringBuilder sb = new StringBuilder();
+		List<String> filterColumn = getFilterColumn();
+		if(filterColumn.size()==0) {
+			return null;
+		}
+		for(String column:filterColumn) {
+			String value = httpRequest.getParameter(column);
+			sb.append(column).append("='").append(value).append("' and ");
+		}
+		sb.setLength(sb.length()-4);
+		return sb.toString();
+	}
 	public List<T> search(BaseService<T,REPO> service) {
 		
 		Class<T> domainType = service.getDomainType();
@@ -78,13 +98,22 @@ public class BaseSearchService<T,REPO extends BaseRepository<T,Integer>> {
 		buildSelect(sb);
 		sb.append(" from ").append(tableName);
 		
-		sb.append(" where 1=1 and ");
-		for(String column:getFilterColumn()) {
-			String value = httpRequest.getParameter(column);
-			sb.append(column).append("='").append(value).append("' and ");
+		
+		String filter = getFilterExpr();
+		String fuzzSearch = buildFuzzSearch();
+		if(filter!=null || fuzzSearch !=null) {
+			sb.append(" where ");
 		}
-		buildFuzzSearch(sb);
-		sb.setLength(sb.length()-4);
+		if(filter!=null) {
+			sb.append(filter);
+		}
+		if(fuzzSearch !=null) {
+			if(filter!=null) {
+				sb.append(" or ");
+			}
+			sb.append(fuzzSearch);
+		}
+		
 		buildOrderby(sb);
 		List<T> rt = sql.select(domainType, sb.toString());
 		return rt;

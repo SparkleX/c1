@@ -33,9 +33,9 @@ sap.ui.define([
 		oView.setModel(oModelFilter,"filter");
 
         var metaTable = CoreUtil.getMdTable(this.dataTable);
-        var listColumns = ApiUtils.listView(this.dataTable);
+        this.listColumns = ApiUtils.listView(this.dataTable);
 
-		var oInput = new sap.m.Input();
+		var oInput = new sap.m.Input({value:"{filter>/$search}"});
 		var oFilterItem = new FilterItem({
 			name:"__search",
 			name:"search",
@@ -43,7 +43,7 @@ sap.ui.define([
 			control:oInput
 				});		
 		oFilterBar.addFilterItem(oFilterItem);
-		for(let colName of listColumns.column) {
+		for(let colName of this.listColumns.column) {
             var metaCol = metaTable.columnMap[colName];
 			var oInput = new sap.m.Input({value:"{filter>/"+metaCol.id+"}"});
 			var oFilterItem = new FilterItem({
@@ -77,16 +77,19 @@ sap.ui.define([
 		var oView = this.getView();
 		var oModel = oView.getModel("filter");
 		var data = oModel.getData();
-		var params = "";
+		var filter = "";
+		var select = this.listColumns.column.join(",");
+
+
 		for(var key in data) {
 			if(data[key]==="") {
 				continue;
 			}
-			params = params + key+"="+data[key]+"&";
+			filter = filter + key+"="+data[key]+"&";
 		}
-		
+
         var oModelList = new JSONModel();
-        oModelList.loadData("/api/"+this.dataTable+"/?$orderby=id desc&"+params);
+        oModelList.loadData(`/api/${this.dataTable}/?$orderby=id desc&$select=${select}&${filter}`);
         oModelList.attachRequestCompleted(function() {
         });
         this.getOwnerComponent().setModel(oModelList, "list");
